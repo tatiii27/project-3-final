@@ -24,6 +24,11 @@ d3.csv("data/cosmetic_p.csv").then(data => {
     .attr("width", width)
     .attr("height", height);
 
+  // Create distinct SVG layers: one for bubbles, one for labels
+const bubbleLayer = svg.append("g").attr("class", "bubble-layer");
+const labelLayer  = svg.append("g").attr("class", "label-layer");
+
+
     let brushRange = null;                         // null = no brush
     const axisG  = svg.append("g").attr("class", "x-axis");
     const brushG = svg.append("g").attr("class", "x-brush");
@@ -276,39 +281,71 @@ const simulation = d3.forceSimulation(filtered)
 
 
     // Draw bubbles
-    const node = svg.selectAll("circle")
-      .data(filtered, d => d.name);
+// --- Draw and update bubbles ---
+// --- Draw and update bubbles ---
+const node = bubbleLayer.selectAll("circle")
+  .data(filtered, d => d.name);
 
-    node.enter()
-      .append("circle")
-      .attr("r", d => size(d.price))
-      .attr("fill", d => color(d.rank))
-      .attr("stroke", "#333")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.9)
-      .attr("cursor", "pointer")
-      .on("mouseover", (event, d) => {
-        d3.select("#tooltip")
-          .style("opacity", 1)
-          .html(`
-            <strong>${d.name}</strong><br>
-            Brand: ${d.brand}<br>
-            Category: ${d.Label}<br>
-            💲${d.price}<br>
-            ⭐ Rating: ${d.rank.toFixed(2)}<br>
-            Skin Types: ${skinTypes.filter(s => d[s] === 1).join(", ")}
-          `)
-          .style("left", event.pageX + 10 + "px")
-          .style("top", event.pageY - 28 + "px");
-      })
-      .on("mouseout", () => d3.select("#tooltip").style("opacity", 0))
-      .merge(node)
-      .transition()
-      .duration(800)
-      .attr("r", d => size(d.price))
-      .attr("fill", d => color(d.rank));
+//keep brand names on blue bubble hover//
+// Ensure labels always stay above bubbles
+svg.selectAll("g.brand-label").raise();
 
-    node.exit().remove();
+
+// ENTER + UPDATE
+node.enter()
+  .append("circle")
+  .attr("r", d => size(d.price))
+  .attr("fill", d => color(d.rank))
+  .attr("stroke", "#333")
+  .attr("stroke-width", 1)
+  .attr("opacity", 0.9)
+  .attr("cursor", "pointer")
+  // Hover interaction (affects bubble only)
+.on("mouseover", function (event, d) {
+  const circle = d3.select(this);
+
+  // Visual highlight only
+  circle.transition()
+    .duration(150)
+    .attr("r", size(d.price) * 1.15)
+    .attr("fill", "#3B82F6");
+
+  // Tooltip
+  d3.select("#tooltip")
+    .style("opacity", 1)
+    .html(`
+      <strong>${d.name}</strong><br>
+      Brand: ${d.brand}<br>
+      Category: ${d.Label}<br>
+      💲${d.price}<br>
+      ⭐ Rating: ${d.rank.toFixed(2)}<br>
+      Skin Types: ${skinTypes.filter(s => d[s] === 1).join(", ")}
+    `)
+    .style("left", event.pageX + 10 + "px")
+    .style("top", event.pageY - 28 + "px");
+})
+.on("mouseout", function (event, d) {
+  const circle = d3.select(this);
+
+  // revert fill and size
+  circle.transition()
+    .duration(200)
+    .attr("r", size(d.price))
+    .attr("fill", color(d.rank));
+
+  d3.select("#tooltip").style("opacity", 0);
+})
+
+
+  // Merge ENTER + UPDATE selections
+  .merge(node)
+  .transition()
+  .duration(800)
+  .attr("r", d => size(d.price))
+  .attr("fill", d => color(d.rank));
+
+node.exit().remove();
+
 
     // === LIGHT GREY VERTICAL GRIDLINES ===
 
@@ -363,7 +400,7 @@ svg.selectAll(".x-grid")
 // }
 
     // ===== FULL BRAND LABELS CENTERED INSIDE THE BUBBLE =====
-const labelG = svg.selectAll("g.brand-label")
+const labelG = labelLayer.selectAll("g.brand-label")
   .data(filtered, d => d.name);
 
 labelG.exit().remove();
