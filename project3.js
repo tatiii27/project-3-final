@@ -301,14 +301,28 @@ node.enter()
   .attr("opacity", 0.9)
   .attr("cursor", "pointer")
   // Hover interaction (affects bubble only)
+
 .on("mouseover", function (event, d) {
   const circle = d3.select(this);
+  circle.interrupt();
 
-  // Visual highlight only
-  circle.transition()
-    .duration(150)
-    .attr("r", size(d.price) * 1.15)
-    .attr("fill", "#3B82F6");
+  // Slight grow
+  circle.transition().duration(150)
+    .attr("r", size(d.price) * 1.15);
+
+  // Add a blue ring overlay in the bubble layer so labels stay above
+  // (use a sibling element so we don't touch the bubble's fill)
+  const [cx, cy] = [+circle.attr("cx") || d.fx || 0, +circle.attr("cy") || d.y || 0];
+
+  bubbleLayer.append("circle")
+    .attr("class", "hover-ring")
+    .attr("cx", cx)
+    .attr("cy", cy)
+    .attr("r", size(d.price) * 1.25)
+    .attr("fill", "none")
+    .attr("stroke", "#3B82F6")
+    .attr("stroke-width", 3)
+    .attr("pointer-events", "none"); // don't block the mouse
 
   // Tooltip
   d3.select("#tooltip")
@@ -324,25 +338,20 @@ node.enter()
     .style("left", event.pageX + 10 + "px")
     .style("top", event.pageY - 28 + "px");
 })
+
 .on("mouseout", function (event, d) {
   const circle = d3.select(this);
+  circle.interrupt();
 
-  // revert fill and size
-  circle.transition()
-    .duration(200)
-    .attr("r", size(d.price))
-    .attr("fill", color(d.rank));
+  circle.transition().duration(150)
+    .attr("r", size(d.price));
+
+  // Remove the overlay ring
+  bubbleLayer.selectAll(".hover-ring").remove();
 
   d3.select("#tooltip").style("opacity", 0);
-})
+});
 
-
-  // Merge ENTER + UPDATE selections
-  .merge(node)
-  .transition()
-  .duration(800)
-  .attr("r", d => size(d.price))
-  .attr("fill", d => color(d.rank));
 
 node.exit().remove();
 
