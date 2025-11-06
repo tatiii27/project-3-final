@@ -18,7 +18,7 @@ d3.csv("data/cosmetic_p.csv").then(data => {
     d.Sensitive = +d.Sensitive || 0;
   });
 
-  const width = 1500, height = 730;
+  const width = 1100, height = 720;
 
   const svg = d3.select("#brand-bubble-chart")
     .attr("width", width)

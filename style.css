@@ -1,3 +1,15 @@
 .label-halo { stroke: #fff; stroke-width: 3px; paint-order: stroke; }
 .label-text { fill: #222; }
 
+.chart-container {
+  width: 100%;
+  height: 83vh; /* adjust how tall you want the figure box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#brand-bubble-chart {
+  width: 100%;
+  height: 100%;
+}
