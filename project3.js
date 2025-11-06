@@ -18,11 +18,15 @@ d3.csv("data/cosmetic_p.csv").then(data => {
     d.Sensitive = +d.Sensitive || 0;
   });
 
-  const width = 950, height = 650;
+  const width = 1100, height = 750;
 
   const svg = d3.select("#brand-bubble-chart")
     .attr("width", width)
     .attr("height", height);
+
+    let brushRange = null;                         // null = no brush
+    const axisG  = svg.append("g").attr("class", "x-axis");
+    const brushG = svg.append("g").attr("class", "x-brush");
 
   // ------------------------------------------------------------
   // TOOLTIP
@@ -115,59 +119,76 @@ const controls = d3.select("#controls").html(`
     .attr("text-anchor", "middle")
     .text("Rating (relative)");
 
+  // place legend in the center bottom area, make sure its below the axis, push the price axis up a bit 
+  legendGroup.attr("transform", `translate(${(width - legendWidth) / 2}, ${height - 20})`);
+
   // ------------------------------------------------------------
   // UPDATE FUNCTION
   // ------------------------------------------------------------
   function updateChart() {
     const selectedCategory = d3.select("#categorySelect").property("value");
-    const selectedSkins = Array.from(d3.select("#skinSelect").node().selectedOptions).map(o => o.value);
+    const selectedSkin = d3.select("#skinSelect").property("value");
     const maxP = +d3.select("#priceSlider").property("value");
     d3.select("#priceLabel").text(maxP);
 
-    // Filter data
-    const selectedSkin = d3.select("#skinSelect").property("value");
+    let filtered = data.filter(d =>
+      (selectedCategory === "All" || d.Label === selectedCategory) &&
+      (selectedSkin === "All" || d[selectedSkin] === 1) &&
+      (
+        brushRange
+          ? (d.price >= brushRange[0] && d.price <= brushRange[1])  // brush range active
+          : (d.price <= maxP)                                       // otherwise slider max
+      )
+    );
 
-let filtered = data.filter(d =>
-  (selectedCategory === "All" || d.Label === selectedCategory) &&
-  d.price <= maxP &&
-  (selectedSkin === "All" || d[selectedSkin] === 1)
-);
 
 
-    // Top 15 by rating
-    filtered = filtered.sort((a, b) => d3.descending(a.rank, b.rank)).slice(0, 15);
+    // Top 25 by rating
+    filtered = filtered.sort((a, b) => d3.descending(a.rank, b.rank)).slice(0, 20);
 
-    // Color scale (dynamic)
-    const minRank = d3.min(filtered, d => d.rank);
-    const maxRank = d3.max(filtered, d => d.rank);
-    const color = d3.scaleSequential(d3.interpolateRdYlGn)
-      .domain([minRank || 0, maxRank || 1]);
+    // ---- COLOR SCALE (dynamic with safe guard) ----
+let rMin = d3.min(filtered, d => d.rank);
+let rMax = d3.max(filtered, d => d.rank);
 
-    // Update gradient stops
-    const stops = gradient.selectAll("stop")
-      .data(d3.ticks(0, 1, 10));
-    stops.enter()
-      .append("stop")
-      .merge(stops)
-      .attr("offset", d => `${d * 100}%`)
-      .attr("stop-color", d => d3.interpolateRdYlGn(d));
-    stops.exit().remove();
+// If min==max (or undefined), widen a bit so we see variation and a valid gradient
+if (!(rMin >= 0) || !(rMax >= 0)) {
+  rMin = 3.0; rMax = 5.0;         // fallback
+} else if (rMin === rMax) {
+  rMin = Math.max(0, rMin - 0.2);
+  rMax = Math.min(5, rMax + 0.2);
+}
 
-    // Update legend numeric labels
-    svg.selectAll(".legend-min, .legend-max").remove();
-    legendGroup.append("text")
-      .attr("class", "legend-min")
-      .attr("x", 0)
-      .attr("y", -2)
-      .attr("font-size", "10px")
-      .text(minRank ? minRank.toFixed(1) : "–");
-    legendGroup.append("text")
-      .attr("class", "legend-max")
-      .attr("x", legendWidth)
-      .attr("y", -2)
-      .attr("font-size", "10px")
-      .attr("text-anchor", "end")
-      .text(maxRank ? maxRank.toFixed(1) : "–");
+const color = d3.scaleSequential(d3.interpolateRdYlGn).domain([rMin, rMax]);
+
+// ---- UPDATE GRADIENT STOPS (keep as is if you already have it) ----
+const stops = gradient.selectAll("stop").data(d3.ticks(0, 1, 10));
+stops.enter().append("stop")
+  .merge(stops)
+  .attr("offset", d => `${d * 100}%`)
+  .attr("stop-color", d => d3.interpolateRdYlGn(d));
+stops.exit().remove();
+
+// ---- UPDATE LEGEND LABELS ----
+svg.selectAll(".legend-min, .legend-max").remove();
+legendGroup.append("text")
+  .attr("class", "legend-min")
+  .attr("x", 0)
+  .attr("y", -2)
+  .attr("font-size", "10px")
+  .text(rMin.toFixed(1));
+legendGroup.append("text")
+  .attr("class", "legend-max")
+  .attr("x", legendWidth)
+  .attr("y", -2)
+  .attr("font-size", "10px")
+  .attr("text-anchor", "end")
+  .text(rMax.toFixed(1));
+
+// ---- APPLY COLOR TO BUBBLES ----
+svg.selectAll("circle")
+  .transition().duration(300)
+  .attr("fill", d => color(d.rank));
+
 
     // Force simulation// --- Dynamic horizontal padding to prevent clipping on both sides ---
 const maxRadius = d3.max(filtered, d => size(d.price)) || 60;
@@ -185,12 +206,70 @@ const xScale = d3.scaleLinear()
   .domain([domainMin, domainMax])
   .range([leftPad, width - rightPad]);
 
+  // ---------- FULL-WIDTH PRICE AXIS + ARROW ----------
+const axisY = height - 80; // where the axis sits
+axisG.attr("transform", `translate(0, ${axisY})`);
+
+
+
+// Direction label
+svg.selectAll(".price-arrow-label").data([1]).join("text")
+  .attr("class", "price-arrow-label")
+  .attr("x", (xScale.range()[0] + xScale.range()[1]) / 2)
+  .attr("y", axisY - 10)
+  .attr("text-anchor", "middle")
+  .attr("font-size", "12px")
+  .attr("fill", "#333")
+  .text("Price");
+
+// Full-width arrow on the axis
+svg.selectAll(".price-axis-line").data([1]).join("line")
+  .attr("class", "price-axis-line")
+  .attr("x1", xScale.range()[0])
+  .attr("y1", axisY)
+  .attr("x2", xScale.range()[1])
+  .attr("y2", axisY)
+  .attr("stroke", "#555")
+  .attr("stroke-width", 2)
+  .attr("marker-end", "url(#arrowhead)");
+
+// if we dont want to lock x positions to price, comment out this block
+// ---- LOCK X POSITIONS TO PRICE VALUES ----
+
+filtered.forEach(d => {
+  d.fx = xScale(d.price);           // exact x at price
+  if (!isFinite(d.y)) d.y = height / 2;
+});
+
+function ticked() {
+  const [x0, x1] = xScale.range();
+  const clampX = x => Math.max(x0, Math.min(x1, x));
+
+  svg.selectAll("circle")
+    .attr("cx", d => clampX(d.fx))
+    .attr("cy", d => d.y); // keep your Y clamp if you use one
+
+  svg.selectAll("g.brand-label")
+    .attr("transform", d => `translate(${clampX(d.fx)},${d.y})`);
+}
+
+// axis generator
+const xAxis = d3.axisBottom(xScale)
+  .ticks(6)
+  .tickFormat(d3.format("$~s"));
+
+// render axis
+axisG.call(xAxis);
+
+// up to here for axis
+
+
 // --- Force simulation (balanced + constrained layout) ---
 const simulation = d3.forceSimulation(filtered)
   .alphaDecay(0.05)
   .force("charge", d3.forceManyBody().strength(1.8)) // gentle push so bubbles don't drift out
   .force("center", d3.forceCenter(width / 2, height / 2))
-  .force("collision", d3.forceCollide().radius(d => size(d.price) + 4))
+  .force("collision", d3.forceCollide().radius(d => size(d.price) + 10))
   .force("x", d3.forceX(d => xScale(d.price)).strength(0.4))
   .force("y", d3.forceY(height / 2).strength(0.12))
   .on("tick", ticked);
@@ -231,59 +310,135 @@ const simulation = d3.forceSimulation(filtered)
 
     node.exit().remove();
 
-    // Labels
-    const label = svg.selectAll("text.bubble-label")
-      .data(filtered, d => d.name);
+    // === LIGHT GREY VERTICAL GRIDLINES ===
 
-    label.enter()
-      .append("text")
-      .attr("class", "bubble-label")
-      .text(d => d.brand.length > 10 ? d.brand.slice(0, 10) + "…" : d.brand)
-      .attr("font-size", "10px")
-      .attr("text-anchor", "middle")
-      .attr("pointer-events", "none")
-      .merge(label)
-      .transition()
-      .duration(800)
-      .attr("font-size", "10px");
+// Remove old ones first
+svg.selectAll(".x-grid").remove();
 
-    label.exit().remove();
+// Create new gridlines using tick positions from xScale
+const xTicks = xScale.ticks(8); // match your axis tick count
+svg.selectAll(".x-grid")
+  .data(xTicks)
+  .enter()
+  .append("line")
+  .attr("class", "x-grid")
+  .attr("x1", d => xScale(d))
+  .attr("x2", d => xScale(d))
+  .attr("y1", 0)
+  .attr("y2", height)
+  .attr("stroke", "#ddd")       // light grey
+  .attr("stroke-width", 1)
+  .attr("opacity", 0.6)
+  .lower(); // put behind bubbles
 
-    function ticked() {
+
+//     // Labels
+//     const label = svg.selectAll("text.bubble-label")
+//       .data(filtered, d => d.name);
+
+//     label.enter()
+//       .append("text")
+//       .attr("class", "bubble-label")
+//       .text(d => d.brand.length > 10 ? d.brand.slice(0, 10) + "…" : d.brand)
+//       .attr("font-size", "10px")
+//       .attr("text-anchor", "middle")
+//       .attr("pointer-events", "none")
+//       .merge(label)
+//       .transition()
+//       .duration(800)
+//       .attr("font-size", "10px");
+
+//     label.exit().remove();
+
+//     function ticked() {
+//   const maxRadius = d3.max(filtered, d => size(d.price)) || 60;
+
+//   svg.selectAll("circle")
+//     .attr("cx", d => Math.max(maxRadius, Math.min(width - maxRadius, d.x)))
+//     .attr("cy", d => d.y);
+
+//   svg.selectAll(".bubble-label")
+//     .attr("x", d => Math.max(maxRadius, Math.min(width - maxRadius, d.x)))
+//     .attr("y", d => d.y + 3);
+// }
+
+    // ===== FULL BRAND LABELS CENTERED INSIDE THE BUBBLE =====
+const labelG = svg.selectAll("g.brand-label")
+  .data(filtered, d => d.name);
+
+labelG.exit().remove();
+
+const labelGEnter = labelG.enter()
+  .append("g")
+  .attr("class", "brand-label")
+  .attr("pointer-events", "none"); // labels won't block hover
+
+// two layered texts for halo + fill, both centered
+labelGEnter.append("text")
+  .attr("class", "label-halo")
+  .attr("text-anchor", "middle")
+  .attr("dominant-baseline", "middle"); // vertical centering
+
+labelGEnter.append("text")
+  .attr("class", "label-text")
+  .attr("text-anchor", "middle")
+  .attr("dominant-baseline", "middle");
+
+const labelGMerged = labelGEnter.merge(labelG);
+
+// set text and auto-fit font size so it stays inside the circle
+labelGMerged.each(function(d) {
+  const g = d3.select(this);
+  const halo = g.select(".label-halo").text(d.brand);
+  const fill = g.select(".label-text").text(d.brand);
+
+  // available width inside circle (diameter minus a small padding)
+  const maxW = Math.max(0, 2 * size(d.price) - 6);
+
+  // start from a readable size and shrink until it fits or reach min
+  let fs = 12; // starting font size
+  const minFS = 7;
+  halo.attr("font-size", fs);
+  fill.attr("font-size", fs);
+
+  // measure & shrink loop
+  // (need the element in the DOM before measuring)
+  while (fill.node().getComputedTextLength() > maxW && fs > minFS) {
+    fs -= 1;
+    halo.attr("font-size", fs);
+    fill.attr("font-size", fs);
+  }
+});
+
+// ---- ticked(): keep circles and labels centered together ----
+function ticked() {
   const maxRadius = d3.max(filtered, d => size(d.price)) || 60;
 
+  // circles
   svg.selectAll("circle")
     .attr("cx", d => Math.max(maxRadius, Math.min(width - maxRadius, d.x)))
     .attr("cy", d => d.y);
 
-  svg.selectAll(".bubble-label")
-    .attr("x", d => Math.max(maxRadius, Math.min(width - maxRadius, d.x)))
-    .attr("y", d => d.y + 3);
+  // label groups positioned at the bubble center
+  svg.selectAll("g.brand-label")
+    .attr("transform", d => {
+      const cx = Math.max(maxRadius, Math.min(width - maxRadius, d.x));
+      const cy = d.y;
+      return `translate(${cx},${cy})`;
+    });
 }
 
+  labelGMerged.each(function(d) {
+  const g = d3.select(this);
+  const halo = g.select(".label-halo").text(d.brand);
+  const fill = g.select(".label-text").text(d.brand);
 
-    // Price direction arrow axis
-    svg.selectAll(".price-axis, .price-arrow-label").remove();
-    const arrowY = height - 100;
-
-    svg.append("line")
-      .attr("class", "price-axis")
-      .attr("x1", 120)
-      .attr("y1", arrowY)
-      .attr("x2", width - 120)
-      .attr("y2", arrowY)
-      .attr("stroke", "#555")
-      .attr("stroke-width", 2)
-      .attr("marker-end", "url(#arrowhead)");
-
-    svg.append("text")
-      .attr("class", "price-arrow-label")
-      .attr("x", width / 2)
-      .attr("y", arrowY - 10)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "12px")
-      .attr("fill", "#333")
-      .text("Price → (increases left → right)");
+  const diameter = 2 * size(d.price);
+  const base = 10 + 0.04 * diameter;        // scale up with bubble size
+  const fs = Math.min(base, 16);            // cap at 16px
+  halo.attr("font-size", fs);
+  fill.attr("font-size", fs);
+});
   }
 
   // ------------------------------------------------------------
