@@ -24,6 +24,10 @@ d3.csv("data/cosmetic_p.csv").then(data => {
     .attr("width", width)
     .attr("height", height);
 
+    let brushRange = null;                         // null = no brush
+    const axisG  = svg.append("g").attr("class", "x-axis");
+    const brushG = svg.append("g").attr("class", "x-brush");
+
   // ------------------------------------------------------------
   // TOOLTIP
   // ------------------------------------------------------------
@@ -120,18 +124,20 @@ const controls = d3.select("#controls").html(`
   // ------------------------------------------------------------
   function updateChart() {
     const selectedCategory = d3.select("#categorySelect").property("value");
-    const selectedSkins = Array.from(d3.select("#skinSelect").node().selectedOptions).map(o => o.value);
+    const selectedSkin = d3.select("#skinSelect").property("value");
     const maxP = +d3.select("#priceSlider").property("value");
     d3.select("#priceLabel").text(maxP);
 
-    // Filter data
-    const selectedSkin = d3.select("#skinSelect").property("value");
+    let filtered = data.filter(d =>
+      (selectedCategory === "All" || d.Label === selectedCategory) &&
+      (selectedSkin === "All" || d[selectedSkin] === 1) &&
+      (
+        brushRange
+          ? (d.price >= brushRange[0] && d.price <= brushRange[1])  // brush range active
+          : (d.price <= maxP)                                       // otherwise slider max
+      )
+    );
 
-let filtered = data.filter(d =>
-  (selectedCategory === "All" || d.Label === selectedCategory) &&
-  d.price <= maxP &&
-  (selectedSkin === "All" || d[selectedSkin] === 1)
-);
 
 
     // Top 15 by rating
@@ -196,6 +202,57 @@ const rightPad = maxRadius + 40; // add a little extra on right for labels + arr
 const xScale = d3.scaleLinear()
   .domain([domainMin, domainMax])
   .range([leftPad, width - rightPad]);
+
+  // ---------- FULL-WIDTH PRICE AXIS + ARROW ----------
+const axisY = height - 28; // where the axis sits
+axisG.attr("transform", `translate(0, ${axisY})`);
+
+const xAxis = d3.axisBottom(xScale)
+  .ticks(8)
+  .tickFormat(d => `$${Math.round(d)}`);
+axisG.call(xAxis);
+
+// Direction label
+svg.selectAll(".price-arrow-label").data([1]).join("text")
+  .attr("class", "price-arrow-label")
+  .attr("x", (xScale.range()[0] + xScale.range()[1]) / 2)
+  .attr("y", axisY - 10)
+  .attr("text-anchor", "middle")
+  .attr("font-size", "12px")
+  .attr("fill", "#333")
+  .text("Price →");
+
+// Full-width arrow on the axis
+svg.selectAll(".price-axis-line").data([1]).join("line")
+  .attr("class", "price-axis-line")
+  .attr("x1", xScale.range()[0])
+  .attr("y1", axisY)
+  .attr("x2", xScale.range()[1])
+  .attr("y2", axisY)
+  .attr("stroke", "#555")
+  .attr("stroke-width", 2)
+  .attr("marker-end", "url(#arrowhead)");
+
+// ---------- INTERACTIVE PRICE BRUSH ----------
+const brush = d3.brushX()
+  .extent([[xScale.range()[0], axisY - 18], [xScale.range()[1], axisY + 18]])
+  .on("end", (event) => {
+    if (!event.selection) {
+      brushRange = null; // cleared
+    } else {
+      const [x0, x1] = event.selection;
+      const p0 = Math.max(0, xScale.invert(x0));
+      const p1 = Math.max(0, xScale.invert(x1));
+      brushRange = [Math.min(p0, p1), Math.max(p0, p1)];
+      d3.select("#priceSlider").property("value", Math.round(brushRange[1]));
+      d3.select("#priceLabel").text(`${Math.round(brushRange[1])}`);
+    }
+    updateChart(); // re-render with new constraint
+  });
+
+brushG.call(brush);
+if (brushRange) brushG.call(brush.move, [xScale(brushRange[0]), xScale(brushRange[1])]);
+
 
 // --- Force simulation (balanced + constrained layout) ---
 const simulation = d3.forceSimulation(filtered)
@@ -350,30 +407,6 @@ function ticked() {
   halo.attr("font-size", fs);
   fill.attr("font-size", fs);
 });
-
-
-    // Price direction arrow axis
-    svg.selectAll(".price-axis, .price-arrow-label").remove();
-    const arrowY = height - 100;
-
-    svg.append("line")
-      .attr("class", "price-axis")
-      .attr("x1", 120)
-      .attr("y1", arrowY)
-      .attr("x2", width - 120)
-      .attr("y2", arrowY)
-      .attr("stroke", "#555")
-      .attr("stroke-width", 2)
-      .attr("marker-end", "url(#arrowhead)");
-
-    svg.append("text")
-      .attr("class", "price-arrow-label")
-      .attr("x", width / 2)
-      .attr("y", arrowY - 10)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "12px")
-      .attr("fill", "#333")
-      .text("Price → (increases left → right)");
   }
 
   // ------------------------------------------------------------
