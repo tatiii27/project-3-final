@@ -310,6 +310,28 @@ const simulation = d3.forceSimulation(filtered)
 
     node.exit().remove();
 
+    // === LIGHT GREY VERTICAL GRIDLINES ===
+
+// Remove old ones first
+svg.selectAll(".x-grid").remove();
+
+// Create new gridlines using tick positions from xScale
+const xTicks = xScale.ticks(8); // match your axis tick count
+svg.selectAll(".x-grid")
+  .data(xTicks)
+  .enter()
+  .append("line")
+  .attr("class", "x-grid")
+  .attr("x1", d => xScale(d))
+  .attr("x2", d => xScale(d))
+  .attr("y1", 0)
+  .attr("y2", height)
+  .attr("stroke", "#ddd")       // light grey
+  .attr("stroke-width", 1)
+  .attr("opacity", 0.6)
+  .lower(); // put behind bubbles
+
+
 //     // Labels
 //     const label = svg.selectAll("text.bubble-label")
 //       .data(filtered, d => d.name);
