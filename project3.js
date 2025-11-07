@@ -5,7 +5,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
    ========================== */
 const BUDGET_BANDS = [25, 40, 60, 80, 120, 200, 0]; // 0 = "∞"
 const money = v => `$${(+v).toFixed(0)}`;
-const highlight_color = "#1E40AF";                 // ring color
+const highlight_color = "#FF2D9B";                 // ring color
 let highlightedBrands = new Set();
 
 function bandFor(price){
