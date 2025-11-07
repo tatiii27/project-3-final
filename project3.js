@@ -224,22 +224,31 @@ Promise.all([
     labelG.raise();
     axisG.raise();
 
-    /* === Axis (no tick lines) + centered label + right arrow === */
-    const axis=d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s")).tickSize(0);
-    axisG.attr("transform",`translate(0,${axisY})`).call(axis);
-    axisG.select(".domain").attr("stroke","#333");
+   /* === Axis (no tick lines) + centered label + arrow on domain === */
+   const axis = d3.axisBottom(xScale)
+      .ticks(6)
+      .tickFormat(d3.format("$~s"))
+      .tickSize(0);
 
-    axisG.selectAll(".price-label,.price-arrow").remove();
-    axisG.append("text")
-      .attr("class","price-label")
-      .attr("x",(xScale.range()[0]+xScale.range()[1])/2)
-      .attr("y",30).attr("text-anchor","middle").attr("fill","#333").text("Price");
-    axisG.append("line")
-      .attr("class","price-arrow")
-      .attr("x1", xScale.range()[1]-12).attr("y1", 0)
-      .attr("x2", xScale.range()[1]).attr("y2", 0)
-      .attr("stroke","#333").attr("stroke-width",1.5)
-      .attr("marker-end","url(#axis-arrow)");
+   axisG.attr("transform", `translate(0,${axisY})`).call(axis);
+
+// style domain and add arrowhead directly on it
+   axisG.select(".domain")
+      .attr("stroke", "#333")
+      .attr("stroke-width", 1.5)
+      .attr("marker-end", "url(#axis-arrow)");
+
+// (re)add the centered "Price" label
+   axisG.selectAll(".price-label")
+      .data([0])
+      .join("text")
+      .attr("class", "price-label")
+      .attr("x", (xScale.range()[0] + xScale.range()[1]) / 2)
+      .attr("y", 22)                // slightly tighter so it doesn’t collide with legend
+      .attr("text-anchor", "middle")
+      .attr("fill", "#333")
+      .text("Price");
+
 
     // simulation
     filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=height/2; });
