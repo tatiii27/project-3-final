@@ -5,7 +5,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
    ========================== */
 const BUDGET_BANDS = [25, 40, 60, 80, 120, 200, 0]; // 0 = "∞"
 const money = v => `$${(+v).toFixed(0)}`;
-const highlight_color = "#ec4889";
+const highlight_color = "#1E40AF";
 let highlightedBrands = new Set();
 function bandFor(price){ const p=+price||0; for (const t of BUDGET_BANDS) if (t && p<=t) return t; return 0; }
 
@@ -294,7 +294,6 @@ Promise.all([
         svg.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${d.y})`);
       });
 
-    // bubbles — ring hover (no blue fill)
    // bubbles — ring hover (no blue fill)
    const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
 
@@ -303,6 +302,7 @@ Promise.all([
      .attr("fill", d => color(d.rank))
      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
      .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
+     .classed("highlighted", d => highlightedBrands.has(d.brand))
      .attr("opacity", 0.95)
      .attr("cursor", "pointer")
      .on("mouseover", function(event, d){
@@ -335,6 +335,8 @@ Promise.all([
      .attr("fill", d => color(d.rank))
      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
      .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1);
+     .selection()
+     .classed("highlighted", d=> highlightedBrands.has(d.brand));
 
     node.exit().remove();
 
