@@ -146,9 +146,11 @@ Promise.all([
   // legend
   const legendWidth=200, legendHeight=10;
   const legendGroup=svg.append("g").attr("class","legend-group")
-    .attr("transform",`translate(${(width-legendWidth)/2},${height-20})`);
+    .attr("transform",`translate(${(width-legendWidth - 20)},${height-30})`);
   legendGroup.append("rect").attr("width",legendWidth).attr("height",legendHeight).style("fill","url(#legend-gradient)");
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
+
+   
 
   /* ==========================
      Annotations
