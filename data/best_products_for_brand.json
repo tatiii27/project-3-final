@@ -1,0 +1,6764 @@
+{
+  "Cleanser__Combination__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Exfoliating Scrub",
+        "price": 22,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Clarifying Lotion 1",
+        "price": 16,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Pep-Start 2-in-1 Exfoliating Cleanser",
+        "price": 19,
+        "rating": 4.5,
+        "active_count": 2
+      }
+    ],
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Facial Radiance Polish",
+        "price": 25,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Face Cleanser",
+        "price": 20,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Skin Rescue Deep Cleanser With Red Clay",
+        "price": 24,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "BUBBLESHEET\u2122 Oxygenating Deep Cleanse Mask",
+        "price": 9,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Clarifying Toner",
+        "price": 24,
+        "rating": 0.0,
+        "active_count": 1
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Stay Balanced\u2122 Oil Control Cleansing Cloths",
+        "price": 8,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Find Your Balance\u2122 Oil Control Cleanser",
+        "price": 25,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "So Nurturing\u2122 Cleansing Cloths",
+        "price": 15,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ]
+  },
+  "Cleanser__Combination__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed 7-day System with Pure Vitamin C",
+        "price": 27,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "Fresh Pressed Renewing Powder Cleanser with Pure Vitamin C",
+        "price": 29,
+        "rating": 4.9,
+        "active_count": 3
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "SUPERCLEANSE\u2122 Clearing Cream-to-Foam Cleanser",
+        "price": 32,
+        "rating": 3.9,
+        "active_count": 2
+      },
+      {
+        "name": "YOUTHCLEANSE\u2122 Daily Exfoliating Cleanser",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "AHA/BHA Exfoliating Cleanser",
+        "price": 39,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Time Release Acne Cleanser",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Essential-C Cleanser",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 2
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Pore-Balance\u2122 Facial Sauna Scrub",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Balancing Force\u2122 Oil Control Toner",
+        "price": 26,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Wonderfeel\u2122 Double Cleanser",
+        "price": 32,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ]
+  },
+  "Cleanser__Combination__max60": {
+    "FIRST AID BEAUTY": [
+      {
+        "name": "FAB Skin Lab Resurfacing Liquid 10% AHA",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 5
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "FLASHMUD\u2122 Brightening Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "POWERMUD\u2122 Dualcleanse Treatment",
+        "price": 59,
+        "rating": 3.9,
+        "active_count": 2
+      },
+      {
+        "name": "YOUTHMUD\u2122 Tinglexfoliate Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 1
+      }
+    ]
+  },
+  "Cleanser__Combination__max80": {
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Quenching Essence",
+        "price": 78,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Cleanser__Dry__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Exfoliating Scrub",
+        "price": 22,
+        "rating": 4.7,
+        "active_count": 3
+      },
+      {
+        "name": "Liquid Facial Soap",
+        "price": 18,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Rinse-Off Foaming Cleanser",
+        "price": 21,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ],
+    "KIEHL'S SINCE 1851": [
+      {
+        "name": "Ultra Facial Toner",
+        "price": 16,
+        "rating": 4.5,
+        "active_count": 5
+      },
+      {
+        "name": "Ultra Facial Cleanser",
+        "price": 20,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Rare Earth Deep Pore Daily Cleanser",
+        "price": 23,
+        "rating": 4.6,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Clarifying Toner",
+        "price": 24,
+        "rating": 0.0,
+        "active_count": 2
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "So Nurturing\u2122 Cleansing Cloths",
+        "price": 15,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "Stay Balanced\u2122 Oil Control Cleansing Cloths",
+        "price": 8,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Truth\u2122 On the Glow Cleansing Cloths",
+        "price": 15,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Refreshing Scrub Cleanser",
+        "price": 20,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "A Perfect World\u2122 Age-Defense Treatment Lotion with White Tea",
+        "price": 25,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "United State\u2122 Balancing Tonic",
+        "price": 23,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Cleanser__Dry__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed 7-day System with Pure Vitamin C",
+        "price": 27,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "City Block Purifying Charcoal Clay Mask + Scrub",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 1
+      },
+      {
+        "name": "Take The Day Off Cleansing Balm",
+        "price": 29,
+        "rating": 4.6,
+        "active_count": 1
+      }
+    ],
+    "KIEHL'S SINCE 1851": [
+      {
+        "name": "Calendula Deep Clean Foaming Face Wash",
+        "price": 29,
+        "rating": 4.7,
+        "active_count": 1
+      },
+      {
+        "name": "Midnight Recovery Botanical Cleansing Oil",
+        "price": 32,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "Herbal-Infused Micellar Cleansing Water",
+        "price": 28,
+        "rating": 3.7,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Renewing Cleansing Cream",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Pore Reform\u2122 Skin Smoothing Polish",
+        "price": 34,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Essential-C Cleanser",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 3
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Transforming Walnut Scrub",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 3
+      },
+      {
+        "name": "Pore-Balance\u2122 Facial Sauna Scrub",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "The Clean Truth\u2122 Foaming Cleanser",
+        "price": 30,
+        "rating": 4.4,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Anti-Aging Cleanser",
+        "price": 33,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Mega-Mushroom Skin Relief Micellar Cleanser",
+        "price": 33,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Modern Friction\u2122 Cleansing Oil with Radiance-Boosting White & Purple Rice",
+        "price": 29,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ]
+  },
+  "Cleanser__Dry__max60": {
+    "KIEHL'S SINCE 1851": [
+      {
+        "name": "Epidermal Re-Texturizing Micro-Dermabrasion",
+        "price": 41,
+        "rating": 5.0,
+        "active_count": 2
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Moment of Truth\u2122 2-in-1 Polishing Sugar Mask",
+        "price": 42,
+        "rating": 4.5,
+        "active_count": 3
+      }
+    ]
+  },
+  "Cleanser__Dry__max80": {
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Quenching Essence",
+        "price": 78,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Cleanser__Normal__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Exfoliating Scrub",
+        "price": 22,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "Pep-Start 2-in-1 Exfoliating Cleanser",
+        "price": 19,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Liquid Facial Soap",
+        "price": 18,
+        "rating": 4.4,
+        "active_count": 3
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "BUBBLESHEET\u2122 Oxygenating Deep Cleanse Mask",
+        "price": 9,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Clarifying Toner",
+        "price": 24,
+        "rating": 0.0,
+        "active_count": 4
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Truth\u2122 On the Glow Cleansing Cloths",
+        "price": 15,
+        "rating": 4.2,
+        "active_count": 7
+      },
+      {
+        "name": "Stay Balanced\u2122 Oil Control Cleansing Cloths",
+        "price": 8,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Find Your Balance\u2122 Oil Control Cleanser",
+        "price": 25,
+        "rating": 4.5,
+        "active_count": 6
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "A Perfect World\u2122 Age-Defense Treatment Lotion with White Tea",
+        "price": 25,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "GinZing\u2122 Refreshing Scrub Cleanser",
+        "price": 20,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "United State\u2122 Balancing Tonic",
+        "price": 23,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ]
+  },
+  "Cleanser__Normal__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed 7-day System with Pure Vitamin C",
+        "price": 27,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Take The Day Off Cleansing Balm",
+        "price": 29,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Fresh Pressed Renewing Powder Cleanser with Pure Vitamin C",
+        "price": 29,
+        "rating": 4.9,
+        "active_count": 1
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "YOUTHCLEANSE\u2122 Daily Exfoliating Cleanser",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 4
+      },
+      {
+        "name": "SUPERCLEANSE\u2122 Clearing Cream-to-Foam Cleanser",
+        "price": 32,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Time Release Acne Cleanser",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "Essential-C Cleanser",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 5
+      },
+      {
+        "name": "Renewing Cleansing Cream",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 5
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Pore-Balance\u2122 Facial Sauna Scrub",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Balancing Force\u2122 Oil Control Toner",
+        "price": 26,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "The Clean Truth\u2122 Foaming Cleanser",
+        "price": 30,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Anti-Aging Cleanser",
+        "price": 33,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Mega-Mushroom Skin Relief Micellar Cleanser",
+        "price": 33,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Modern Friction\u2122 Cleansing Oil with Radiance-Boosting White & Purple Rice",
+        "price": 29,
+        "rating": 4.5,
+        "active_count": 2
+      }
+    ]
+  },
+  "Cleanser__Normal__max60": {
+    "GLAMGLOW": [
+      {
+        "name": "FLASHMUD\u2122 Brightening Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "POWERMUD\u2122 Dualcleanse Treatment",
+        "price": 59,
+        "rating": 3.9,
+        "active_count": 6
+      },
+      {
+        "name": "YOUTHMUD\u2122 Tinglexfoliate Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Moment of Truth\u2122 2-in-1 Polishing Sugar Mask",
+        "price": 42,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ]
+  },
+  "Cleanser__Normal__max80": {
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Quenching Essence",
+        "price": 78,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ]
+  },
+  "Cleanser__Oily__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Clarifying Lotion 1",
+        "price": 16,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Pep-Start 2-in-1 Exfoliating Cleanser",
+        "price": 19,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Clarifying Lotion 3",
+        "price": 16,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "BUBBLESHEET\u2122 Oxygenating Deep Cleanse Mask",
+        "price": 9,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "ExfoliKate\u00ae Intensive Exfoliating Treatment",
+        "price": 24,
+        "rating": 4.4,
+        "active_count": 3
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Stay Balanced\u2122 Oil Control Cleansing Cloths",
+        "price": 8,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Find Your Balance\u2122 Oil Control Cleanser",
+        "price": 25,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Truth\u2122 On the Glow Cleansing Cloths",
+        "price": 15,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ]
+  },
+  "Cleanser__Oily__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed 7-day System with Pure Vitamin C",
+        "price": 27,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "Fresh Pressed Renewing Powder Cleanser with Pure Vitamin C",
+        "price": 29,
+        "rating": 4.9,
+        "active_count": 3
+      },
+      {
+        "name": "City Block Purifying Charcoal Clay Mask + Scrub",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 2
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "SUPERCLEANSE\u2122 Clearing Cream-to-Foam Cleanser",
+        "price": 32,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "YOUTHCLEANSE\u2122 Daily Exfoliating Cleanser",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Detox Daily Cleanser",
+        "price": 36,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "ExfoliKate\u00ae Cleanser Daily Foaming Wash",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Clarifying Treatment Toner",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Time Release Acne Cleanser",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "AHA/BHA Exfoliating Cleanser",
+        "price": 39,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Pore Reform\u2122 Skin Smoothing Polish",
+        "price": 34,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Pore-Balance\u2122 Facial Sauna Scrub",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "Balancing Force\u2122 Oil Control Toner",
+        "price": 26,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Wonderfeel\u2122 Double Cleanser",
+        "price": 32,
+        "rating": 4.4,
+        "active_count": 1
+      }
+    ]
+  },
+  "Cleanser__Oily__max60": {
+    "GLAMGLOW": [
+      {
+        "name": "FLASHMUD\u2122 Brightening Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "POWERMUD\u2122 Dualcleanse Treatment",
+        "price": 59,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "YOUTHMUD\u2122 Tinglexfoliate Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Kate's Mini Must Haves",
+        "price": 55,
+        "rating": 0.0,
+        "active_count": 1
+      }
+    ]
+  },
+  "Cleanser__Oily__max80": {
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Quenching Essence",
+        "price": 78,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Cleanser__Sensitive__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Exfoliating Scrub",
+        "price": 22,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "Liquid Facial Soap",
+        "price": 18,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Rinse-Off Foaming Cleanser",
+        "price": 21,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ],
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Face Cleanser",
+        "price": 20,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Facial Radiance Polish",
+        "price": 25,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Skin Rescue Deep Cleanser With Red Clay",
+        "price": 24,
+        "rating": 4.3,
+        "active_count": 5
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "BUBBLESHEET\u2122 Oxygenating Deep Cleanse Mask",
+        "price": 9,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Clarifying Toner",
+        "price": 24,
+        "rating": 0.0,
+        "active_count": 5
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "So Nurturing\u2122 Cleansing Cloths",
+        "price": 15,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "Stay Balanced\u2122 Oil Control Cleansing Cloths",
+        "price": 8,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Truth\u2122 On the Glow Cleansing Cloths",
+        "price": 15,
+        "rating": 4.2,
+        "active_count": 6
+      }
+    ]
+  },
+  "Cleanser__Sensitive__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed 7-day System with Pure Vitamin C",
+        "price": 27,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "Fresh Pressed Renewing Powder Cleanser with Pure Vitamin C",
+        "price": 29,
+        "rating": 4.9,
+        "active_count": 1
+      },
+      {
+        "name": "City Block Purifying Charcoal Clay Mask + Scrub",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 1
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "YOUTHCLEANSE\u2122 Daily Exfoliating Cleanser",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "SUPERCLEANSE\u2122 Clearing Cream-to-Foam Cleanser",
+        "price": 32,
+        "rating": 3.9,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Essential-C Cleanser",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Renewing Cleansing Cream",
+        "price": 39,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Time Release Acne Cleanser",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Wonderfeel\u2122 Double Cleanser",
+        "price": 32,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Transforming Walnut Scrub",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "The Clean Truth\u2122 Foaming Cleanser",
+        "price": 30,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ]
+  },
+  "Cleanser__Sensitive__max60": {
+    "FIRST AID BEAUTY": [
+      {
+        "name": "FAB Skin Lab Resurfacing Liquid 10% AHA",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 8
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "POWERMUD\u2122 Dualcleanse Treatment",
+        "price": 59,
+        "rating": 3.9,
+        "active_count": 8
+      },
+      {
+        "name": "YOUTHMUD\u2122 Tinglexfoliate Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "FLASHMUD\u2122 Brightening Treatment",
+        "price": 59,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Moment of Truth\u2122 2-in-1 Polishing Sugar Mask",
+        "price": 42,
+        "rating": 4.5,
+        "active_count": 3
+      }
+    ]
+  },
+  "Cleanser__Sensitive__max80": {
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Quenching Essence",
+        "price": 78,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Combination__max25": {
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Hello FAB Kona Eye Stick",
+        "price": 24,
+        "rating": 3.7,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Purity Made Simple Hydra-Bounce Eye Gel",
+        "price": 24,
+        "rating": 3.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Combination__max40": {
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Eye Duty Triple Remedy Overnight Balm",
+        "price": 38,
+        "rating": 3.7,
+        "active_count": 3
+      },
+      {
+        "name": "Eye Duty Triple Remedy A.M. Gel Cream",
+        "price": 36,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "Eye Duty Triple Remedy: Brighten, Depuff and Smooth",
+        "price": 36,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Refreshing Eye Cream to Brighten and Depuff",
+        "price": 32,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "No Puffery\u2122 Cooling Roll-On For Puffy Eyes",
+        "price": 29,
+        "rating": 3.4,
+        "active_count": 1
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant FIRMx Eye\u2122",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Hope In A Tube Eye & Lip Cream",
+        "price": 38,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ]
+  },
+  "Eye cream__Combination__max60": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Dew It Right Eye Gel",
+        "price": 48,
+        "rating": 3.9,
+        "active_count": 2
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Eye Doctor\u2122 Moisture Care For Skin Around Eyes",
+        "price": 41,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "A Perfect World\u2122 SPF 20 Age-Defense Eye Cream with White Tea",
+        "price": 41,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "Dr. Weil For Origins\u2122 Mega-Mushroom Skin Relief Eye Serum",
+        "price": 50,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM Eye Cream",
+        "price": 55,
+        "rating": 3.7,
+        "active_count": 5
+      },
+      {
+        "name": "Cucumber De-Tox\u2122 Hydra-Gel Eye Patches",
+        "price": 48,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Hydra-Gel Eye Patches",
+        "price": 52,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Take a Deep Breath Oxygenating Eye Gel Cream",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "Renewed Hope In A Jar Eye",
+        "price": 51,
+        "rating": 3.7,
+        "active_count": 1
+      }
+    ]
+  },
+  "Eye cream__Combination__max80": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Eye Cream",
+        "price": 69,
+        "rating": 3.4,
+        "active_count": 5
+      },
+      {
+        "name": "Ferulic + Retinol Triple Correction Eye Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Eye Cream",
+        "price": 65,
+        "rating": 3.5,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mega Rich Intensive Anti-Aging Cellular Eye Creme",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Potent-C\u2122 Power Eye Cream",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "FIRMx\u2122 360 Eye Renewal",
+        "price": 75,
+        "rating": 4.0,
+        "active_count": 1
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Ultimate Miracle Worker Eye Cream",
+        "price": 70,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "Time In A Bottle For Eyes 100% In-Control",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "Ultimate Miracle Worker Fix Eye Power-Treatment",
+        "price": 68,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ]
+  },
+  "Eye cream__Combination__max120": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Power K Eye Rescue\u00ae",
+        "price": 100,
+        "rating": 3.3,
+        "active_count": 3
+      },
+      {
+        "name": "Un-Wrinkle Eye",
+        "price": 100,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ]
+  },
+  "Eye cream__Dry__max25": {
+    "PHILOSOPHY": [
+      {
+        "name": "Purity Made Simple Hydra-Bounce Eye Gel",
+        "price": 24,
+        "rating": 3.3,
+        "active_count": 5
+      }
+    ]
+  },
+  "Eye cream__Dry__max40": {
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "DayWear Eye Cooling Anti-Oxidant Moisture GelCreme",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Refreshing Eye Cream to Brighten and Depuff",
+        "price": 32,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "No Puffery\u2122 Cooling Roll-On For Puffy Eyes",
+        "price": 29,
+        "rating": 3.4,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant FIRMx Eye\u2122",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 3
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Hope In A Tube Eye & Lip Cream",
+        "price": 38,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Dry__max60": {
+    "ORIGINS": [
+      {
+        "name": "A Perfect World\u2122 SPF 20 Age-Defense Eye Cream with White Tea",
+        "price": 41,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Plantscription\u2122 Anti-Aging Power Eye Cream",
+        "price": 49,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "Dr. Andrew Weil for Origins\u2122 Mega-Bright Dark Circle Minimizer",
+        "price": 46,
+        "rating": 3.2,
+        "active_count": 4
+      }
+    ],
+    "PERRICONE MD": [
+      {
+        "name": "PRE:EMPT SERIES\u2122 Brightening Eye Cream",
+        "price": 55,
+        "rating": 3.6,
+        "active_count": 4
+      },
+      {
+        "name": "Vitamin C Ester Brightening Eye Serum",
+        "price": 60,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM Eye Cream",
+        "price": 55,
+        "rating": 3.7,
+        "active_count": 8
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Hydra-Gel Eye Patches",
+        "price": 52,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Cucumber De-Tox\u2122 Hydra-Gel Eye Patches",
+        "price": 48,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Renewed Hope In A Jar Eye",
+        "price": 51,
+        "rating": 3.7,
+        "active_count": 4
+      },
+      {
+        "name": "Take a Deep Breath Oxygenating Eye Gel Cream",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Dry__max80": {
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "Advanced Night Repair Eye Supercharged Complex",
+        "price": 62,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Advanced Time Zone Age Reversing Line/Wrinkle Eye Creme",
+        "price": 64,
+        "rating": 3.5,
+        "active_count": 5
+      },
+      {
+        "name": "Resilience Lift Firming/Sculpting Eye Creme",
+        "price": 65,
+        "rating": 3.3,
+        "active_count": 5
+      }
+    ],
+    "PERRICONE MD": [
+      {
+        "name": "High Potency Classics: Firming Eye Lift",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "H2 Elemental Energy De-Puffing Eye Gel",
+        "price": 75,
+        "rating": 3.5,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mega Rich Intensive Anti-Aging Cellular Eye Creme",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 11
+      },
+      {
+        "name": "Potent-C\u2122 Power Eye Cream",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "FIRMx\u2122 360 Eye Renewal",
+        "price": 75,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Ultimate Miracle Worker Eye Cream",
+        "price": 70,
+        "rating": 4.0,
+        "active_count": 4
+      },
+      {
+        "name": "Time In A Bottle For Eyes 100% In-Control",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "Uplifting Miracle Worker Eye Cream",
+        "price": 69,
+        "rating": 3.1,
+        "active_count": 4
+      }
+    ]
+  },
+  "Eye cream__Dry__max120": {
+    "PERRICONE MD": [
+      {
+        "name": "Cold Plasma+ Eye",
+        "price": 110,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Eye",
+        "price": 100,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "Power K Eye Rescue\u00ae",
+        "price": 100,
+        "rating": 3.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Eye cream__Dry__max200": {
+    "PERRICONE MD": [
+      {
+        "name": "Neuropeptide Firming & Illuminating Under-Eye Cream",
+        "price": 170,
+        "rating": 5.0,
+        "active_count": 5
+      },
+      {
+        "name": "Essential Fx Acyl-Glutathione Smoothing & Brightening Under-Eye Cream",
+        "price": 122,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Essential Fx Acyl-Glutathione Eyelid Lift Serum",
+        "price": 122,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Eye cream__Normal__max25": {
+    "PHILOSOPHY": [
+      {
+        "name": "Purity Made Simple Hydra-Bounce Eye Gel",
+        "price": 24,
+        "rating": 3.3,
+        "active_count": 8
+      }
+    ]
+  },
+  "Eye cream__Normal__max40": {
+    "CLINIQUE": [
+      {
+        "name": "All About Eyes\u2122 Rich",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 9
+      },
+      {
+        "name": "Pep-Start Eye Cream",
+        "price": 26,
+        "rating": 3.7,
+        "active_count": 6
+      },
+      {
+        "name": "All About Eyes",
+        "price": 32,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "DayWear Eye Cooling Anti-Oxidant Moisture GelCreme",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Refreshing Eye Cream to Brighten and Depuff",
+        "price": 32,
+        "rating": 4.0,
+        "active_count": 8
+      },
+      {
+        "name": "No Puffery\u2122 Cooling Roll-On For Puffy Eyes",
+        "price": 29,
+        "rating": 3.4,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant FIRMx Eye\u2122",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 5
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Hope In A Tube Eye & Lip Cream",
+        "price": 38,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ]
+  },
+  "Eye cream__Normal__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Wrinkle Correcting Eye Cream",
+        "price": 45,
+        "rating": 3.9,
+        "active_count": 8
+      },
+      {
+        "name": "Clinique Smart Custom-Repair Eye Treatment",
+        "price": 50,
+        "rating": 3.7,
+        "active_count": 7
+      },
+      {
+        "name": "Even Better Eyes Dark Circle Corrector",
+        "price": 42,
+        "rating": 3.3,
+        "active_count": 6
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Eye Doctor\u2122 Moisture Care For Skin Around Eyes",
+        "price": 41,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "A Perfect World\u2122 SPF 20 Age-Defense Eye Cream with White Tea",
+        "price": 41,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "Plantscription\u2122 Anti-Aging Power Eye Cream",
+        "price": 49,
+        "rating": 3.8,
+        "active_count": 6
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM Eye Cream",
+        "price": 55,
+        "rating": 3.7,
+        "active_count": 12
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Hydra-Gel Eye Patches",
+        "price": 52,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Cucumber De-Tox\u2122 Hydra-Gel Eye Patches",
+        "price": 48,
+        "rating": 4.1,
+        "active_count": 8
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Take a Deep Breath Oxygenating Eye Gel Cream",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Renewed Hope In A Jar Eye",
+        "price": 51,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Normal__max80": {
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "Resilience Lift Firming/Sculpting Eye Creme",
+        "price": 65,
+        "rating": 3.3,
+        "active_count": 8
+      },
+      {
+        "name": "Advanced Time Zone Age Reversing Line/Wrinkle Eye Creme",
+        "price": 64,
+        "rating": 3.5,
+        "active_count": 7
+      },
+      {
+        "name": "Advanced Night Repair Eye Serum Synchronized Complex II",
+        "price": 66,
+        "rating": 3.5,
+        "active_count": 7
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mega Rich Intensive Anti-Aging Cellular Eye Creme",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 13
+      },
+      {
+        "name": "Potent-C\u2122 Power Eye Cream",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "FIRMx\u2122 360 Eye Renewal",
+        "price": 75,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Ultimate Miracle Worker Eye Cream",
+        "price": 70,
+        "rating": 4.0,
+        "active_count": 11
+      },
+      {
+        "name": "Ultimate Miracle Worker Fix Eye Power-Treatment",
+        "price": 68,
+        "rating": 3.9,
+        "active_count": 9
+      },
+      {
+        "name": "Time In A Bottle For Eyes 100% In-Control",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 8
+      }
+    ]
+  },
+  "Eye cream__Normal__max120": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Eye",
+        "price": 100,
+        "rating": 3.8,
+        "active_count": 7
+      },
+      {
+        "name": "Power K Eye Rescue\u00ae",
+        "price": 100,
+        "rating": 3.3,
+        "active_count": 6
+      }
+    ]
+  },
+  "Eye cream__Oily__max25": {
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Hello FAB Kona Eye Stick",
+        "price": 24,
+        "rating": 3.7,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Purity Made Simple Hydra-Bounce Eye Gel",
+        "price": 24,
+        "rating": 3.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Eye cream__Oily__max40": {
+    "CLINIQUE": [
+      {
+        "name": "All About Eyes",
+        "price": 32,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "All About Eyes\u2122 Rich",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 2
+      },
+      {
+        "name": "All About Eyes Serum De-Puffing Eye Massage",
+        "price": 32,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "FIRST AID BEAUTY": [
+      {
+        "name": "Eye Duty Triple Remedy Overnight Balm",
+        "price": 38,
+        "rating": 3.7,
+        "active_count": 3
+      },
+      {
+        "name": "Eye Duty Triple Remedy A.M. Gel Cream",
+        "price": 36,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "Eye Duty Triple Remedy: Brighten, Depuff and Smooth",
+        "price": 36,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant FIRMx Eye\u2122",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 1
+      }
+    ]
+  },
+  "Eye cream__Oily__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Wrinkle Correcting Eye Cream",
+        "price": 45,
+        "rating": 3.9,
+        "active_count": 3
+      },
+      {
+        "name": "Even Better Eyes Dark Circle Corrector",
+        "price": 42,
+        "rating": 3.3,
+        "active_count": 3
+      },
+      {
+        "name": "Clinique Smart Custom-Repair Eye Treatment",
+        "price": 50,
+        "rating": 3.7,
+        "active_count": 1
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Dew It Right Eye Gel",
+        "price": 48,
+        "rating": 3.9,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Cucumber De-Tox\u2122 Hydra-Gel Eye Patches",
+        "price": 48,
+        "rating": 4.1,
+        "active_count": 3
+      },
+      {
+        "name": "Retinol Fusion PM Eye Cream",
+        "price": 55,
+        "rating": 3.7,
+        "active_count": 3
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Hydra-Gel Eye Patches",
+        "price": 52,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Take a Deep Breath Oxygenating Eye Gel Cream",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "Renewed Hope In A Jar Eye",
+        "price": 51,
+        "rating": 3.7,
+        "active_count": 1
+      }
+    ]
+  },
+  "Eye cream__Oily__max80": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Triple Correction Eye Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "Ferulic + Retinol Eye Cream",
+        "price": 69,
+        "rating": 3.4,
+        "active_count": 4
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Eye Cream",
+        "price": 65,
+        "rating": 3.5,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mega Rich Intensive Anti-Aging Cellular Eye Creme",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 4
+      },
+      {
+        "name": "Potent-C\u2122 Power Eye Cream",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "FIRMx\u2122 360 Eye Renewal",
+        "price": 75,
+        "rating": 4.0,
+        "active_count": 1
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Ultimate Miracle Worker Eye Cream",
+        "price": 70,
+        "rating": 4.0,
+        "active_count": 4
+      },
+      {
+        "name": "Time In A Bottle For Eyes 100% In-Control",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 3
+      },
+      {
+        "name": "Ultimate Miracle Worker Fix Eye Power-Treatment",
+        "price": 68,
+        "rating": 3.9,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Oily__max120": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Eye",
+        "price": 100,
+        "rating": 3.8,
+        "active_count": 2
+      },
+      {
+        "name": "Power K Eye Rescue\u00ae",
+        "price": 100,
+        "rating": 3.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Eye cream__Sensitive__max25": {
+    "PHILOSOPHY": [
+      {
+        "name": "Purity Made Simple Hydra-Bounce Eye Gel",
+        "price": 24,
+        "rating": 3.3,
+        "active_count": 7
+      }
+    ]
+  },
+  "Eye cream__Sensitive__max40": {
+    "CLINIQUE": [
+      {
+        "name": "All About Eyes\u2122 Rich",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 7
+      },
+      {
+        "name": "All About Eyes",
+        "price": 32,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "Pep-Start Eye Cream",
+        "price": 26,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "DayWear Eye Cooling Anti-Oxidant Moisture GelCreme",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Refreshing Eye Cream to Brighten and Depuff",
+        "price": 32,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "No Puffery\u2122 Cooling Roll-On For Puffy Eyes",
+        "price": 29,
+        "rating": 3.4,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant FIRMx Eye\u2122",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 5
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Hope In A Tube Eye & Lip Cream",
+        "price": 38,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ]
+  },
+  "Eye cream__Sensitive__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Wrinkle Correcting Eye Cream",
+        "price": 45,
+        "rating": 3.9,
+        "active_count": 5
+      },
+      {
+        "name": "Clinique Smart Custom-Repair Eye Treatment",
+        "price": 50,
+        "rating": 3.7,
+        "active_count": 5
+      },
+      {
+        "name": "Even Better Eyes Dark Circle Corrector",
+        "price": 42,
+        "rating": 3.3,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "A Perfect World\u2122 SPF 20 Age-Defense Eye Cream with White Tea",
+        "price": 41,
+        "rating": 4.0,
+        "active_count": 8
+      },
+      {
+        "name": "Eye Doctor\u2122 Moisture Care For Skin Around Eyes",
+        "price": 41,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Dr. Andrew Weil for Origins\u2122 Mega-Bright Dark Circle Minimizer",
+        "price": 46,
+        "rating": 3.2,
+        "active_count": 5
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM Eye Cream",
+        "price": 55,
+        "rating": 3.7,
+        "active_count": 11
+      },
+      {
+        "name": "Cucumber De-Tox\u2122 Hydra-Gel Eye Patches",
+        "price": 48,
+        "rating": 4.1,
+        "active_count": 8
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Hydra-Gel Eye Patches",
+        "price": 52,
+        "rating": 4.4,
+        "active_count": 7
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Take a Deep Breath Oxygenating Eye Gel Cream",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Renewed Hope In A Jar Eye",
+        "price": 51,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ]
+  },
+  "Eye cream__Sensitive__max80": {
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "Advanced Night Repair Eye Supercharged Complex",
+        "price": 62,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Advanced Night Repair Eye Serum Synchronized Complex II",
+        "price": 66,
+        "rating": 3.5,
+        "active_count": 6
+      },
+      {
+        "name": "Resilience Lift Firming/Sculpting Eye Creme",
+        "price": 65,
+        "rating": 3.3,
+        "active_count": 6
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mega Rich Intensive Anti-Aging Cellular Eye Creme",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 12
+      },
+      {
+        "name": "Potent-C\u2122 Power Eye Cream",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "FIRMx\u2122 360 Eye Renewal",
+        "price": 75,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ],
+    "PHILOSOPHY": [
+      {
+        "name": "Ultimate Miracle Worker Eye Cream",
+        "price": 70,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Time In A Bottle For Eyes 100% In-Control",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 6
+      },
+      {
+        "name": "Ultimate Miracle Worker Fix Eye Power-Treatment",
+        "price": 68,
+        "rating": 3.9,
+        "active_count": 5
+      }
+    ]
+  },
+  "Eye cream__Sensitive__max120": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Eye",
+        "price": 100,
+        "rating": 3.8,
+        "active_count": 6
+      },
+      {
+        "name": "Power K Eye Rescue\u00ae",
+        "price": 100,
+        "rating": 3.3,
+        "active_count": 6
+      }
+    ]
+  },
+  "Face Mask__Combination__max25": {
+    "BOSCIA": [
+      {
+        "name": "Sake Brightening Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Charcoal Pore-Minimizing Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.2,
+        "active_count": 2
+      },
+      {
+        "name": "Tsubaki Oil Deep Hydrating Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "DR. JART+": [
+      {
+        "name": "Dermask Micro Jet Clearing Solution\u2122",
+        "price": 9,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Dermask Micro Jet Brightening Solution\u2122",
+        "price": 9,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "Dermask Water Jet Vital Hydra Solution\u2122",
+        "price": 6,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Flower Fusion\u2122 Raspberry Refreshing Sheet Mask",
+        "price": 7,
+        "rating": 4.6,
+        "active_count": 1
+      },
+      {
+        "name": "Flower Fusion\u2122 Lavender Soothing Sheet Mask",
+        "price": 7,
+        "rating": 4.3,
+        "active_count": 1
+      },
+      {
+        "name": "Flower Fusion\u2122 Rose Hydrating Sheet Mask",
+        "price": 7,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "SEPHORA COLLECTION": [
+      {
+        "name": "Face Mask Magic",
+        "price": 25,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "Jelly Mask Moisturizing & Energizing",
+        "price": 19,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Sleeping Mask - Coconut Water",
+        "price": 4,
+        "rating": 5.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Face Mask__Combination__max40": {
+    "BOSCIA": [
+      {
+        "name": "Sake Bright White Mask",
+        "price": 38,
+        "rating": 3.4,
+        "active_count": 2
+      },
+      {
+        "name": "MATCHA Magic Super-Antioxidant Mask",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 1
+      },
+      {
+        "name": "Charcoal Pore Pudding Intensive Wash-Off Treatment",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 1
+      }
+    ],
+    "FRESH": [
+      {
+        "name": "Black Tea Instant Perfecting Mask Mini",
+        "price": 35,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Black Tea Firming Overnight Mask Mini",
+        "price": 35,
+        "rating": 4.0,
+        "active_count": 2
+      },
+      {
+        "name": "Vitamin Nectar Vitamin C Brightening Powder",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Mini Mask Musts",
+        "price": 28,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "RitualiTea\u2122 Matcha Madness\u2122 Revitalizing Powder Face Mask with Matcha & Green Tea",
+        "price": 36,
+        "rating": 3.8,
+        "active_count": 3
+      },
+      {
+        "name": "Drink Up\u2122 Intensive Overnight Mask to Quench Skin's Thirst",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Face Mask__Combination__max60": {
+    "DR. JART+": [
+      {
+        "name": "Water Fuse Hydro Sleep Mask",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Cicapair\u2122 Tiger Grass Nightly Re.Pair Mask",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright Dark Spot Correcting Night Mask",
+        "price": 59,
+        "rating": 3.8,
+        "active_count": 3
+      }
+    ]
+  },
+  "Face Mask__Combination__max80": {
+    "FRESH": [
+      {
+        "name": "Lotus Youth Preserve Rescue Mask",
+        "price": 62,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Rose Face Mask",
+        "price": 62,
+        "rating": 4.2,
+        "active_count": 2
+      },
+      {
+        "name": "Vitamin C Glow Face Mask",
+        "price": 62,
+        "rating": 3.9,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Powerful Lifting Overnight Mask",
+        "price": 63,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ]
+  },
+  "Face Mask__Combination__max120": {
+    "FRESH": [
+      {
+        "name": "Black Tea Instant Perfecting Mask",
+        "price": 92,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Peony Brightening Night Treatment Mask",
+        "price": 82,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Face Mask__Dry__max25": {
+    "BOSCIA": [
+      {
+        "name": "Sake Brightening Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Tsubaki Oil Deep Hydrating Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "Multi-Masking\u2122 Medley",
+        "price": 18,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ],
+    "DR. JART+": [
+      {
+        "name": "Ceramidin\u2122 Facial Mask",
+        "price": 6,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "Dermask Micro Jet Clearing Solution\u2122",
+        "price": 9,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Dermask Micro Jet Brightening Solution\u2122",
+        "price": 9,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Flower Fusion\u2122 Raspberry Refreshing Sheet Mask",
+        "price": 7,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Flower Fusion\u2122 Lavender Soothing Sheet Mask",
+        "price": 7,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Flower Fusion\u2122 Rose Hydrating Sheet Mask",
+        "price": 7,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "SEPHORA COLLECTION": [
+      {
+        "name": "Experiential Masks Set",
+        "price": 18,
+        "rating": 5.0,
+        "active_count": 8
+      },
+      {
+        "name": "Hand Mask",
+        "price": 5,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Hand Mask - Avocado",
+        "price": 5,
+        "rating": 3.7,
+        "active_count": 6
+      }
+    ]
+  },
+  "Face Mask__Dry__max40": {
+    "BOSCIA": [
+      {
+        "name": "MATCHA Magic Super-Antioxidant Mask",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Charcoal Pore Pudding Intensive Wash-Off Treatment",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Sake Bright White Mask",
+        "price": 38,
+        "rating": 3.4,
+        "active_count": 3
+      }
+    ],
+    "DR. JART+": [
+      {
+        "name": "All That Contours Hydrogel Expansion Stretch Mask",
+        "price": 35,
+        "rating": 3.3,
+        "active_count": 2
+      }
+    ],
+    "FRESH": [
+      {
+        "name": "Black Tea Firming Overnight Mask Mini",
+        "price": 35,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "Black Tea Instant Perfecting Mask Mini",
+        "price": 35,
+        "rating": 4.7,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Mini Mask Musts",
+        "price": 28,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Drink Up\u2122 Intensive Overnight Mask to Quench Skin's Thirst",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Mushroom Relief & Resilience Soothing Face Mask",
+        "price": 40,
+        "rating": 4.5,
+        "active_count": 5
+      }
+    ]
+  },
+  "Face Mask__Dry__max60": {
+    "DR. JART+": [
+      {
+        "name": "Water Fuse Hydro Sleep Mask",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Cicapair\u2122 Tiger Grass Nightly Re.Pair Mask",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright Dark Spot Correcting Night Mask",
+        "price": 59,
+        "rating": 3.8,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Dry__max80": {
+    "FRESH": [
+      {
+        "name": "Lotus Youth Preserve Rescue Mask",
+        "price": 62,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Rose Face Mask",
+        "price": 62,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Vitamin C Glow Face Mask",
+        "price": 62,
+        "rating": 3.9,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Powerful Lifting Overnight Mask",
+        "price": 63,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Dry__max120": {
+    "FRESH": [
+      {
+        "name": "Black Tea Instant Perfecting Mask",
+        "price": 92,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Peony Brightening Night Treatment Mask",
+        "price": 82,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ]
+  },
+  "Face Mask__Dry__max200": {
+    "FRESH": [
+      {
+        "name": "Cr\u00e8me Ancienne\u00ae Ultimate Nourishing Honey Mask",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Normal__max25": {
+    "DR. JART+": [
+      {
+        "name": "Dermask Micro Jet Clearing Solution\u2122",
+        "price": 9,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Shake & Shot\u2122 Rubber Brightening Mask",
+        "price": 12,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "Shake & Shot\u2122 Rubber Masks",
+        "price": 12,
+        "rating": 4.1,
+        "active_count": 6
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Flower Fusion\u2122 Raspberry Refreshing Sheet Mask",
+        "price": 7,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Flower Fusion\u2122 Lavender Soothing Sheet Mask",
+        "price": 7,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Flower Fusion\u2122 Rose Hydrating Sheet Mask",
+        "price": 7,
+        "rating": 3.8,
+        "active_count": 4
+      }
+    ],
+    "SEPHORA COLLECTION": [
+      {
+        "name": "Face Mask Magic",
+        "price": 25,
+        "rating": 5.0,
+        "active_count": 8
+      },
+      {
+        "name": "Hand Mask",
+        "price": 5,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Experiential Masks Set",
+        "price": 18,
+        "rating": 5.0,
+        "active_count": 5
+      }
+    ]
+  },
+  "Face Mask__Normal__max40": {
+    "DR. JART+": [
+      {
+        "name": "All That Contours Hydrogel Expansion Stretch Mask",
+        "price": 35,
+        "rating": 3.3,
+        "active_count": 3
+      }
+    ],
+    "FRESH": [
+      {
+        "name": "Black Tea Firming Overnight Mask Mini",
+        "price": 35,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "Black Tea Instant Perfecting Mask Mini",
+        "price": 35,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "Vitamin Nectar Vitamin C Brightening Powder",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Mini Mask Musts",
+        "price": 28,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Drink Up\u2122 Intensive Overnight Mask to Quench Skin's Thirst",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Mushroom Relief & Resilience Soothing Face Mask",
+        "price": 40,
+        "rating": 4.5,
+        "active_count": 6
+      }
+    ]
+  },
+  "Face Mask__Normal__max60": {
+    "DR. JART+": [
+      {
+        "name": "Water Fuse Hydro Sleep Mask",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Cicapair\u2122 Tiger Grass Nightly Re.Pair Mask",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright Dark Spot Correcting Night Mask",
+        "price": 59,
+        "rating": 3.8,
+        "active_count": 6
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Pumpkin Enzyme Mask Enzymatic Dermal Resurfacer",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 6
+      },
+      {
+        "name": "Hungarian Thermal Water Mineral-Rich Atomic Heat Mask",
+        "price": 58,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "Cucumber Gel Mask Extreme Detoxifying Hydrator",
+        "price": 52,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ]
+  },
+  "Face Mask__Normal__max80": {
+    "FRESH": [
+      {
+        "name": "Lotus Youth Preserve Rescue Mask",
+        "price": 62,
+        "rating": 4.5,
+        "active_count": 5
+      },
+      {
+        "name": "Rose Face Mask",
+        "price": 62,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "Vitamin C Glow Face Mask",
+        "price": 62,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Powerful Lifting Overnight Mask",
+        "price": 63,
+        "rating": 4.5,
+        "active_count": 7
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "24K Gold Pure Luxury Lift & Firm Hydra-Gel Eye Patches",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Mask Frenzy",
+        "price": 75,
+        "rating": 4.8,
+        "active_count": 5
+      },
+      {
+        "name": "24K Gold Mask Pure Luxury Lift & Firm Mask",
+        "price": 80,
+        "rating": 3.4,
+        "active_count": 3
+      }
+    ]
+  },
+  "Face Mask__Normal__max120": {
+    "FRESH": [
+      {
+        "name": "Black Tea Instant Perfecting Mask",
+        "price": 92,
+        "rating": 4.3,
+        "active_count": 5
+      },
+      {
+        "name": "Peony Brightening Night Treatment Mask",
+        "price": 82,
+        "rating": 4.0,
+        "active_count": 5
+      }
+    ]
+  },
+  "Face Mask__Normal__max200": {
+    "FRESH": [
+      {
+        "name": "Cr\u00e8me Ancienne\u00ae Ultimate Nourishing Honey Mask",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Oily__max25": {
+    "DR. JART+": [
+      {
+        "name": "Dermask Micro Jet Clearing Solution\u2122",
+        "price": 9,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Dermask Water Jet Vital Hydra Solution\u2122",
+        "price": 6,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Dermask Micro Jet Brightening Solution\u2122",
+        "price": 9,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "BUBBLESHEET\u2122 Oxygenating Deep Cleanse Mask - Breast Cancer Awareness Edition",
+        "price": 9,
+        "rating": 5.0,
+        "active_count": 2
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Flower Fusion\u2122 Raspberry Refreshing Sheet Mask",
+        "price": 7,
+        "rating": 4.6,
+        "active_count": 1
+      },
+      {
+        "name": "Flower Fusion\u2122 Lavender Soothing Sheet Mask",
+        "price": 7,
+        "rating": 4.3,
+        "active_count": 1
+      },
+      {
+        "name": "Flower Fusion\u2122 Rose Hydrating Sheet Mask",
+        "price": 7,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "SEPHORA COLLECTION": [
+      {
+        "name": "Experiential Masks Set",
+        "price": 18,
+        "rating": 5.0,
+        "active_count": 4
+      },
+      {
+        "name": "Face Mask Magic",
+        "price": 25,
+        "rating": 5.0,
+        "active_count": 4
+      },
+      {
+        "name": "Mud Mask Purifying & Mattifying",
+        "price": 20,
+        "rating": 4.5,
+        "active_count": 3
+      }
+    ]
+  },
+  "Face Mask__Oily__max40": {
+    "ORIGINS": [
+      {
+        "name": "Mini Mask Musts",
+        "price": 28,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Original Skin\u2122 Retexturizing Mask with Rose Clay",
+        "price": 28,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "Out of Trouble\u2122 10 Minute Mask to Rescue Problem Skin",
+        "price": 28,
+        "rating": 4.4,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Oily__max60": {
+    "DR. JART+": [
+      {
+        "name": "Water Fuse Hydro Sleep Mask",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Cicapair\u2122 Tiger Grass Nightly Re.Pair Mask",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ],
+    "GLAMGLOW": [
+      {
+        "name": "INSTAMUD 60 Second Pore-Refining Treatment",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "#GLITTERMASK GRAVITYMUD\u2122 Firming Treatment",
+        "price": 59,
+        "rating": 4.3,
+        "active_count": 1
+      },
+      {
+        "name": "GLAMGLOW x MY LITTLE PONY\u00ae #GLITTERMASK GRAVITYMUD\u2122 Firming Treatment",
+        "price": 59,
+        "rating": 3.9,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright Dark Spot Correcting Night Mask",
+        "price": 59,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Irish Moor Mud Purifying Black Mask",
+        "price": 58,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Pumpkin Enzyme Mask Enzymatic Dermal Resurfacer",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Hungarian Thermal Water Mineral-Rich Atomic Heat Mask",
+        "price": 58,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Face Mask__Oily__max80": {
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Powerful Lifting Overnight Mask",
+        "price": 63,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Mask Frenzy",
+        "price": 75,
+        "rating": 4.8,
+        "active_count": 2
+      },
+      {
+        "name": "24K Gold Pure Luxury Lift & Firm Hydra-Gel Eye Patches",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "24K Gold Mask Pure Luxury Lift & Firm Mask",
+        "price": 80,
+        "rating": 3.4,
+        "active_count": 1
+      }
+    ]
+  },
+  "Face Mask__Oily__max200": {
+    "GLAMGLOW": [
+      {
+        "name": "The Ultimate Glow Set",
+        "price": 169,
+        "rating": 0.0,
+        "active_count": 7
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max25": {
+    "BOSCIA": [
+      {
+        "name": "Multi-Masking\u2122 Medley",
+        "price": 18,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Sake Brightening Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Tsubaki Oil Deep Hydrating Bio-Cellulose Mask",
+        "price": 8,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ],
+    "DR. JART+": [
+      {
+        "name": "Dermask Micro Jet Brightening Solution\u2122",
+        "price": 9,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "Ceramidin\u2122 Facial Mask",
+        "price": 6,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Dermask Micro Jet Clearing Solution\u2122",
+        "price": 9,
+        "rating": 4.4,
+        "active_count": 6
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Flower Fusion\u2122 Raspberry Refreshing Sheet Mask",
+        "price": 7,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Flower Fusion\u2122 Lavender Soothing Sheet Mask",
+        "price": 7,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Flower Fusion\u2122 Rose Hydrating Sheet Mask",
+        "price": 7,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "SEPHORA COLLECTION": [
+      {
+        "name": "Experiential Masks Set",
+        "price": 18,
+        "rating": 5.0,
+        "active_count": 7
+      },
+      {
+        "name": "Jelly Mask Moisturizing & Energizing",
+        "price": 19,
+        "rating": 4.6,
+        "active_count": 7
+      },
+      {
+        "name": "Face Mask Magic",
+        "price": 25,
+        "rating": 5.0,
+        "active_count": 6
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max40": {
+    "BOSCIA": [
+      {
+        "name": "Sake Bright White Mask",
+        "price": 38,
+        "rating": 3.4,
+        "active_count": 5
+      },
+      {
+        "name": "MATCHA Magic Super-Antioxidant Mask",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Charcoal Pore Pudding Intensive Wash-Off Treatment",
+        "price": 38,
+        "rating": 4.4,
+        "active_count": 3
+      }
+    ],
+    "DR. JART+": [
+      {
+        "name": "All That Contours Hydrogel Expansion Stretch Mask",
+        "price": 35,
+        "rating": 3.3,
+        "active_count": 2
+      }
+    ],
+    "FRESH": [
+      {
+        "name": "Black Tea Firming Overnight Mask Mini",
+        "price": 35,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Black Tea Instant Perfecting Mask Mini",
+        "price": 35,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "Vitamin Nectar Vitamin C Brightening Powder",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Mini Mask Musts",
+        "price": 28,
+        "rating": 4.1,
+        "active_count": 11
+      },
+      {
+        "name": "Drink Up\u2122 Intensive Overnight Mask to Quench Skin's Thirst",
+        "price": 28,
+        "rating": 4.6,
+        "active_count": 8
+      },
+      {
+        "name": "RitualiTea\u2122 Matcha Madness\u2122 Revitalizing Powder Face Mask with Matcha & Green Tea",
+        "price": 36,
+        "rating": 3.8,
+        "active_count": 6
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max60": {
+    "DR. JART+": [
+      {
+        "name": "Water Fuse Hydro Sleep Mask",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Cicapair\u2122 Tiger Grass Nightly Re.Pair Mask",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright Dark Spot Correcting Night Mask",
+        "price": 59,
+        "rating": 3.8,
+        "active_count": 5
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max80": {
+    "FRESH": [
+      {
+        "name": "Rose Face Mask",
+        "price": 62,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "Lotus Youth Preserve Rescue Mask",
+        "price": 62,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Vitamin C Glow Face Mask",
+        "price": 62,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 Powerful Lifting Overnight Mask",
+        "price": 63,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max120": {
+    "FRESH": [
+      {
+        "name": "Black Tea Instant Perfecting Mask",
+        "price": 92,
+        "rating": 4.3,
+        "active_count": 5
+      },
+      {
+        "name": "Peony Brightening Night Treatment Mask",
+        "price": 82,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ]
+  },
+  "Face Mask__Sensitive__max200": {
+    "FRESH": [
+      {
+        "name": "Cr\u00e8me Ancienne\u00ae Ultimate Nourishing Honey Mask",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ]
+  },
+  "Moisturizer__Combination__max25": {
+    "LANEIGE": [
+      {
+        "name": "Water Sleeping Mask",
+        "price": 25,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Combination__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Limited Edition Dramatically Different\u2122 Moisturizing Gel",
+        "price": 39,
+        "rating": 5.0,
+        "active_count": 1
+      },
+      {
+        "name": "Dramatically Different Moisturizing Gel",
+        "price": 28,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Miracle Water 3-in-1 Micellar Cleanser",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 7
+      },
+      {
+        "name": "Bye Bye Redness\u2122 Neutralizing Correcting Cream",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "LANEIGE": [
+      {
+        "name": "Water Bank Hydrating Gel",
+        "price": 35,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Water Bank Moisture Cream",
+        "price": 35,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "BB Cushion Hydra Radiance SPF 50",
+        "price": 38,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Skin Perfecting Lotion - Blemish Prone/Oily Skin",
+        "price": 40,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Oil-Control Mattifier SPF 15 PA++",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Combination__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Night Line Smoothing Cream for Very Dry to Dry Combination Skin",
+        "price": 52,
+        "rating": 4.7,
+        "active_count": 3
+      },
+      {
+        "name": "Smart Night Custom-Repair Moisturizer - Very Dry to Dry",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 3
+      },
+      {
+        "name": "Even Better Skin Tone Correcting Moisturizer Broad Spectrum SPF 20",
+        "price": 50,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Oil-Free Moisture Cushion",
+        "price": 60,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Confidence in a Cream\u2122 Transforming Moisturizing Super Cream",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Nutrient-Charged Water Gel",
+        "price": 60,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "Anti-Aging Moisturizer SPF 30 PA+++",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Combination__max80": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Anti-Aging Moisturizer",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "C+ Collagen Deep Cream",
+        "price": 72,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Secret Sauce Clinically Advanced Miraculous Anti-Aging Moisturizer",
+        "price": 68,
+        "rating": 3.8,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Ultimate Moisture",
+        "price": 75,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Essential-C Day Moisture Broad Spectrum SPF 30 PA+++",
+        "price": 63,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Combination__max120": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Wrinkle Recovery Overnight Serum",
+        "price": 88,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Night Cream",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 1
+      }
+    ]
+  },
+  "Moisturizer__Dry__max25": {
+    "CAUDALIE": [
+      {
+        "name": "Beauty Elixir",
+        "price": 18,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Dry__max40": {
+    "CAUDALIE": [
+      {
+        "name": "Vinosource Intense Moisture Rescue Cream",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Vinosource Moisturizing Sorbet",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "CLINIQUE": [
+      {
+        "name": "Moisture Surge Overnight Mask",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Moisture Surge Intense Skin Fortifying Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Miracle Water 3-in-1 Micellar Cleanser",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 7
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+Illumination\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 3.9,
+        "active_count": 7
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Skin Perfecting Lotion - Blemish Prone/Oily Skin",
+        "price": 40,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "Oil-Control Mattifier SPF 15 PA++",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Energy-Boosting Gel Moisturizer",
+        "price": 29,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Original Skin\u2122 Matte Moisturizer with Willowherb",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "GinZing\u2122 SPF 40 Energy-Boosting Tinted Moisturizer",
+        "price": 39,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Dry__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Night Line Smoothing Cream for Very Dry to Dry Combination Skin",
+        "price": 52,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "Superdefense SPF 20 Age Defense Moisturizer Very Dry to Dry Combination",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Smart Night Custom-Repair Moisturizer - Very Dry to Dry",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 3
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Confidence in a Cream\u2122 Transforming Moisturizing Super Cream",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 8
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Nutrient-Charged Water Gel",
+        "price": 60,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Anti-Aging Moisturizer SPF 30 PA+++",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "A Perfect World\u2122 SPF 40 Age-Defense Moisturizer with White Tea",
+        "price": 45,
+        "rating": 3.5,
+        "active_count": 5
+      },
+      {
+        "name": "Plantscription\u2122 SPF 25 Power Anti-Aging Cream",
+        "price": 60,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "Plantscription\u2122 Youth-Renewing Power Night Cream",
+        "price": 60,
+        "rating": 4.4,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Dry__max80": {
+    "CAUDALIE": [
+      {
+        "name": "Resveratrol Lift Night Infusion Cream",
+        "price": 76,
+        "rating": 4.1,
+        "active_count": 6
+      },
+      {
+        "name": "Resveratrol Lift Face Lifting Soft Cream",
+        "price": 76,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Secret Sauce Clinically Advanced Miraculous Anti-Aging Moisturizer",
+        "price": 68,
+        "rating": 3.8,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Ultimate Moisture",
+        "price": 75,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Essential-C Day Moisture Broad Spectrum SPF 30 PA+++",
+        "price": 63,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ]
+  },
+  "Moisturizer__Dry__max120": {
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Night Cream",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 5
+      }
+    ]
+  },
+  "Moisturizer__Dry__max200": {
+    "CAUDALIE": [
+      {
+        "name": "Premier Cru Rich Cream",
+        "price": 140,
+        "rating": 4.5,
+        "active_count": 7
+      },
+      {
+        "name": "Premier Cru Cream",
+        "price": 140,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ]
+  },
+  "Moisturizer__Normal__max0": {
+    "SHISEIDO": [
+      {
+        "name": "Future Solution LX Total Regenerating Cream",
+        "price": 280,
+        "rating": 4.0,
+        "active_count": 5
+      }
+    ]
+  },
+  "Moisturizer__Normal__max25": {
+    "CAUDALIE": [
+      {
+        "name": "Beauty Elixir",
+        "price": 18,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Moisturizer__Normal__max40": {
+    "CAUDALIE": [
+      {
+        "name": "Vinosource Intense Moisture Rescue Cream",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Vinosource Moisturizing Sorbet",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ],
+    "CLINIQUE": [
+      {
+        "name": "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Moisture Surge Intense Skin Fortifying Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "Moisture Surge Overnight Mask",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 6
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Miracle Water 3-in-1 Micellar Cleanser",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 12
+      },
+      {
+        "name": "Bye Bye Redness\u2122 Neutralizing Correcting Cream",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 10
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 4.1,
+        "active_count": 10
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Energy-Boosting Gel Moisturizer",
+        "price": 29,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "GinZing\u2122 SPF 40 Energy-Boosting Tinted Moisturizer",
+        "price": 39,
+        "rating": 4.0,
+        "active_count": 7
+      },
+      {
+        "name": "Original Skin\u2122 Matte Moisturizer with Willowherb",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 5
+      }
+    ],
+    "SHISEIDO": [
+      {
+        "name": "Ibuki Beauty Sleeping Mask",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 3
+      }
+    ]
+  },
+  "Moisturizer__Normal__max60": {
+    "CAUDALIE": [
+      {
+        "name": "Vine[activ] Overnight Detox Oil",
+        "price": 50,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Night Line Smoothing Cream for Very Dry to Dry Combination Skin",
+        "price": 52,
+        "rating": 4.7,
+        "active_count": 9
+      },
+      {
+        "name": "Smart Night Custom-Repair Moisturizer - Very Dry to Dry",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 7
+      },
+      {
+        "name": "Superdefense SPF 20 Age Defense Moisturizer Very Dry to Dry Combination",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 6
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Confidence in a Cream\u2122 Transforming Moisturizing Super Cream",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 12
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "Plantscription\u2122 SPF 25 Power Anti-Aging Cream",
+        "price": 60,
+        "rating": 4.7,
+        "active_count": 7
+      },
+      {
+        "name": "Plantscription\u2122 Youth-Renewing Power Night Cream",
+        "price": 60,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "A Perfect World\u2122 SPF 40 Age-Defense Moisturizer with White Tea",
+        "price": 45,
+        "rating": 3.5,
+        "active_count": 7
+      }
+    ],
+    "SHISEIDO": [
+      {
+        "name": "Ibuki Refining Moisturizer Enriched",
+        "price": 45,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Benefiance WrinkleResist24 Day Emulsion Broad Spectrum SPF 18",
+        "price": 60,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Benefiance WrinkleResist24 Day Cream Broad Spectrum SPF 18",
+        "price": 60,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Normal__max80": {
+    "CAUDALIE": [
+      {
+        "name": "Resveratrol Lift Night Infusion Cream",
+        "price": 76,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "Resveratrol Lift Face Lifting Soft Cream",
+        "price": 76,
+        "rating": 3.9,
+        "active_count": 6
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Secret Sauce Clinically Advanced Miraculous Anti-Aging Moisturizer",
+        "price": 68,
+        "rating": 3.8,
+        "active_count": 11
+      }
+    ],
+    "SHISEIDO": [
+      {
+        "name": "White Lucent All Day Brightener Broad Spectrum SPF 23 Moisturizer",
+        "price": 62,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "Bio-Performance Advanced Super Revitalizing Cream",
+        "price": 78,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Benefiance WrinkleResist24 Night Emulsion",
+        "price": 63,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Normal__max120": {
+    "SHISEIDO": [
+      {
+        "name": "Bio-Performance Glow Revival Cream",
+        "price": 105,
+        "rating": 4.8,
+        "active_count": 5
+      },
+      {
+        "name": "Bio-Performance LiftDynamic Cream",
+        "price": 115,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ]
+  },
+  "Moisturizer__Normal__max200": {
+    "CAUDALIE": [
+      {
+        "name": "Premier Cru Rich Cream",
+        "price": 140,
+        "rating": 4.5,
+        "active_count": 8
+      },
+      {
+        "name": "Premier Cru Cream",
+        "price": 140,
+        "rating": 4.4,
+        "active_count": 7
+      }
+    ],
+    "SHISEIDO": [
+      {
+        "name": "Bio-Performance Advanced Super Restoring Cream",
+        "price": 127,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ]
+  },
+  "Moisturizer__Oily__max0": {
+    "LA MER": [
+      {
+        "name": "The Moisturizing Matte Lotion",
+        "price": 270,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "The Moisturizing Soft Lotion",
+        "price": 270,
+        "rating": 3.6,
+        "active_count": 2
+      },
+      {
+        "name": "Little Miss Miracle Limited-Edition Cr\u00e8me de la Mer",
+        "price": 325,
+        "rating": 5.0,
+        "active_count": 1
+      }
+    ]
+  },
+  "Moisturizer__Oily__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Limited Edition Dramatically Different\u2122 Moisturizing Gel",
+        "price": 39,
+        "rating": 5.0,
+        "active_count": 1
+      },
+      {
+        "name": "Dramatically Different Moisturizing Gel",
+        "price": 28,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Your Skin But Better CC+ Cream Oil-Free Matte with SPF 40",
+        "price": 38,
+        "rating": 3.9,
+        "active_count": 6
+      },
+      {
+        "name": "Miracle Water 3-in-1 Micellar Cleanser",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Bye Bye Redness\u2122 Neutralizing Correcting Cream",
+        "price": 32,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Oil-Control Mattifier SPF 15 PA++",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Skin Perfecting Lotion - Blemish Prone/Oily Skin",
+        "price": 40,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Oily__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Night Line Smoothing Cream for Very Dry to Dry Combination Skin",
+        "price": 52,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Smart Night Custom-Repair Moisturizer - Very Dry to Dry",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Even Better Skin Tone Correcting Moisturizer Broad Spectrum SPF 20",
+        "price": 50,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Oil-Free Moisture Cushion",
+        "price": 60,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Confidence in a Cream\u2122 Transforming Moisturizing Super Cream",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Anti-Aging Moisturizer SPF 30 PA+++",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Nutrient-Charged Water Gel",
+        "price": 60,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Oily__max80": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Anti-Aging Moisturizer",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 4
+      },
+      {
+        "name": "C+ Collagen Deep Cream",
+        "price": 72,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Secret Sauce Clinically Advanced Miraculous Anti-Aging Moisturizer",
+        "price": 68,
+        "rating": 3.8,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Ultimate Moisture",
+        "price": 75,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Essential-C Day Moisture Broad Spectrum SPF 30 PA+++",
+        "price": 63,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Oily__max120": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Wrinkle Recovery Overnight Serum",
+        "price": 88,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "LA MER": [
+      {
+        "name": "Cr\u00e8me de la Mer Mini",
+        "price": 85,
+        "rating": 4.1,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Night Cream",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Moisturizer__Oily__max200": {
+    "LA MER": [
+      {
+        "name": "The Moisturizing Soft Cream",
+        "price": 175,
+        "rating": 3.8,
+        "active_count": 2
+      },
+      {
+        "name": "Cr\u00e8me de la Mer",
+        "price": 175,
+        "rating": 4.1,
+        "active_count": 1
+      },
+      {
+        "name": "The Renewal Oil Mini",
+        "price": 130,
+        "rating": 4.0,
+        "active_count": 1
+      }
+    ]
+  },
+  "Moisturizer__Sensitive__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Moisture Surge Overnight Mask",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 7
+      },
+      {
+        "name": "Moisture Surge 72-Hour Auto-Replenishing Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Moisture Surge Intense Skin Fortifying Hydrator",
+        "price": 39,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Miracle Water 3-in-1 Micellar Cleanser",
+        "price": 38,
+        "rating": 4.5,
+        "active_count": 12
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+Illumination\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 3.9,
+        "active_count": 11
+      },
+      {
+        "name": "Your Skin But Better\u2122 CC+\u2122 Cream with SPF 50+",
+        "price": 38,
+        "rating": 4.1,
+        "active_count": 10
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Skin Perfecting Lotion - Blemish Prone/Oily Skin",
+        "price": 40,
+        "rating": 4.3,
+        "active_count": 9
+      },
+      {
+        "name": "Oil-Control Mattifier SPF 15 PA++",
+        "price": 40,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Nurture Me\u2122 Moisturizing Cr\u00e8me",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Counter Balance\u2122 Oil Control Hydrator",
+        "price": 34,
+        "rating": 4.3,
+        "active_count": 7
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "GinZing\u2122 Energy-Boosting Gel Moisturizer",
+        "price": 29,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "GinZing\u2122 SPF 40 Energy-Boosting Tinted Moisturizer",
+        "price": 39,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Original Skin\u2122 Matte Moisturizer with Willowherb",
+        "price": 35,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Sensitive__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Night Line Smoothing Cream for Very Dry to Dry Combination Skin",
+        "price": 52,
+        "rating": 4.7,
+        "active_count": 8
+      },
+      {
+        "name": "Smart Night Custom-Repair Moisturizer - Very Dry to Dry",
+        "price": 58,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "Superdefense SPF 20 Age Defense Moisturizer Very Dry to Dry Combination",
+        "price": 48,
+        "rating": 4.4,
+        "active_count": 5
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Confidence in a Cream\u2122 Transforming Moisturizing Super Cream",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 12
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Nutrient-Charged Water Gel",
+        "price": 60,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Anti-Aging Moisturizer SPF 30 PA+++",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ],
+    "OLEHENRIKSEN": [
+      {
+        "name": "Truth Revealed\u2122 Brightening Broad Spectrum SPF 15 Moisturizer",
+        "price": 55,
+        "rating": 4.2,
+        "active_count": 8
+      },
+      {
+        "name": "C-Rush\u2122 Brightening Gel Cr\u00e8me",
+        "price": 44,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Goodnight Glow Retin-ALT Sleeping Cr\u00e8me",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "ORIGINS": [
+      {
+        "name": "A Perfect World\u2122 SPF 40 Age-Defense Moisturizer with White Tea",
+        "price": 45,
+        "rating": 3.5,
+        "active_count": 6
+      },
+      {
+        "name": "Dr. Andrew Weil For Origins\u2122 Mega-Bright SPF 30 Skin Tone Correcting Oil-Free Moisturizer",
+        "price": 56,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "Plantscription\u2122 SPF 25 Power Anti-Aging Cream",
+        "price": 60,
+        "rating": 4.7,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Sensitive__max80": {
+    "IT COSMETICS": [
+      {
+        "name": "Secret Sauce Clinically Advanced Miraculous Anti-Aging Moisturizer",
+        "price": 68,
+        "rating": 3.8,
+        "active_count": 11
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Hydro-Dynamic\u00ae Ultimate Moisture",
+        "price": 75,
+        "rating": 4.4,
+        "active_count": 10
+      },
+      {
+        "name": "Essential-C Day Moisture Broad Spectrum SPF 30 PA+++",
+        "price": 63,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ]
+  },
+  "Moisturizer__Sensitive__max120": {
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Night Cream",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 5
+      }
+    ]
+  },
+  "Sun protect__Combination__max40": {
+    "CLINIQUE": [
+      {
+        "name": "City Block Sheer Oil-Free Daily Face Protector SPF 25",
+        "price": 26,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "Super City Block Oil-Free Daily Face Protector Broad Spectrum 40 SPF",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 1
+      },
+      {
+        "name": "Broad Spectrum SPF 50 Sunscreen Face Cream",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "MDSOLARSCIENCES": [
+      {
+        "name": "MD Cr\u00e8me Mineral Beauty Balm Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 2
+      },
+      {
+        "name": "Mineral Cr\u00e8me Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 30,
+        "rating": 4.3,
+        "active_count": 1
+      },
+      {
+        "name": "Mineral Moisture Defense Body Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 39,
+        "rating": 4.1,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Balancing Moisturizer Broad Spectrum SPF 15 PA++",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Oily Problem Skin Instant Mineral Powder SPF 30",
+        "price": 30,
+        "rating": 3.7,
+        "active_count": 3
+      },
+      {
+        "name": "Max Mineral Naked Broad Spectrum SPF 45",
+        "price": 38,
+        "rating": 4.6,
+        "active_count": 2
+      },
+      {
+        "name": "Instant Mineral SPF 45",
+        "price": 30,
+        "rating": 3.4,
+        "active_count": 2
+      }
+    ]
+  },
+  "Sun protect__Combination__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Very Dry to Dry Skin",
+        "price": 55,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Dry Combination Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Combination Oily Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Instant Radiance Sun Defense Sunscreen Broad Spectrum SPF 40",
+        "price": 42,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "Dark Spot Sun Defense Broad Spectrum SPF 50",
+        "price": 42,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "Sheer Mineral Sun Spray SPF 50",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Perfecting Day Cream Broad Spectrum SPF 30 PA+++",
+        "price": 54,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Sheer All Day Moisture Defense Lotion SPF 30 Sunscreen Lotion",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Sun protect__Combination__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Uplifting Firming Cream Broad Spectrum SPF 15",
+        "price": 64,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "MDSOLARSCIENCES": [
+      {
+        "name": "Daily Anti-Aging Moisturizer SPF 30",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "City Skin Age Defense Broad Spectrum SPF 50 PA++++",
+        "price": 65,
+        "rating": 4.7,
+        "active_count": 2
+      },
+      {
+        "name": "Resurgence\u00ae Age\u2013Balancing Moisture Broad Spectrum SPF 30",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ]
+  },
+  "Sun protect__Dry__max25": {
+    "SUPERGOOP!": [
+      {
+        "name": "Everyday Sunscreen Broad Spectrum SPF 50",
+        "price": 19,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Invincible Setting Powder SPF 45 Refill",
+        "price": 20,
+        "rating": 5.0,
+        "active_count": 2
+      },
+      {
+        "name": "Glow Stick Sunscreen SPF 50",
+        "price": 25,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ]
+  },
+  "Sun protect__Dry__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Broad Spectrum SPF 50 Sunscreen Face Cream",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Oil-Free Face Cream Broad Spectrum SPF 30",
+        "price": 26,
+        "rating": 3.3,
+        "active_count": 3
+      },
+      {
+        "name": "Super City Block Oil-Free Daily Face Protector Broad Spectrum 40 SPF",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Classic Sport SPF 50 - Fresh Mango",
+        "price": 32,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Mineral Face SPF 30 - Cucumber Matte",
+        "price": 36,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Mineral Face SPF 30 - Matte Tint",
+        "price": 36,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Balancing Moisturizer Broad Spectrum SPF 15 PA++",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "Super Power Sunscreen Mousse Broad Spectrum SPF 50",
+        "price": 34,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "Unseen Sunscreen Broad Spectrum SPF 40",
+        "price": 32,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "100% Mineral Sunscreen Mist with Marigold Extract Broad Spectrum SPF 30",
+        "price": 34,
+        "rating": 3.8,
+        "active_count": 3
+      }
+    ]
+  },
+  "Sun protect__Dry__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Line Smoothing Cream Broad Spectrum SPF 15 for Very Dry to Dry Combination Skin",
+        "price": 50,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Very Dry to Dry Skin",
+        "price": 55,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Superdefense SPF 20 Age Defense Moisturizer Combination Oily to Oily",
+        "price": 48,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Full Spectrum 360\u00b0 Sun Silk Drops SPF 30",
+        "price": 46,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "R\u014dsilliance\u2122 Organic BB+ Cream SPF 30",
+        "price": 52,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "DayWear UV Base Advanced Anti-Oxidant & UV Defense SPF 50",
+        "price": 44,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "DayWear BB Anti-Oxidant Beauty Benefit Cr\u00e8me SPF 35",
+        "price": 42,
+        "rating": 3.7,
+        "active_count": 5
+      },
+      {
+        "name": "DayWear Multi-Protection Anti-Oxidant Sheer Tint Release Moisturizer Broad Spectrum SPF 15 - Normal/ Combination Skin",
+        "price": 54,
+        "rating": 4.6,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Perfecting Day Cream Broad Spectrum SPF 30 PA+++",
+        "price": 54,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "City Sunscreen Serum SPF 30",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ]
+  },
+  "Sun protect__Dry__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Uplifting Firming Cream Broad Spectrum SPF 15",
+        "price": 64,
+        "rating": 3.8,
+        "active_count": 4
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "Advanced Time Zone SPF 15- Normal/Combination Skin",
+        "price": 75,
+        "rating": 3.8,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Resurgence\u00ae Age\u2013Balancing Moisture Broad Spectrum SPF 30",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 8
+      },
+      {
+        "name": "City Skin Age Defense Broad Spectrum SPF 50 PA++++",
+        "price": 65,
+        "rating": 4.7,
+        "active_count": 4
+      }
+    ]
+  },
+  "Sun protect__Normal__max25": {
+    "SUPERGOOP!": [
+      {
+        "name": "Invincible Setting Powder SPF 45 Refill",
+        "price": 20,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "Everyday Sunscreen Broad Spectrum SPF 50",
+        "price": 19,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Glow Stick Sunscreen SPF 50",
+        "price": 25,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ]
+  },
+  "Sun protect__Normal__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Broad Spectrum SPF 50 Sunscreen Face Cream",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "Oil-Free Face Cream Broad Spectrum SPF 30",
+        "price": 26,
+        "rating": 3.3,
+        "active_count": 4
+      },
+      {
+        "name": "Super City Block Oil-Free Daily Face Protector Broad Spectrum 40 SPF",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Makeup Setting Spray SPF 30",
+        "price": 36,
+        "rating": 3.4,
+        "active_count": 4
+      },
+      {
+        "name": "Sport Continuous Spray SPF 30 - Unscented",
+        "price": 32,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "ER+ Radical Recovery After-Sun Lotion",
+        "price": 32,
+        "rating": 4.8,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Balancing Moisturizer Broad Spectrum SPF 15 PA++",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "Forever Young Body Butter with Sea Buckthorn SPF 40 PA+++",
+        "price": 34,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "Super Power Sunscreen Mousse Broad Spectrum SPF 50",
+        "price": 34,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "100% Mineral Smooth & Poreless Matte Screen SPF 40",
+        "price": 38,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ]
+  },
+  "Sun protect__Normal__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Very Dry to Dry Skin",
+        "price": 55,
+        "rating": 4.4,
+        "active_count": 8
+      },
+      {
+        "name": "Repairwear Laser Focus Line Smoothing Cream Broad Spectrum SPF 15 for Very Dry to Dry Combination Skin",
+        "price": 50,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Dry Combination Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 7
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Full Spectrum 360\u00b0 Sun Silk Drops SPF 30",
+        "price": 46,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "R\u014dsilliance\u2122 Organic BB+ Cream SPF 30",
+        "price": 52,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "DayWear UV Base Advanced Anti-Oxidant & UV Defense SPF 50",
+        "price": 44,
+        "rating": 4.2,
+        "active_count": 7
+      },
+      {
+        "name": "DayWear BB Anti-Oxidant Beauty Benefit Cr\u00e8me SPF 35",
+        "price": 42,
+        "rating": 3.7,
+        "active_count": 6
+      },
+      {
+        "name": "DayWear Multi-Protection Anti-Oxidant Sheer Tint Release Moisturizer Broad Spectrum SPF 15 - Normal/ Combination Skin",
+        "price": 54,
+        "rating": 4.6,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Perfecting Day Cream Broad Spectrum SPF 30 PA+++",
+        "price": 54,
+        "rating": 4.2,
+        "active_count": 7
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "City Sunscreen Serum SPF 30",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Sun protect__Normal__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Uplifting Firming Cream Broad Spectrum SPF 15",
+        "price": 64,
+        "rating": 3.8,
+        "active_count": 5
+      }
+    ],
+    "EST\u00c9E LAUDER": [
+      {
+        "name": "Advanced Time Zone SPF 15- Normal/Combination Skin",
+        "price": 75,
+        "rating": 3.8,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Resurgence\u00ae Age\u2013Balancing Moisture Broad Spectrum SPF 30",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "City Skin Age Defense Broad Spectrum SPF 50 PA++++",
+        "price": 65,
+        "rating": 4.7,
+        "active_count": 5
+      }
+    ]
+  },
+  "Sun protect__Oily__max40": {
+    "CLINIQUE": [
+      {
+        "name": "City Block Sheer Oil-Free Daily Face Protector SPF 25",
+        "price": 26,
+        "rating": 4.1,
+        "active_count": 1
+      },
+      {
+        "name": "Oil-Free Face Cream Broad Spectrum SPF 30",
+        "price": 26,
+        "rating": 3.3,
+        "active_count": 1
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Anti-Aging Armour\u2122 Super Smart Skin-Perfecting Beauty Fluid SPF 50+",
+        "price": 38,
+        "rating": 4.1,
+        "active_count": 6
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "UncompliKated SPF 50 Soft Focus Makeup Setting Spray",
+        "price": 38,
+        "rating": 3.2,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Balancing Moisturizer Broad Spectrum SPF 15 PA++",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Oily Problem Skin Instant Mineral Powder SPF 30",
+        "price": 30,
+        "rating": 3.7,
+        "active_count": 4
+      },
+      {
+        "name": "Max Mineral Naked Broad Spectrum SPF 45",
+        "price": 38,
+        "rating": 4.6,
+        "active_count": 1
+      },
+      {
+        "name": "Instant Mineral SPF 45",
+        "price": 30,
+        "rating": 3.4,
+        "active_count": 1
+      }
+    ]
+  },
+  "Sun protect__Oily__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Very Dry to Dry Skin",
+        "price": 55,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Dry Combination Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Combination Oily Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Daily Deflector\u2122 Moisturizer Broad Spectrum SPF 50+",
+        "price": 48,
+        "rating": 3.9,
+        "active_count": 5
+      },
+      {
+        "name": "Daily Deflector\u2122 Waterlight Broad Spectrum SPF 50+ PA+++ Anti-Aging Sunscreen",
+        "price": 48,
+        "rating": 3.6,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Perfecting Day Cream Broad Spectrum SPF 30 PA+++",
+        "price": 54,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Sheer All Day Moisture Defense Lotion SPF 30 Sunscreen Lotion",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Sun protect__Oily__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Uplifting Firming Cream Broad Spectrum SPF 15",
+        "price": 64,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "City Skin Age Defense Broad Spectrum SPF 50 PA++++",
+        "price": 65,
+        "rating": 4.7,
+        "active_count": 1
+      },
+      {
+        "name": "Resurgence\u00ae Age\u2013Balancing Moisture Broad Spectrum SPF 30",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ]
+  },
+  "Sun protect__Sensitive__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Pep-Start Daily UV Protector Broad Spectrum SPF 50",
+        "price": 19,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "MDSOLARSCIENCES": [
+      {
+        "name": "Mineral Sunscreen Stick Broad Spectrum SPF 40 UVA-UVB Sunscreen",
+        "price": 18,
+        "rating": 4.5,
+        "active_count": 1
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "Everyday Sunscreen Broad Spectrum SPF 50",
+        "price": 19,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Invincible Setting Powder SPF 45 Refill",
+        "price": 20,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "Glow Stick Sunscreen SPF 50",
+        "price": 25,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ]
+  },
+  "Sun protect__Sensitive__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Super City Block Oil-Free Daily Face Protector Broad Spectrum 40 SPF",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "City Block Sheer Oil-Free Daily Face Protector SPF 25",
+        "price": 26,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "Broad Spectrum SPF 50 Sunscreen Face Cream",
+        "price": 26,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Makeup Setting Spray SPF 30",
+        "price": 36,
+        "rating": 3.4,
+        "active_count": 3
+      },
+      {
+        "name": "Sport Continuous Spray SPF 30 - Unscented",
+        "price": 32,
+        "rating": 5.0,
+        "active_count": 2
+      },
+      {
+        "name": "ER+ Radical Recovery After-Sun Lotion",
+        "price": 32,
+        "rating": 4.8,
+        "active_count": 2
+      }
+    ],
+    "MDSOLARSCIENCES": [
+      {
+        "name": "MD Cr\u00e8me Mineral Beauty Balm Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 39,
+        "rating": 4.2,
+        "active_count": 4
+      },
+      {
+        "name": "Mineral Cr\u00e8me Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 30,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Mineral Moisture Defense Body Broad Spectrum SPF 50 UVA-UVB Sunscreen",
+        "price": 39,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Balancing Moisturizer Broad Spectrum SPF 15 PA++",
+        "price": 40,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "Super Power Sunscreen Mousse Broad Spectrum SPF 50",
+        "price": 34,
+        "rating": 4.3,
+        "active_count": 5
+      },
+      {
+        "name": "100% Mineral Sunscreen Mist with Marigold Extract Broad Spectrum SPF 30",
+        "price": 34,
+        "rating": 3.8,
+        "active_count": 5
+      },
+      {
+        "name": "Forever Young Body Butter with Sea Buckthorn SPF 40 PA+++",
+        "price": 34,
+        "rating": 4.7,
+        "active_count": 3
+      }
+    ]
+  },
+  "Sun protect__Sensitive__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Laser Focus Line Smoothing Cream Broad Spectrum SPF 15 for Very Dry to Dry Combination Skin",
+        "price": 50,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Very Dry to Dry Skin",
+        "price": 55,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Smart Broad Spectrum SPF 15 Custom-Repair Moisturizer for Dry Combination Skin",
+        "price": 55,
+        "rating": 4.3,
+        "active_count": 5
+      }
+    ],
+    "COOLA": [
+      {
+        "name": "Full Spectrum 360\u00b0 Sun Silk Drops SPF 30",
+        "price": 46,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "R\u014dsilliance\u2122 Organic BB+ Cream SPF 30",
+        "price": 52,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Perfecting Day Cream Broad Spectrum SPF 30 PA+++",
+        "price": 54,
+        "rating": 4.2,
+        "active_count": 8
+      }
+    ],
+    "SUPERGOOP!": [
+      {
+        "name": "City Sunscreen Serum SPF 30",
+        "price": 42,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ]
+  },
+  "Sun protect__Sensitive__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Repairwear Uplifting Firming Cream Broad Spectrum SPF 15",
+        "price": 64,
+        "rating": 3.8,
+        "active_count": 4
+      }
+    ],
+    "MDSOLARSCIENCES": [
+      {
+        "name": "Daily Anti-Aging Moisturizer SPF 30",
+        "price": 75,
+        "rating": 4.1,
+        "active_count": 10
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Resurgence\u00ae Age\u2013Balancing Moisture Broad Spectrum SPF 30",
+        "price": 72,
+        "rating": 4.3,
+        "active_count": 8
+      },
+      {
+        "name": "City Skin Age Defense Broad Spectrum SPF 50 PA++++",
+        "price": 65,
+        "rating": 4.7,
+        "active_count": 7
+      }
+    ]
+  },
+  "Treatment__Combination__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed Daily Booster with Pure Vitamin C 10%",
+        "price": 19,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "Acne Solutions All-Over Clearing Treatment Oil-Free",
+        "price": 24,
+        "rating": 4.0,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Combination__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Acne Solutions Clear Skin System Starter Kit",
+        "price": 28,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "EradiKate\u2122 Acne Treatment",
+        "price": 26,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Body Wash",
+        "price": 40,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Complexion Correction Pads",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Acne System",
+        "price": 35,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Acne-Clear Invisible Dots",
+        "price": 30,
+        "rating": 3.6,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Combination__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Clinique Smart Custom-Repair Serum",
+        "price": 60,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "Repairwear Laser Focus",
+        "price": 50,
+        "rating": 4.1,
+        "active_count": 2
+      },
+      {
+        "name": "Sculptwear Lift and Contour Serum for Face and Neck",
+        "price": 56,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "EradiKate\u00ae Salicylic Acid Acne Treatment",
+        "price": 58,
+        "rating": 4.6,
+        "active_count": 1
+      },
+      {
+        "name": "Anti Bac Clearing Lotion",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "D-Scar\u2122 Scar Diminishing Serum",
+        "price": 48,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Advanced Acne & Wrinkle Reducer",
+        "price": 52,
+        "rating": 4.0,
+        "active_count": 4
+      },
+      {
+        "name": "Intensive-C\u00ae Radiance Peel",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 3
+      },
+      {
+        "name": "Rapid Resurfacing Peel",
+        "price": 44,
+        "rating": 4.7,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Peel Pads",
+        "price": 45,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "20% Glycolic Solutions Jumbo Peel Swab",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Instant Firmx\u2122",
+        "price": 48,
+        "rating": 3.7,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Combination__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Even Better Clinical Dark Spot Corrector & Optimizer",
+        "price": 80,
+        "rating": 3.1,
+        "active_count": 4
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Hydration Booster",
+        "price": 68,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Vitamin C Serum",
+        "price": 78,
+        "rating": 3.9,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Quench Hydrating Face Serum",
+        "price": 75,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Active Retinol Renewal Kit",
+        "price": 68,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "Complete Reform",
+        "price": 78,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Invisiblur\u2122 Perfecting Shield Broad Spectrum SPF 30 PA+++",
+        "price": 65,
+        "rating": 3.9,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Serum",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Combination__max120": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Alpha Beta\u00ae Ultra Gentle Daily Peel for Sensitive Skin",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 7
+      },
+      {
+        "name": "Alpha Beta\u00ae Extra Strength Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Alpha Beta\u00ae Universal Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 6
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "RetAsphere\u2122 Micro Peel",
+        "price": 90,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "+Retinol Vita C Power Serum",
+        "price": 98,
+        "rating": 3.9,
+        "active_count": 4
+      },
+      {
+        "name": "DermalQuench Liquid Lift\u2122 Advanced Wrinkle Treatment",
+        "price": 95,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Serum",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 3
+      },
+      {
+        "name": "Advanced Active Radiance\u00ae Serum",
+        "price": 90,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Revitalixir\u2122 Recovery Serum",
+        "price": 89,
+        "rating": 4.5,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "PROfessional Strength 40% Triple Acid Peel",
+        "price": 88,
+        "rating": 4.0,
+        "active_count": 4
+      },
+      {
+        "name": "Professional 3% Retinoid Plus",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Potent-C\u2122 Power Serum",
+        "price": 95,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Combination__max200": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "FIRMx Growth Factor Extreme Neuropeptide Serum",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Un-Wrinkle\u00ae Turbo Face Serum",
+        "price": 150,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Dry__max25": {
+    "MURAD": [
+      {
+        "name": "Rapid Relief Acne Spot Treatment",
+        "price": 22,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Dry__max40": {
+    "ALGENIST": [
+      {
+        "name": "REVEAL Concentrated Color Correcting Drops",
+        "price": 38,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Body Wash",
+        "price": 40,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Complexion Correction Pads",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "Acne System",
+        "price": 35,
+        "rating": 4.3,
+        "active_count": 1
+      },
+      {
+        "name": "Acne-Clear Invisible Dots",
+        "price": 30,
+        "rating": 3.6,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Dry__max60": {
+    "ALGENIST": [
+      {
+        "name": "Pore Corrector Anti-Aging Primer",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Targeted Deep Wrinkle Minimizer",
+        "price": 45,
+        "rating": 3.6,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "EradiKate\u00ae Salicylic Acid Acne Treatment",
+        "price": 58,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Anti Bac Clearing Lotion",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "D-Scar\u2122 Scar Diminishing Serum",
+        "price": 48,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Intensive-C\u00ae Radiance Peel",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 4
+      },
+      {
+        "name": "Outsmart Acne Clarifying Treatment",
+        "price": 44,
+        "rating": 4.3,
+        "active_count": 4
+      },
+      {
+        "name": "Advanced Acne & Wrinkle Reducer",
+        "price": 52,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Instant Firmx\u2122",
+        "price": 48,
+        "rating": 3.7,
+        "active_count": 4
+      },
+      {
+        "name": "Un-Wrinkle Peel Pads",
+        "price": 45,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Therapeutic Sulfur Mask Acne Treatment Mask",
+        "price": 47,
+        "rating": 4.6,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Dry__max80": {
+    "ALGENIST": [
+      {
+        "name": "POWER Advanced Wrinkle Fighter 360\u00b0 Eye Serum",
+        "price": 70,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Hydration Booster",
+        "price": 68,
+        "rating": 4.4,
+        "active_count": 7
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Vitamin C Serum",
+        "price": 78,
+        "rating": 3.9,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Quench Hydrating Face Serum",
+        "price": 75,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Active Retinol Renewal Kit",
+        "price": 68,
+        "rating": 5.0,
+        "active_count": 7
+      },
+      {
+        "name": "Rapid Age Spot and Pigment Lightening Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 4
+      },
+      {
+        "name": "Post-Acne Spot Lightening Gel",
+        "price": 65,
+        "rating": 3.7,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Water Drench Hyaluronic Cloud Serum",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Retinol Fusion PM",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Dry__max120": {
+    "ALGENIST": [
+      {
+        "name": "ELEVATE Advanced Lift Contouring Cream",
+        "price": 96,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "ELEVATE Advanced Retinol Serum",
+        "price": 98,
+        "rating": 4.8,
+        "active_count": 4
+      },
+      {
+        "name": "GENIUS Ultimate Anti-Aging Bi-Phase Peel",
+        "price": 85,
+        "rating": 4.6,
+        "active_count": 3
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Wrinkle Recovery Peel",
+        "price": 88,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Ferulic Acid + Retinol Brightening Solution",
+        "price": 88,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "Alpha Beta\u00ae Extra Strength Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Age Arrest Anti-Wrinkle Cream",
+        "price": 90,
+        "rating": 4.1,
+        "active_count": 5
+      },
+      {
+        "name": "RetAsphere\u2122 Micro Peel",
+        "price": 90,
+        "rating": 4.7,
+        "active_count": 4
+      },
+      {
+        "name": "DermalQuench Liquid Lift\u2122 + Retinol Advanced Resurfacing Treatment",
+        "price": 98,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Serum",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 7
+      },
+      {
+        "name": "Revitalixir\u2122 Recovery Serum",
+        "price": 89,
+        "rating": 4.5,
+        "active_count": 5
+      },
+      {
+        "name": "Advanced Active Radiance\u00ae Serum",
+        "price": 90,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Potent-C\u2122 Power Serum",
+        "price": 95,
+        "rating": 4.3,
+        "active_count": 5
+      },
+      {
+        "name": "Professional 3% Retinoid Plus",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "PROfessional Strength 40% Triple Acid Peel",
+        "price": 88,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Dry__max200": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "FIRMx Growth Factor Extreme Neuropeptide Serum",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "Un-Wrinkle\u00ae Turbo Face Serum",
+        "price": 150,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ]
+  },
+  "Treatment__Normal__max25": {
+    "MURAD": [
+      {
+        "name": "Rapid Relief Acne Spot Treatment",
+        "price": 22,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Normal__max40": {
+    "ALGENIST": [
+      {
+        "name": "REVEAL Concentrated Color Correcting Drops",
+        "price": 38,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Body Wash",
+        "price": 40,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Complexion Correction Pads",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 3
+      },
+      {
+        "name": "Acne System",
+        "price": 35,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Acne-Clear Invisible Dots",
+        "price": 30,
+        "rating": 3.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Normal__max60": {
+    "ALGENIST": [
+      {
+        "name": "Pore Corrector Anti-Aging Primer",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "Targeted Deep Wrinkle Minimizer",
+        "price": 45,
+        "rating": 3.6,
+        "active_count": 5
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "D-Scar\u2122 Scar Diminishing Serum",
+        "price": 48,
+        "rating": 4.2,
+        "active_count": 5
+      },
+      {
+        "name": "EradiKate\u00ae Salicylic Acid Acne Treatment",
+        "price": 58,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Anti Bac Clearing Lotion",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Advanced Acne & Wrinkle Reducer",
+        "price": 52,
+        "rating": 4.0,
+        "active_count": 9
+      },
+      {
+        "name": "Intensive-C\u00ae Radiance Peel",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Outsmart Acne Clarifying Treatment",
+        "price": 44,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Peel Pads",
+        "price": 45,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "AHA/BHA Acne Clearing Gel",
+        "price": 54,
+        "rating": 0.0,
+        "active_count": 5
+      },
+      {
+        "name": "Instant Firmx\u2122",
+        "price": 48,
+        "rating": 3.7,
+        "active_count": 4
+      }
+    ]
+  },
+  "Treatment__Normal__max80": {
+    "ALGENIST": [
+      {
+        "name": "POWER Advanced Wrinkle Fighter 360\u00b0 Eye Serum",
+        "price": 70,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Hydration Booster",
+        "price": 68,
+        "rating": 4.4,
+        "active_count": 10
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Vitamin C Serum",
+        "price": 78,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Quench Hydrating Face Serum",
+        "price": 75,
+        "rating": 4.2,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Active Retinol Renewal Kit",
+        "price": 68,
+        "rating": 5.0,
+        "active_count": 9
+      },
+      {
+        "name": "Rapid Age Spot and Pigment Lightening Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 7
+      },
+      {
+        "name": "Post-Acne Spot Lightening Gel",
+        "price": 65,
+        "rating": 3.7,
+        "active_count": 6
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Serum",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Normal__max120": {
+    "ALGENIST": [
+      {
+        "name": "ELEVATE Advanced Retinol Serum",
+        "price": 98,
+        "rating": 4.8,
+        "active_count": 7
+      },
+      {
+        "name": "GENIUS Ultimate Anti-Aging Vitamin C+ Serum",
+        "price": 118,
+        "rating": 3.9,
+        "active_count": 6
+      },
+      {
+        "name": "GENIUS Ultimate Anti-Aging Bi-Phase Peel",
+        "price": 85,
+        "rating": 4.6,
+        "active_count": 5
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Alpha Beta\u00ae Extra Strength Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 9
+      },
+      {
+        "name": "Ferulic + Retinol Wrinkle Recovery Peel",
+        "price": 88,
+        "rating": 4.4,
+        "active_count": 9
+      },
+      {
+        "name": "Alpha Beta\u00ae Universal Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 8
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "+Retinol Vita C Power Serum",
+        "price": 98,
+        "rating": 3.9,
+        "active_count": 8
+      },
+      {
+        "name": "RetAsphere\u2122 Micro Peel",
+        "price": 90,
+        "rating": 4.7,
+        "active_count": 7
+      },
+      {
+        "name": "Age Arrest Anti-Wrinkle Cream",
+        "price": 90,
+        "rating": 4.1,
+        "active_count": 7
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Serum",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 8
+      },
+      {
+        "name": "Revitalixir\u2122 Recovery Serum",
+        "price": 89,
+        "rating": 4.5,
+        "active_count": 7
+      },
+      {
+        "name": "Advanced Active Radiance\u00ae Serum",
+        "price": 90,
+        "rating": 4.2,
+        "active_count": 7
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Professional 3% Retinoid Plus",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "PROfessional Strength 40% Triple Acid Peel",
+        "price": 88,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Potent-C\u2122 Power Serum",
+        "price": 95,
+        "rating": 4.3,
+        "active_count": 4
+      }
+    ]
+  },
+  "Treatment__Normal__max200": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "FIRMx Growth Factor Extreme Neuropeptide Serum",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 7
+      },
+      {
+        "name": "Un-Wrinkle\u00ae Turbo Face Serum",
+        "price": 150,
+        "rating": 3.7,
+        "active_count": 7
+      }
+    ]
+  },
+  "Treatment__Oily__max25": {
+    "CLINIQUE": [
+      {
+        "name": "Fresh Pressed Daily Booster with Pure Vitamin C 10%",
+        "price": 19,
+        "rating": 4.0,
+        "active_count": 2
+      },
+      {
+        "name": "Acne Solutions All-Over Clearing Treatment Oil-Free",
+        "price": 24,
+        "rating": 4.0,
+        "active_count": 2
+      },
+      {
+        "name": "Acne Solutions Clearing Concealer",
+        "price": 18,
+        "rating": 3.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Oily__max40": {
+    "CLINIQUE": [
+      {
+        "name": "Acne Solutions Clear Skin System Starter Kit",
+        "price": 28,
+        "rating": 4.0,
+        "active_count": 3
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Bye Bye Breakout\u2122 Full-Coverage Concealer",
+        "price": 28,
+        "rating": 3.9,
+        "active_count": 9
+      },
+      {
+        "name": "Bye Bye Pores Primer\u2122 Oil-Free Poreless Skin-Perfecting Serum Primer",
+        "price": 38,
+        "rating": 3.6,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Body Wash",
+        "price": 40,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Complexion Correction Pads",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 2
+      },
+      {
+        "name": "Acne System",
+        "price": 35,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Acne-Clear Invisible Dots",
+        "price": 30,
+        "rating": 3.6,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Oily__max60": {
+    "CLINIQUE": [
+      {
+        "name": "Clinique Smart Custom-Repair Serum",
+        "price": 60,
+        "rating": 4.0,
+        "active_count": 2
+      },
+      {
+        "name": "Sculptwear Lift and Contour Serum for Face and Neck",
+        "price": 56,
+        "rating": 3.8,
+        "active_count": 2
+      },
+      {
+        "name": "Repairwear Laser Focus",
+        "price": 50,
+        "rating": 4.1,
+        "active_count": 1
+      }
+    ],
+    "IT COSMETICS": [
+      {
+        "name": "Bye Bye Lines Serum\u2122 Advanced Anti-Aging Wrinkle-Smoothing Miracle Concentrate",
+        "price": 58,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Advanced Acne & Wrinkle Reducer",
+        "price": 52,
+        "rating": 4.0,
+        "active_count": 6
+      },
+      {
+        "name": "Intensive-C\u00ae Radiance Peel",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 5
+      },
+      {
+        "name": "Outsmart Acne Clarifying Treatment",
+        "price": 44,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Peel Pads",
+        "price": 45,
+        "rating": 4.6,
+        "active_count": 4
+      },
+      {
+        "name": "Therapeutic Sulfur Mask Acne Treatment Mask",
+        "price": 47,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "20% Glycolic Solutions Jumbo Peel Swab",
+        "price": 48,
+        "rating": 4.3,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Oily__max80": {
+    "CLINIQUE": [
+      {
+        "name": "Even Better Clinical Dark Spot Corrector & Optimizer",
+        "price": 80,
+        "rating": 3.1,
+        "active_count": 3
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Hydration Booster",
+        "price": 68,
+        "rating": 4.4,
+        "active_count": 6
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Vitamin C Serum",
+        "price": 78,
+        "rating": 3.9,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Active Retinol Renewal Kit",
+        "price": 68,
+        "rating": 5.0,
+        "active_count": 3
+      },
+      {
+        "name": "Complete Reform",
+        "price": 78,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Rapid Age Spot and Pigment Lightening Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 1
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Serum",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Oily__max120": {
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Alpha Beta\u00ae Extra Strength Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Alpha Beta\u00ae Universal Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 6
+      },
+      {
+        "name": "Alpha Beta\u00ae Ultra Gentle Daily Peel for Sensitive Skin",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 6
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Advanced Active Radiance\u00ae Serum",
+        "price": 90,
+        "rating": 4.2,
+        "active_count": 3
+      },
+      {
+        "name": "Revitalixir\u2122 Recovery Serum",
+        "price": 89,
+        "rating": 4.5,
+        "active_count": 2
+      },
+      {
+        "name": "Retinol Youth Renewal Serum",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 2
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "PROfessional Strength 40% Triple Acid Peel",
+        "price": 88,
+        "rating": 4.0,
+        "active_count": 3
+      },
+      {
+        "name": "Professional 3% Retinoid Plus",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 1
+      },
+      {
+        "name": "Potent-C\u2122 Power Serum",
+        "price": 95,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Oily__max200": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "FIRMx Growth Factor Extreme Neuropeptide Serum",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 2
+      },
+      {
+        "name": "Un-Wrinkle\u00ae Turbo Face Serum",
+        "price": 150,
+        "rating": 3.7,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Sensitive__max25": {
+    "MURAD": [
+      {
+        "name": "Rapid Relief Acne Spot Treatment",
+        "price": 22,
+        "rating": 4.1,
+        "active_count": 3
+      }
+    ]
+  },
+  "Treatment__Sensitive__max40": {
+    "ALGENIST": [
+      {
+        "name": "REVEAL Concentrated Color Correcting Drops",
+        "price": 38,
+        "rating": 3.8,
+        "active_count": 1
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "EradiKate\u2122 Acne Treatment",
+        "price": 26,
+        "rating": 4.3,
+        "active_count": 1
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Body Wash",
+        "price": 40,
+        "rating": 4.1,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Max Complexion Correction Pads",
+        "price": 40,
+        "rating": 4.4,
+        "active_count": 4
+      },
+      {
+        "name": "Acne System",
+        "price": 35,
+        "rating": 4.3,
+        "active_count": 2
+      },
+      {
+        "name": "Acne-Clear Invisible Dots",
+        "price": 30,
+        "rating": 3.6,
+        "active_count": 1
+      }
+    ]
+  },
+  "Treatment__Sensitive__max60": {
+    "ALGENIST": [
+      {
+        "name": "Pore Corrector Anti-Aging Primer",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Targeted Deep Wrinkle Minimizer",
+        "price": 45,
+        "rating": 3.6,
+        "active_count": 4
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "D-Scar\u2122 Scar Diminishing Serum",
+        "price": 48,
+        "rating": 4.2,
+        "active_count": 4
+      },
+      {
+        "name": "EradiKate\u00ae Salicylic Acid Acne Treatment",
+        "price": 58,
+        "rating": 4.6,
+        "active_count": 3
+      },
+      {
+        "name": "Anti Bac Clearing Lotion",
+        "price": 42,
+        "rating": 4.4,
+        "active_count": 2
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Acne Clearing Solution",
+        "price": 42,
+        "rating": 3.9,
+        "active_count": 6
+      },
+      {
+        "name": "Advanced Acne & Wrinkle Reducer",
+        "price": 52,
+        "rating": 4.0,
+        "active_count": 5
+      },
+      {
+        "name": "Intensive-C\u00ae Radiance Peel",
+        "price": 55,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Un-Wrinkle Peel Pads",
+        "price": 45,
+        "rating": 4.6,
+        "active_count": 6
+      },
+      {
+        "name": "Instant Firmx\u2122",
+        "price": 48,
+        "rating": 3.7,
+        "active_count": 5
+      },
+      {
+        "name": "Potent-C\u2122 Targeted Spot Brightener",
+        "price": 58,
+        "rating": 4.5,
+        "active_count": 4
+      }
+    ]
+  },
+  "Treatment__Sensitive__max80": {
+    "ALGENIST": [
+      {
+        "name": "POWER Advanced Wrinkle Fighter 360\u00b0 Eye Serum",
+        "price": 70,
+        "rating": 4.1,
+        "active_count": 2
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Hyaluronic Marine Hydration Booster",
+        "price": 68,
+        "rating": 4.4,
+        "active_count": 9
+      },
+      {
+        "name": "C+ Collagen Brighten & Firm Vitamin C Serum",
+        "price": 78,
+        "rating": 3.9,
+        "active_count": 3
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Quench Hydrating Face Serum",
+        "price": 75,
+        "rating": 4.2,
+        "active_count": 3
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Active Retinol Renewal Kit",
+        "price": 68,
+        "rating": 5.0,
+        "active_count": 7
+      },
+      {
+        "name": "Rapid Age Spot and Pigment Lightening Serum",
+        "price": 69,
+        "rating": 3.8,
+        "active_count": 5
+      },
+      {
+        "name": "Post-Acne Spot Lightening Gel",
+        "price": 65,
+        "rating": 3.7,
+        "active_count": 5
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Retinol Fusion PM",
+        "price": 65,
+        "rating": 4.4,
+        "active_count": 5
+      },
+      {
+        "name": "Water Drench Hyaluronic Cloud Serum",
+        "price": 65,
+        "rating": 4.2,
+        "active_count": 2
+      }
+    ]
+  },
+  "Treatment__Sensitive__max120": {
+    "ALGENIST": [
+      {
+        "name": "ELEVATE Advanced Lift Contouring Cream",
+        "price": 96,
+        "rating": 4.3,
+        "active_count": 6
+      },
+      {
+        "name": "ELEVATE Advanced Retinol Serum",
+        "price": 98,
+        "rating": 4.8,
+        "active_count": 5
+      },
+      {
+        "name": "GENIUS Ultimate Anti-Aging Vitamin C+ Serum",
+        "price": 118,
+        "rating": 3.9,
+        "active_count": 4
+      }
+    ],
+    "DR. DENNIS GROSS SKINCARE": [
+      {
+        "name": "Ferulic + Retinol Wrinkle Recovery Peel",
+        "price": 88,
+        "rating": 4.4,
+        "active_count": 9
+      },
+      {
+        "name": "Alpha Beta\u00ae Ultra Gentle Daily Peel for Sensitive Skin",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 7
+      },
+      {
+        "name": "Alpha Beta\u00ae Extra Strength Daily Peel",
+        "price": 88,
+        "rating": 4.5,
+        "active_count": 6
+      }
+    ],
+    "KATE SOMERVILLE": [
+      {
+        "name": "Age Arrest Anti-Wrinkle Cream",
+        "price": 90,
+        "rating": 4.1,
+        "active_count": 7
+      },
+      {
+        "name": "RetAsphere\u2122 Micro Peel",
+        "price": 90,
+        "rating": 4.7,
+        "active_count": 5
+      },
+      {
+        "name": "DermalQuench Liquid Lift\u2122 + Retinol Advanced Resurfacing Treatment",
+        "price": 98,
+        "rating": 4.1,
+        "active_count": 5
+      }
+    ],
+    "MURAD": [
+      {
+        "name": "Retinol Youth Renewal Serum",
+        "price": 88,
+        "rating": 4.3,
+        "active_count": 7
+      },
+      {
+        "name": "Advanced Active Radiance\u00ae Serum",
+        "price": 90,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Rapid Collagen Infusion",
+        "price": 84,
+        "rating": 4.2,
+        "active_count": 5
+      }
+    ],
+    "PETER THOMAS ROTH": [
+      {
+        "name": "Professional 3% Retinoid Plus",
+        "price": 82,
+        "rating": 4.6,
+        "active_count": 5
+      },
+      {
+        "name": "Potent-C\u2122 Power Serum",
+        "price": 95,
+        "rating": 4.3,
+        "active_count": 5
+      },
+      {
+        "name": "PROfessional Strength 40% Triple Acid Peel",
+        "price": 88,
+        "rating": 4.0,
+        "active_count": 4
+      }
+    ]
+  },
+  "Treatment__Sensitive__max200": {
+    "PETER THOMAS ROTH": [
+      {
+        "name": "FIRMx Growth Factor Extreme Neuropeptide Serum",
+        "price": 150,
+        "rating": 4.2,
+        "active_count": 6
+      },
+      {
+        "name": "Un-Wrinkle\u00ae Turbo Face Serum",
+        "price": 150,
+        "rating": 3.7,
+        "active_count": 6
+      }
+    ]
+  }
+}
