@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../style.css" />
 
     <style>
       :root {
@@ -158,16 +158,6 @@
 
       <figure>
         <div id="controls"></div>
-        <!-- annotations -->
-        <aside id="annotations" style="max-width:560px; text-align:left; margin:0.75rem auto; border:1px solid #ddd; border-radius:.5rem; padding:.75rem;">
-          <h3 style="margin:.2rem 0 .5rem;">Skin-Type Tips></h3>
-          <div id="annotation-summary" style="margin-bottom:.35rem; color:#444;">
-            Pick a skincare category, skin type & budget.
-          </div>
-          <div id="annotation-top-brands" style="margin-bottom:.35rem;"></div>
-          <div id="annotation-top-products"></div>
-        </aside>
-          
 
       <div class="viz-viewport">
         <div class="viz-canvas">
@@ -222,7 +212,8 @@
     <code>rank</code>, and binary skin-type columns) were parsed numerically. Only filtering and ranking are applied:
     within each filter state, the top 20 highest-rated products are shown to maintain readability.
     The color scale recalculates the minimum and maximum <code>rank</code> values in each subset so that relative
-    rating variation remains visible.
+    rating variation remains visible. Data annotations were added to map skin-type suitability from binary columns
+    into a single array for tooltip display.
   </p>
 </section>
 
@@ -241,7 +232,7 @@
       <tr><td>D3 Structure Setup</td><td>Load data, create scales, implement force simulation</td><td>7 h</td></tr>
       <tr><td>Interaction Logic</td><td>Dropdowns, slider, legend, and axis arrow implementation</td><td>6 h</td></tr>
       <tr><td>Visual Polish</td><td>Hover effects, layering fixes, dynamic color scale tuning</td><td>7 h</td></tr>
-      <tr><td>Testing & Deployment</td><td>Debugging, browser testing, GitHub Pages hosting</td><td>5 h</td></tr>
+      <tr><td>Testing/Deployment </td><td> Debugging, browser testing, GitHub Pages hosting</td><td>5 h</td></tr>
 
       <p>A data set was chosen as a collective and our group discussed potential directions for analysis and visuals. 
         Group members each made 2 visuals for the project check point independently of one another. After assessing each others' work,
@@ -260,45 +251,33 @@
     Our final design balances exploratory flexibility with clarity. By limiting to three quantitative dimensions, we
     maintained readability and visual balance. The blue hover cue and dynamic color legend enhance usability, while
     smooth transitions preserve spatial context. Filters and details-on-demand encourage exploration of meaningful
-    sub-patterns, such as affordable yet highly rated options for specific skin types.
+    sub-patterns, such as affordable yet highly rated options for specific skin types. The most time-intensive part involved 
+    tuning force-layout physics (collision radius, horizontal clustering)
+    and ensuring hover transitions did not interfere with label layering. Debugging and dynamic color updates
+    required several iterative adjustments.
   </p>
-  <p>
-    The visualization is implemented entirely in <strong>D3.js v7</strong> and hosted on <strong>GitHub Pages</strong>.
-    No server-side code or high-level libraries (e.g., Vega, Plotly) were used. All project files
-    (<code>index.html</code>, <code>project3.js</code>, <code>style.css</code>, <code>data/cosmetic_p.csv</code>)
-    are public for transparency and reproducibility.
-  </p>
+
+
   <p>
     Ultimately, this interactive visualization provides an engaging, data-driven view of how price and satisfaction
-    interact across the skincare market, helping users identify <strong>which products deliver the best value for
-    their skin type</strong>.
-  </p>
-
-
-    <p>
-    These encodings follow expressiveness and effectiveness principles: position and hue communicate quantitative
-    differences, while redundant cues (color + size) reinforce perceived value differences.
-  </p>
-  <p>
-    We considered alternatives such as scatterplots and small-multiples faceted by skin type, but these created
-    either overplotting or fragmented comparisons. The bubble layout offered the clearest synthesis of brand
+    interact across the skincare market, helping users identify which products deliver the best value for
+    their skin type. We considered alternatives such as scatterplots, bar-plots and small-multiples faceted by skin type, but these created
+    either overplotting, fragmented comparisons or lacked visual intrigue. The bubble layout offered the clearest synthesis of brand
     identity and quantitative comparison while remaining visually engaging.
   </p>
 
-    <p>
-    Together, these interactions enable users to ask “what-if” questions—such as 
-    <em>Which affordable moisturizers rate above 4.5 stars for oily skin?</em>—and immediately see patterns emerge.
+
+  <p>Ultimately, working together was an awesome experience! Our team really worked in unison to develop something we were all equally proud of. 
+    During our collaboration there were several moments where ideas were bounced around and we all contributed to the final product, 
+    highlighting how this project was truly a team effort. We spent over 3 sessions working together on zoom and several more hours working 
+    independently to contribute to the final product.
   </p>
 
-    <p>
-    The most time-intensive part involved tuning <em>force-layout physics</em> (collision radius, horizontal clustering)
-    and ensuring hover transitions did not interfere with label layering. Debugging z-order and dynamic color updates
-    required several iterative adjustments.
-  </p>
 </section>
 
 
     <!-- Your project scripts -->
+    <script type="module" src="../../global.js"></script>
     <script type="module" src="project3.js"></script>
   </body>
 </html>
