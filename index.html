@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Project 3 — Brand Bubble Chart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Interactive bubble chart exploring skincare brands with filters and plain-English annotations." />
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
@@ -13,11 +14,11 @@
     </header>
 
     <main class="page">
-      <!-- Controls -->
-      <div id="controls" class="controls"></div>
+      <!-- Controls (JS will populate) -->
+      <div id="controls" class="controls" aria-label="Visualization controls"></div>
 
       <!-- Dynamic annotation panel -->
-      <aside id="annotations" class="anno" hidden>
+      <aside id="annotations" class="anno" hidden role="region" aria-live="polite" aria-atomic="true">
         <h3 id="anno-head" class="anno-head"></h3>
         <p id="anno-tip" class="anno-tip"></p>
         <p id="anno-budget" class="anno-budget"></p>
@@ -27,11 +28,14 @@
       <!-- Chart -->
       <figure class="figure">
         <svg id="brand-bubble-chart" width="1100" height="750" role="img" aria-label="Brand bubble chart"></svg>
-        <figcaption>Brand-level bubble chart with interactive filters and a price-axis.</figcaption>
+        <figcaption>
+          Brand-level bubble chart with interactive filters, a price-axis, and JSON-driven annotations.
+        </figcaption>
       </figure>
     </main>
 
     <!-- Scripts -->
     <script type="module" src="project3.js"></script>
+    <noscript>This page requires JavaScript to display the visualization.</noscript>
   </body>
 </html>
