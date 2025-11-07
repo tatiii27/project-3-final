@@ -52,35 +52,16 @@ function comparisonLine(filtered){
   return `Both **${a.brand}** and **${b.brand}** are highly rated (≈ ${a.rank.toFixed(2)}), but ${left.brand} is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
 }
 
-function updateAnnotations({category, skin, maxPrice, filtered}){
-  const panel = ensurePanel();
-  const head = d3.select("#anno-head");
-  const tip  = d3.select("#anno-tip");
-  const budg = d3.select("#anno-budget");
-  const comp = d3.select("#anno-compare");
-
-  // hide when no specific skin/category
-  if (skin === "All" || category === "All" || !filtered || filtered.length === 0) {
-    panel.attr("hidden", true);
-    head.text(""); tip.text(""); budg.text(""); comp.html("");
-    return;
-  }
-
-  const band = bandFor(maxPrice);
-  head.text(`Tips for ${skin} skin — ${category}s under ${band ? money(band) : "no price limit"}`);
-  tip.text(SKIN_TIPS[skin] || "");
-  budg.text(budgetNote(band));
-  const line = comparisonLine(filtered);
-  comp.html(line.replaceAll("**","<strong>")); // allow bold for brand names
-
-  panel.attr("hidden", null);
-}
-
 /* ==========================
-   Bubble chart
+   Data loading (CSV + JSONs)
    ========================== */
-d3.csv("data/cosmetic_p.csv").then(raw => {
-  // Type coercion
+Promise.all([
+  d3.csv("data/cosmetic_p.csv"),
+  d3.json("data/best_brand_for_skin_types.json"),
+  d3.json("data/best_products_for_brand.json")
+]).then(([raw, bestBrandBySkinJSON, bestProductsByBrandJSON]) => {
+
+  // ---- CSV type coercion ----
   const data = raw.map(d => ({
     ...d,
     price: +d.price || 0,
@@ -92,6 +73,72 @@ d3.csv("data/cosmetic_p.csv").then(raw => {
     Sensitive: +d.Sensitive || 0
   }));
 
+  // ---- JSON helpers (array- or object-shaped) ----
+  function findBestBrandForSkin({skin, category}) {
+    const j = bestBrandBySkinJSON;
+
+    // array of rows
+    if (Array.isArray(j)) {
+      const row = j.find(r =>
+        (r.skin === skin || r.skin_type === skin) &&
+        (r.category === category || r.Label === category)
+      );
+      return row ? (row.brand || row.Brand) : null;
+    }
+
+    // object keyed by skin -> category
+    if (j && typeof j === "object") {
+      const skinNode = j[skin] || j[skin?.toLowerCase()] || j[skin?.toUpperCase()];
+      if (skinNode && typeof skinNode === "object") {
+        return skinNode[category] || skinNode[category?.toLowerCase()] || skinNode[category?.toUpperCase()] || null;
+      }
+    }
+    return null;
+  }
+
+  function findBestProductForBrand(brand) {
+    const j = bestProductsByBrandJSON;
+
+    // array of rows
+    if (Array.isArray(j)) {
+      const rows = j.filter(r => (r.brand || r.Brand) === brand);
+      const top = rows.sort((a,b) => (+b.rank || +b.rating || 0) - (+a.rank || +a.rating || 0))[0];
+      if (!top) return null;
+      return {
+        name: top.name || top.product || "",
+        rating: +top.rank || +top.rating || null,
+        category: top.Label || top.category || null,
+        price: +top.price || null
+      };
+    }
+
+    // object keyed by brand -> (object or array)
+    if (j && typeof j === "object") {
+      const node = j[brand];
+      if (!node) return null;
+      if (Array.isArray(node)) {
+        const top = node.sort((a,b) => (+b.rank || +b.rating || 0) - (+a.rank || +a.rating || 0))[0];
+        if (!top) return null;
+        return {
+          name: top.name || top.product || "",
+          rating: +top.rank || +top.rating || null,
+          category: top.Label || top.category || null,
+          price: +top.price || null
+        };
+      }
+      return {
+        name: node.name || node.product || "",
+        rating: +node.rank || +node.rating || null,
+        category: node.Label || node.category || null,
+        price: +node.price || null
+      };
+    }
+    return null;
+  }
+
+  /* ==========================
+     Bubble chart
+     ========================== */
   const width = 1100, height = 750;
   const svg = d3.select("#brand-bubble-chart")
     .attr("width", width)
@@ -138,6 +185,46 @@ d3.csv("data/cosmetic_p.csv").then(raw => {
     .attr("transform", `translate(${(width - legendWidth)/2}, ${height - 20})`);
   legendGroup.append("rect").attr("width",legendWidth).attr("height",legendHeight).style("fill","url(#legend-gradient)");
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
+
+  function updateAnnotations({category, skin, maxPrice, filtered}){
+    const panel = ensurePanel();
+    const head = d3.select("#anno-head");
+    const tip  = d3.select("#anno-tip");
+    const budg = d3.select("#anno-budget");
+    const comp = d3.select("#anno-compare");
+
+    // hide when no specific skin/category
+    if (skin === "All" || category === "All" || !filtered || filtered.length === 0) {
+      panel.attr("hidden", true);
+      head.text(""); tip.text(""); budg.text(""); comp.html("");
+      return;
+    }
+
+    const band = bandFor(maxPrice);
+    head.text(`Tips for ${skin} skin — ${category}s under ${band ? money(band) : "no price limit"}`);
+    tip.text(SKIN_TIPS[skin] || "");
+    budg.text(budgetNote(band));
+
+    // Existing brand-vs-brand line based on filtered data
+    const line = comparisonLine(filtered);
+
+    // JSON-driven: best brand for skin+category, then best product for that brand
+    const bestBrand = findBestBrandForSkin({skin, category});
+    let jsonLine = "";
+    if (bestBrand) {
+      const bestProd = findBestProductForBrand(bestBrand);
+      if (bestProd) {
+        const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
+        const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
+        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
+      } else {
+        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong> is a frequent top brand in our summary.`;
+      }
+    }
+
+    comp.html([line, jsonLine].filter(Boolean).join("<br>"));
+    panel.attr("hidden", null);
+  }
 
   function updateChart(){
     const category = d3.select("#categorySelect").property("value");
@@ -207,8 +294,8 @@ d3.csv("data/cosmetic_p.csv").then(raw => {
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s => d[s]===1).join(", ")}`)
           .style("left", (event.pageX+10)+"px").style("top", (event.pageY-28)+"px");
       })
-      .on("mouseout", function (event, d) {
-        d3.select(this).transition().duration(200).attr("r", size(d.price)).attr("fill", color(d.rank));
+      .on("mouseout", function () {
+        d3.select(this).transition().duration(200).attr("r", d => size(d.price)).attr("fill", d => color(d.rank));
         d3.select("#tooltip").style("opacity",0);
       })
       .merge(node)
@@ -234,7 +321,7 @@ d3.csv("data/cosmetic_p.csv").then(raw => {
       fill.attr("font-size", fs).attr("fill","#111");
     });
 
-    // === NEW: dynamic, plain-English annotations ===
+    // JSON + plain-English annotations
     updateAnnotations({category, skin, maxPrice, filtered});
   }
 
@@ -250,4 +337,6 @@ d3.csv("data/cosmetic_p.csv").then(raw => {
 
   // first render
   updateChart();
+}).catch(err => {
+  console.error("Data load error:", err);
 });
