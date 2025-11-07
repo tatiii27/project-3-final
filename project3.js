@@ -219,13 +219,24 @@ Promise.all([
     }
 
     // Which brands to highlight (for the comparison line)
-    const pair = pickComparisonPair(filtered);
-    highlightedBrands = new Set(pair ? [pair.a.brand, pair.b.brand] : []);
+     const canAnnotate = category !== "All" && skin !=="All";
+
+     let pair = null;
+     let nextHighlights = new Set();
+     
+     if (canAnnotate) {
+        pair = pickComparisonPair(filtered);
+        if (pair) nextHighlights = new Set([pair.a.brand, pair.b.brand]);
+
+     }
+     highlightedBrands = nextHighlights;
+     
+   
 
      // best product from the brand if more than 1 per category
    // account for the tie within same brand --- to find best product
      const highlightNames = new Set();
-     if (pair) {
+     if (canAnnotate && pair) {
         const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
         const tie_determinant = .001;
 
@@ -241,6 +252,8 @@ Promise.all([
            });
         });
      }
+
+     
     
 
     // color scale
@@ -306,6 +319,10 @@ Promise.all([
       .attr("opacity", 0.95)
       .attr("cursor", "pointer");
 
+    const isHighlited = d => canAnnotate && (
+       (highlightNames.size ? highlightName.has(d.name) : highlightedBrands.has(d.brand)));
+
+
     const merged = enter.merge(node);
 
     // Set ring + highlighted class immediately (no flicker)
@@ -323,9 +340,12 @@ Promise.all([
         d3.select(this).raise().transition().duration(150)
           .attr("r", size(d.price)*1.08)
           .attr("stroke", highlight_color)
-          .attr("stroke-width", highlightNames.has(d.name) ? 5 : 4);
+          .attr("stroke-width", isHighlighted(d) ? 5 : 4);
+         
         d3.select("#tooltip").style("opacity",1)
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`);
+          .style("left", (event.pageX+10)+"px")
+          .style("top", (event.pageY-28)+"px");
       })
       .on("mousemove", function(event){
         d3.select("#tooltip")
@@ -335,8 +355,8 @@ Promise.all([
       .on("mouseout", function(event,d){
         d3.select(this).transition().duration(180)
           .attr("r", size(d.price))
-          .attr("stroke", highlightNames.has(d.name) ? highlight_color : "#333")
-          .attr("stroke-width", highlightNames.has(d.name) ? 3 : 1);
+          .attr("stroke", isHighlighted(d) ? highlight_color : "#333")
+          .attr("stroke-width", isHighlighted(d) ? 3 : 1);
         d3.select("#tooltip").style("opacity",0);
       });
 
