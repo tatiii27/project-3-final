@@ -26,10 +26,14 @@ function budgetNote(band){
    ========================== */
 function ensurePanel(){
   let panel = d3.select("#annotations");
-  if (!panel.empty()) return panel;
-  // Fallback: create it just before the figure
+  if (!panel.empty()) return panel;               // if present, use it
+
+  // Fallback: create before the <figure> inside .page
   const page = d3.select(".page");
-  panel = page.insert("aside", "figure").attr("id","annotations").attr("class","anno");
+  panel = page.insert("aside", "figure")
+    .attr("id","annotations")
+    .attr("class","anno");
+
   panel.append("h3").attr("id","anno-head").attr("class","anno-head");
   panel.append("p").attr("id","anno-tip").attr("class","anno-tip");
   panel.append("p").attr("id","anno-budget").attr("class","anno-budget");
@@ -60,7 +64,7 @@ Promise.all([
     Combination:+d.Combination||0, Dry:+d.Dry||0, Normal:+d.Normal||0, Oily:+d.Oily||0, Sensitive:+d.Sensitive||0
   }));
 
-  // JSON helpers (accept array/object shapes)
+  // JSON helpers (accept array or object shapes)
   function findBestBrandForSkin({skin, category}){
     const j=bestBrandBySkinJSON;
     if (Array.isArray(j)){
@@ -69,7 +73,8 @@ Promise.all([
     }
     if (j && typeof j==="object"){
       const node=j[skin]||j[skin?.toLowerCase()]||j[skin?.toUpperCase()];
-      if (node && typeof node==="object") return node[category]||node[category?.toLowerCase()]||node[category?.toUpperCase()]||null;
+      if (node && typeof node==="object")
+        return node[category]||node[category?.toLowerCase()]||node[category?.toUpperCase()]||null;
     }
     return null;
   }
@@ -84,7 +89,9 @@ Promise.all([
     if (j && typeof j==="object"){
       const node=j[brand];
       if (!node) return null;
-      const top=Array.isArray(node)? node.sort((a,b)=>(+b.rank||+b.rating||0)-(+a.rank||+a.rating||0))[0] : node;
+      const top=Array.isArray(node)
+        ? node.sort((a,b)=>(+b.rank||+b.rating||0)-(+a.rank||+a.rating||0))[0]
+        : node;
       if(!top) return null;
       return {name:top.name||top.product||"", rating:+top.rank||+top.rating||null, category:top.Label||top.category||null, price:+top.price||null};
     }
@@ -95,7 +102,10 @@ Promise.all([
      SVG & layers (grid behind!)
      ========================== */
   const width=1100, height=750, axisY=height-80, gridHeight=height-160;
-  const svg=d3.select("#brand-bubble-chart").attr("width",width).attr("height",height);
+  const svg=d3.select("#brand-bubble-chart")
+    .attr("width",width)
+    .attr("height",height)
+    .attr("overflow","visible");  // prevent label/arrow clipping
 
   // layer order: grid (back) → bubbles → labels → axis (front)
   const gridG   = svg.append("g").attr("class","grid-layer");
@@ -105,13 +115,14 @@ Promise.all([
 
   // defs: legend gradient + arrowhead for axis
   const defs = svg.append("defs");
-  const legendGradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
+  const legendGradient = defs.append("linearGradient")
+    .attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
   defs.append("marker")
     .attr("id","axis-arrow").attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
     .attr("markerWidth",6).attr("markerHeight",6).attr("orient","auto")
     .append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill","#333");
 
-  // Tooltip
+  // Tooltip (singleton)
   if (d3.select("#tooltip").empty()) d3.select("body").append("div").attr("id","tooltip");
 
   // Controls
@@ -149,7 +160,7 @@ Promise.all([
     const budg = panel.select("#anno-budget");
     const comp = panel.select("#anno-compare");
 
-    panel.attr("hidden", null); // reveal
+    panel.attr("hidden", null); // show panel
 
     if (skin==="All" || category==="All" || !filtered?.length){
       panel.attr("hidden", true);
@@ -219,36 +230,34 @@ Promise.all([
       .merge(lines)
       .attr("x1", d=>xScale(d)).attr("x2", d=>xScale(d));
     lines.exit().remove();
-    gridG.lower();             // push grid underneath everything
-    bubbleG.raise();           // make sure bubbles stay above
+
+    // keep z-order correct every update
+    gridG.lower();
+    bubbleG.raise();
     labelG.raise();
     axisG.raise();
 
-   /* === Axis (no tick lines) + centered label + arrow on domain === */
-   const axis = d3.axisBottom(xScale)
-      .ticks(6)
-      .tickFormat(d3.format("$~s"))
-      .tickSize(0);
+    /* === Axis (no tick lines) + centered label + arrow on domain === */
+    const axis = d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s")).tickSize(0);
+    axisG.attr("transform",`translate(0,${axisY})`).call(axis);
 
-   axisG.attr("transform", `translate(0,${axisY})`).call(axis);
+    axisG.select(".domain")
+      .attr("stroke","#333")
+      .attr("stroke-width",1.5)
+      .attr("stroke-linecap","butt")
+      .attr("marker-end","url(#axis-arrow)");
 
-// style domain and add arrowhead directly on it
-   axisG.select(".domain")
-      .attr("stroke", "#333")
-      .attr("stroke-width", 1.5)
-      .attr("marker-end", "url(#axis-arrow)");
-
-// (re)add the centered "Price" label
-   axisG.selectAll(".price-label")
+    axisG.selectAll(".price-label")
       .data([0])
       .join("text")
-      .attr("class", "price-label")
-      .attr("x", (xScale.range()[0] + xScale.range()[1]) / 2)
-      .attr("y", 22)                // slightly tighter so it doesn’t collide with legend
-      .attr("text-anchor", "middle")
-      .attr("fill", "#333")
-      .text("Price");
-
+        .attr("class","price-label")
+        .attr("x",(xScale.range()[0]+xScale.range()[1])/2)
+        .attr("y",26)
+        .attr("text-anchor","middle")
+        .attr("fill","#333")
+        .style("font-size","12px")
+        .style("pointer-events","none")
+        .text("Price");
 
     // simulation
     filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=height/2; });
@@ -264,7 +273,7 @@ Promise.all([
         svg.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${d.y})`);
       });
 
-    // bubbles — ring hover
+    // bubbles — ring hover (no blue fill)
     const node=bubbleG.selectAll("circle").data(filtered, d=>d.name);
     node.enter().append("circle")
       .attr("r", d=>size(d.price))
@@ -319,5 +328,6 @@ Promise.all([
 
   updateChart();
 }).catch(err => console.error("Data load error:", err));
+
 
 
