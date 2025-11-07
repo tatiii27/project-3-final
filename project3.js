@@ -4,7 +4,6 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
    Helpers & text snippets
    ========================== */
 
-// budget bands used for the header & budget note
 const BUDGET_BANDS = [25, 40, 60, 80, 120, 200, 0]; // 0 = "∞"
 function bandFor(price){
   const p = +price || 0;
@@ -13,7 +12,6 @@ function bandFor(price){
 }
 const money = v => `$${(+v).toFixed(0)}`;
 
-// friendly ingredient tips by skin type (category-agnostic, simple & plain-English)
 const SKIN_TIPS = {
   Dry: "Look for hyaluronic acid or glycerin — they pull water into the skin. Ceramides help seal moisture so skin doesn’t feel tight.",
   Oily: "Salicylic acid can clear pores and reduce shine. Niacinamide helps with oil balance; lighter gel textures avoid heaviness.",
@@ -22,7 +20,6 @@ const SKIN_TIPS = {
   Normal: "Pick by goal: brightening (vitamin C), smoothing (gentle acids), or hydration (HA/glycerin). Gentle formulas keep the barrier happy."
 };
 
-// budget notes shown under the tip
 function budgetNote(band){
   if (band === 0) return "Higher prices often bundle multiple actives or luxe textures. Results can be similar — check rating, not just price.";
   if (band <= 40) return "You can get gentle, well-rated options without going luxury in this price range.";
@@ -30,19 +27,14 @@ function budgetNote(band){
   return "This tier usually adds more actives/polish. Consider whether ratings justify the spend.";
 }
 
-/* ==========================
-   Annotation panel (no jargony!)
-   ========================== */
+/* ===== Annotation panel ===== */
 function ensurePanel(){
   const panel = d3.select("#annotations");
   if (!panel.empty()) return panel;
   throw new Error("Missing <aside id='annotations'> in HTML.");
 }
-
-// Compose a short brand comparison sentence from current filtered data
 function comparisonLine(filtered){
   if (!filtered || filtered.length < 2) return "";
-  // sort by rating desc then price asc and pick two with close rating
   const sorted = [...filtered].sort((a,b) => d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price));
   const a = sorted[0];
   const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
@@ -52,16 +44,13 @@ function comparisonLine(filtered){
   return `Both **${a.brand}** and **${b.brand}** are highly rated (≈ ${a.rank.toFixed(2)}), but ${left.brand} is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
 }
 
-/* ==========================
-   Data loading (CSV + JSONs)
-   ========================== */
+/* ===== Data loading: CSV + JSON ===== */
 Promise.all([
   d3.csv("data/cosmetic_p.csv"),
   d3.json("data/best_brand_for_skin_types.json"),
   d3.json("data/best_products_for_brand.json")
 ]).then(([raw, bestBrandBySkinJSON, bestProductsByBrandJSON]) => {
 
-  // ---- CSV type coercion ----
   const data = raw.map(d => ({
     ...d,
     price: +d.price || 0,
@@ -73,11 +62,9 @@ Promise.all([
     Sensitive: +d.Sensitive || 0
   }));
 
-  // ---- JSON helpers (array- or object-shaped) ----
+  // JSON helpers (array- or object-shaped)
   function findBestBrandForSkin({skin, category}) {
     const j = bestBrandBySkinJSON;
-
-    // array of rows
     if (Array.isArray(j)) {
       const row = j.find(r =>
         (r.skin === skin || r.skin_type === skin) &&
@@ -85,8 +72,6 @@ Promise.all([
       );
       return row ? (row.brand || row.Brand) : null;
     }
-
-    // object keyed by skin -> category
     if (j && typeof j === "object") {
       const skinNode = j[skin] || j[skin?.toLowerCase()] || j[skin?.toUpperCase()];
       if (skinNode && typeof skinNode === "object") {
@@ -95,11 +80,8 @@ Promise.all([
     }
     return null;
   }
-
   function findBestProductForBrand(brand) {
     const j = bestProductsByBrandJSON;
-
-    // array of rows
     if (Array.isArray(j)) {
       const rows = j.filter(r => (r.brand || r.Brand) === brand);
       const top = rows.sort((a,b) => (+b.rank || +b.rating || 0) - (+a.rank || +a.rating || 0))[0];
@@ -111,8 +93,6 @@ Promise.all([
         price: +top.price || null
       };
     }
-
-    // object keyed by brand -> (object or array)
     if (j && typeof j === "object") {
       const node = j[brand];
       if (!node) return null;
@@ -137,7 +117,7 @@ Promise.all([
   }
 
   /* ==========================
-     Bubble chart
+     Bubble chart (PIC-2 styling)
      ========================== */
   const width = 1100, height = 750;
   const svg = d3.select("#brand-bubble-chart")
@@ -148,10 +128,18 @@ Promise.all([
   const labelLayer  = svg.append("g").attr("class","label-layer");
   const axisG       = svg.append("g").attr("class","x-axis");
 
-  // Tooltip (singleton)
+  // axis label + arrow marker
+  const defs = svg.append("defs");
+  defs.append("marker")
+    .attr("id","arrow")
+    .attr("viewBox","0 0 10 10")
+    .attr("refX", 8).attr("refY",5)
+    .attr("markerWidth",6).attr("markerHeight",6)
+    .attr("orient","auto-start-reverse")
+    .append("path").attr("d","M 0 0 L 10 5 L 0 10 z").attr("fill","#333");
+
   if (d3.select("#tooltip").empty()) d3.select("body").append("div").attr("id","tooltip");
 
-  // Controls
   const categories = Array.from(new Set(data.map(d => d.Label))).sort();
   const skinTypes  = ["Combination","Dry","Normal","Oily","Sensitive"];
   const maxPGlobal = d3.max(data, d => d.price);
@@ -177,15 +165,17 @@ Promise.all([
     .domain(d3.extent(data, d => d.price))
     .range([10, 60]);
 
-  // Legend
-  const defs = svg.append("defs");
-  const gradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
+  // Legend (unchanged)
   const legendWidth = 200, legendHeight = 10;
+  const legendGradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
   const legendGroup = svg.append("g").attr("class","legend-group")
     .attr("transform", `translate(${(width - legendWidth)/2}, ${height - 20})`);
   legendGroup.append("rect").attr("width",legendWidth).attr("height",legendHeight).style("fill","url(#legend-gradient)");
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
+  const axisY = height - 80;
+
+  /* ===== Annotations (unchanged) ===== */
   function updateAnnotations({category, skin, maxPrice, filtered}){
     const panel = ensurePanel();
     const head = d3.select("#anno-head");
@@ -193,7 +183,6 @@ Promise.all([
     const budg = d3.select("#anno-budget");
     const comp = d3.select("#anno-compare");
 
-    // hide when no specific skin/category
     if (skin === "All" || category === "All" || !filtered || filtered.length === 0) {
       panel.attr("hidden", true);
       head.text(""); tip.text(""); budg.text(""); comp.html("");
@@ -205,10 +194,8 @@ Promise.all([
     tip.text(SKIN_TIPS[skin] || "");
     budg.text(budgetNote(band));
 
-    // Existing brand-vs-brand line based on filtered data
     const line = comparisonLine(filtered);
 
-    // JSON-driven: best brand for skin+category, then best product for that brand
     const bestBrand = findBestBrandForSkin({skin, category});
     let jsonLine = "";
     if (bestBrand) {
@@ -232,14 +219,12 @@ Promise.all([
     const maxPrice = +d3.select("#priceSlider").property("value");
     d3.select("#priceLabel").text(money(maxPrice));
 
-    // filter
     let filtered = data.filter(d =>
       (category === "All" || d.Label === category) &&
       (skin === "All" || d[skin] === 1) &&
       d.price <= maxPrice
     );
 
-    // Top 20 by rating (keeps the screen readable)
     filtered = filtered.sort((a,b)=>d3.descending(a.rank,b.rank)).slice(0,20);
 
     // color scale
@@ -249,22 +234,34 @@ Promise.all([
     else if (rMin === rMax) { rMin = Math.max(0, rMin-0.2); rMax = Math.min(5, rMax+0.2); }
     const color = d3.scaleSequential(d3.interpolateRdYlGn).domain([rMin, rMax]);
 
-    const stops = gradient.selectAll("stop").data(d3.ticks(0,1,10));
+    // legend gradient stops
+    const stops = legendGradient.selectAll("stop").data(d3.ticks(0,1,10));
     stops.enter().append("stop").merge(stops)
       .attr("offset", d => `${d*100}%`).attr("stop-color", d => d3.interpolateRdYlGn(d));
     stops.exit().remove();
-
     legendGroup.selectAll(".legend-min,.legend-max").remove();
     legendGroup.append("text").attr("class","legend-min").attr("x",0).attr("y",-2).attr("font-size","10px").text(rMin.toFixed(1));
     legendGroup.append("text").attr("class","legend-max").attr("x",legendWidth).attr("y",-2).attr("font-size","10px").attr("text-anchor","end").text(rMax.toFixed(1));
 
-    // x scale / axis
+    // x scale / axis (PIC-2: normal baseline, no gridlines)
     const maxR = d3.max(filtered, d => size(d.price)) || 60;
     const [minP,maxP] = d3.extent(filtered, d => d.price);
     const pad = (maxP - minP) * 0.1 || 10;
     const xScale = d3.scaleLinear().domain([minP - pad, maxP + pad]).range([maxR + 20, width - maxR - 40]);
-    const axisY = height - 80;
-    axisG.attr("transform", `translate(0,${axisY})`).call(d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s")));
+
+    const axis = d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s"));
+    axisG.attr("transform", `translate(0,${axisY})`).call(axis);
+
+    // axis label with arrow at the end (like pic-2)
+    axisG.selectAll(".price-label").remove();
+    axisG.append("text")
+      .attr("class","price-label")
+      .attr("x", (width - maxR - 40))
+      .attr("y", 35)
+      .attr("text-anchor","end")
+      .attr("fill","#333")
+      .text("Price")
+      .attr("marker-end","url(#arrow)");
 
     // simulation
     filtered.forEach(d => { d.fx = xScale(d.price); if (!isFinite(d.y)) d.y = height/2; });
@@ -282,20 +279,27 @@ Promise.all([
       svg.selectAll("g.brand-label").attr("transform", d => `translate(${clampX(d.fx)},${d.y})`);
     }
 
-    // bubbles
+    // bubbles (PIC-2 hover = BLUE FILL)
     const node = bubbleLayer.selectAll("circle").data(filtered, d => d.name);
     node.enter().append("circle")
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank))
-      .attr("stroke", "#333").attr("stroke-width", 1).attr("opacity", .9).attr("cursor","pointer")
+      .attr("stroke", "#333").attr("stroke-width", 1).attr("opacity", .95).attr("cursor","pointer")
       .on("mouseover", function (event, d) {
-        d3.select(this).transition().duration(150).attr("r", size(d.price)*1.15).attr("fill","#3B82F6");
+        d3.select(this)
+          .raise()
+          .transition().duration(150)
+          .attr("r", size(d.price)*1.15)
+          .attr("fill","#3B82F6"); // blue fill like pic-2
         d3.select("#tooltip").style("opacity",1)
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s => d[s]===1).join(", ")}`)
           .style("left", (event.pageX+10)+"px").style("top", (event.pageY-28)+"px");
       })
-      .on("mouseout", function () {
-        d3.select(this).transition().duration(200).attr("r", d => size(d.price)).attr("fill", d => color(d.rank));
+      .on("mouseout", function (event, d) {
+        d3.select(this)
+          .transition().duration(180)
+          .attr("r", size(d.price))
+          .attr("fill", d => color(d.rank));
         d3.select("#tooltip").style("opacity",0);
       })
       .merge(node)
@@ -321,11 +325,10 @@ Promise.all([
       fill.attr("font-size", fs).attr("fill","#111");
     });
 
-    // JSON + plain-English annotations
+    // annotations stay
     updateAnnotations({category, skin, maxPrice, filtered});
   }
 
-  // controls listeners
   d3.select("#resetBtn").on("click", () => {
     d3.select("#categorySelect").property("value","All");
     d3.select("#skinSelect").property("value","All");
@@ -335,8 +338,8 @@ Promise.all([
   });
   d3.selectAll("#categorySelect,#skinSelect,#priceSlider").on("change input", updateChart);
 
-  // first render
   updateChart();
 }).catch(err => {
   console.error("Data load error:", err);
 });
+
