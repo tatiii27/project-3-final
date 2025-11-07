@@ -195,8 +195,9 @@ Promise.all([
 
    /* get the two brands comapred in comments*/
   function pickComparisonPair(filtered){
-     if (!filtered || filtered.length < 2):
+     if (!filtered || filtered.length < 2){
         return null;
+     }
      const sorted = [...filtered].sort(
         (a,b) => d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price)
       );
@@ -218,7 +219,7 @@ Promise.all([
                      .sort((a,b)=>d3.descending(a.rank,b.rank)).slice(0,20);
 
     const pair = pickComparisonPair(filtered);
-    highlightedBrand = new Set(pair ? [pair.a.brand, pair.b.brand] : []);
+    highlightedBrands = new Set(pair ? [pair.a.brand, pair.b.brand] : []);
 
     // color scale
     let rMin=d3.min(filtered,d=>d.rank), rMax=d3.max(filtered,d=>d.rank);
@@ -294,45 +295,49 @@ Promise.all([
       });
 
     // bubbles — ring hover (no blue fill)
-    const node=bubbleG.selectAll("circle").data(filtered, d=>d.name);
-    node.enter().append("circle")
-      .attr("r", d=>size(d.price))
-      .attr("fill", d=>color(d.rank))
-      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color: "#333")
-      .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
-      .attr("opacity",0.95)
-      .attr("cursor","pointer")
-      .on("mouseover", function(event,d){
+   // bubbles — ring hover (no blue fill)
+   const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
+
+   node.enter().append("circle")
+     .attr("r", d => size(d.price))
+     .attr("fill", d => color(d.rank))
+     .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
+     .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
+     .attr("opacity", 0.95)
+     .attr("cursor", "pointer")
+     .on("mouseover", function(event, d){
         d3.select(this).raise().transition().duration(150)
-          .attr("r", size(d.price)*1.08)
+          .attr("r", size(d.price) * 1.08)
           .attr("stroke", highlight_color)
           .attr("stroke-width", highlightedBrands.has(d.brand) ? 5 : 4);
 
-         d3.select("#tooltip").style("opacity",1)
-           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
-           .style("left",(event.pageX+10)+"px")
-           .style("top",(event.pageY-28)+"px");
-      })
-      .on("mouseout", function(event){
-         d3.select("#tooltip")
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 28) + "px");
-      })
-      .on("mouseout", function(event, d){
-         d3.select(this).transition().duration(180)
-            .attr("r", size(d.price))
-            .attr("stroke", highlightedBrands.has(d.brand) ? highlight_color : "#333")
-            .attr("stroke-width", highlightedBrands.has(d.brand) ? 3 : 1);
-         d3.select("#tooltip").style("opacity",0)
-      })
-   
-      .merge(node)
-      .transition().duration(500)
-      .attr("r", d=>size(d.price))
-      .attr("fill", d=>color(d.rank))
-      .attr("stroke", d => highlightedBrands.has(d.brand) ? highligh_color : "#333")
-      .attr("stroke-width", d => hightedBrands.has(d.brand) ? 3 : 1);
+       d3.select("#tooltip").style("opacity", 1)
+         .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s => d[s] === 1).join(", ")}`)
+         .style("left", (event.pageX + 10) + "px")
+         .style("top",  (event.pageY - 28) + "px");
+     })
+     .on("mousemove", function(event){
+       d3.select("#tooltip")
+         .style("left", (event.pageX + 10) + "px")
+         .style("top",  (event.pageY - 28) + "px");
+     })
+     .on("mouseout", function(event, d){
+       d3.select(this).transition().duration(180)
+         .attr("r", d => size(d.price))
+         .attr("stroke", highlightedBrands.has(d.brand) ? highlight_color : "#333")
+         .attr("stroke-width", highlightedBrands.has(d.brand) ? 3 : 1);
+
+      d3.select("#tooltip").style("opacity", 0);
+     })
+     .merge(node)
+     .transition().duration(500)
+     .attr("r", d => size(d.price))
+     .attr("fill", d => color(d.rank))
+     .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
+     .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1);
+
     node.exit().remove();
+
 
     // labels
     const lab=labelG.selectAll("g.brand-label").data(filtered, d=>d.name);
