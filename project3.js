@@ -33,9 +33,12 @@ function ensurePanel(){
   if (!panel.empty()) return panel;
   throw new Error("Missing <aside id='annotations'> in HTML.");
 }
+
 function comparisonLine(filtered){
   if (!filtered || filtered.length < 2) return "";
-  const sorted = [...filtered].sort((a,b) => d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price));
+  const sorted = [...filtered].sort((a,b) =>
+    d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price)
+  );
   const a = sorted[0];
   const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
   if (!a || !b) return "";
@@ -44,13 +47,16 @@ function comparisonLine(filtered){
   return `Both **${a.brand}** and **${b.brand}** are highly rated (≈ ${a.rank.toFixed(2)}), but ${left.brand} is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
 }
 
-/* ===== Data loading: CSV + JSON ===== */
+/* ==========================
+   Load CSV + JSONs
+   ========================== */
 Promise.all([
   d3.csv("data/cosmetic_p.csv"),
   d3.json("data/best_brand_for_skin_types.json"),
   d3.json("data/best_products_for_brand.json")
 ]).then(([raw, bestBrandBySkinJSON, bestProductsByBrandJSON]) => {
 
+  // Coerce CSV
   const data = raw.map(d => ({
     ...d,
     price: +d.price || 0,
@@ -62,7 +68,7 @@ Promise.all([
     Sensitive: +d.Sensitive || 0
   }));
 
-  // JSON helpers (array- or object-shaped)
+  // JSON helpers (works for array- or object-shaped JSONs)
   function findBestBrandForSkin({skin, category}) {
     const j = bestBrandBySkinJSON;
     if (Array.isArray(j)) {
@@ -73,13 +79,14 @@ Promise.all([
       return row ? (row.brand || row.Brand) : null;
     }
     if (j && typeof j === "object") {
-      const skinNode = j[skin] || j[skin?.toLowerCase()] || j[skin?.toUpperCase()];
-      if (skinNode && typeof skinNode === "object") {
-        return skinNode[category] || skinNode[category?.toLowerCase()] || skinNode[category?.toUpperCase()] || null;
+      const node = j[skin] || j[skin?.toLowerCase()] || j[skin?.toUpperCase()];
+      if (node && typeof node === "object") {
+        return node[category] || node[category?.toLowerCase()] || node[category?.toUpperCase()] || null;
       }
     }
     return null;
   }
+
   function findBestProductForBrand(brand) {
     const j = bestProductsByBrandJSON;
     if (Array.isArray(j)) {
@@ -117,7 +124,7 @@ Promise.all([
   }
 
   /* ==========================
-     Bubble chart (PIC-2 styling)
+     Bubble chart (gridlines + ring hover)
      ========================== */
   const width = 1100, height = 750;
   const svg = d3.select("#brand-bubble-chart")
@@ -128,18 +135,10 @@ Promise.all([
   const labelLayer  = svg.append("g").attr("class","label-layer");
   const axisG       = svg.append("g").attr("class","x-axis");
 
-  // axis label + arrow marker
-  const defs = svg.append("defs");
-  defs.append("marker")
-    .attr("id","arrow")
-    .attr("viewBox","0 0 10 10")
-    .attr("refX", 8).attr("refY",5)
-    .attr("markerWidth",6).attr("markerHeight",6)
-    .attr("orient","auto-start-reverse")
-    .append("path").attr("d","M 0 0 L 10 5 L 0 10 z").attr("fill","#333");
-
+  // Tooltip
   if (d3.select("#tooltip").empty()) d3.select("body").append("div").attr("id","tooltip");
 
+  // Controls
   const categories = Array.from(new Set(data.map(d => d.Label))).sort();
   const skinTypes  = ["Combination","Dry","Normal","Oily","Sensitive"];
   const maxPGlobal = d3.max(data, d => d.price);
@@ -165,17 +164,19 @@ Promise.all([
     .domain(d3.extent(data, d => d.price))
     .range([10, 60]);
 
-  // Legend (unchanged)
+  // Legend
+  const defs = svg.append("defs");
+  const gradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
   const legendWidth = 200, legendHeight = 10;
-  const legendGradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
   const legendGroup = svg.append("g").attr("class","legend-group")
     .attr("transform", `translate(${(width - legendWidth)/2}, ${height - 20})`);
   legendGroup.append("rect").attr("width",legendWidth).attr("height",legendHeight).style("fill","url(#legend-gradient)");
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   const axisY = height - 80;
+  const gridHeight = height - 160; // vertical gridline height
 
-  /* ===== Annotations (unchanged) ===== */
+  /* ===== Annotations ===== */
   function updateAnnotations({category, skin, maxPrice, filtered}){
     const panel = ensurePanel();
     const head = d3.select("#anno-head");
@@ -219,12 +220,14 @@ Promise.all([
     const maxPrice = +d3.select("#priceSlider").property("value");
     d3.select("#priceLabel").text(money(maxPrice));
 
+    // filter
     let filtered = data.filter(d =>
       (category === "All" || d.Label === category) &&
       (skin === "All" || d[skin] === 1) &&
       d.price <= maxPrice
     );
 
+    // Top 20 by rating (keep readable)
     filtered = filtered.sort((a,b)=>d3.descending(a.rank,b.rank)).slice(0,20);
 
     // color scale
@@ -234,8 +237,8 @@ Promise.all([
     else if (rMin === rMax) { rMin = Math.max(0, rMin-0.2); rMax = Math.min(5, rMax+0.2); }
     const color = d3.scaleSequential(d3.interpolateRdYlGn).domain([rMin, rMax]);
 
-    // legend gradient stops
-    const stops = legendGradient.selectAll("stop").data(d3.ticks(0,1,10));
+    // legend gradient
+    const stops = gradient.selectAll("stop").data(d3.ticks(0,1,10));
     stops.enter().append("stop").merge(stops)
       .attr("offset", d => `${d*100}%`).attr("stop-color", d => d3.interpolateRdYlGn(d));
     stops.exit().remove();
@@ -243,25 +246,24 @@ Promise.all([
     legendGroup.append("text").attr("class","legend-min").attr("x",0).attr("y",-2).attr("font-size","10px").text(rMin.toFixed(1));
     legendGroup.append("text").attr("class","legend-max").attr("x",legendWidth).attr("y",-2).attr("font-size","10px").attr("text-anchor","end").text(rMax.toFixed(1));
 
-    // x scale / axis (PIC-2: normal baseline, no gridlines)
+    // x scale / axis WITH vertical gridlines (tickSize negative)
     const maxR = d3.max(filtered, d => size(d.price)) || 60;
     const [minP,maxP] = d3.extent(filtered, d => d.price);
     const pad = (maxP - minP) * 0.1 || 10;
-    const xScale = d3.scaleLinear().domain([minP - pad, maxP + pad]).range([maxR + 20, width - maxR - 40]);
+    const xScale = d3.scaleLinear()
+      .domain([minP - pad, maxP + pad])
+      .range([maxR + 20, width - maxR - 40]);
 
-    const axis = d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s"));
+    const axis = d3.axisBottom(xScale)
+      .ticks(6)
+      .tickFormat(d3.format("$~s"))
+      .tickSize(-gridHeight)
+      .tickSizeOuter(0);
+
     axisG.attr("transform", `translate(0,${axisY})`).call(axis);
-
-    // axis label with arrow at the end (like pic-2)
-    axisG.selectAll(".price-label").remove();
-    axisG.append("text")
-      .attr("class","price-label")
-      .attr("x", (width - maxR - 40))
-      .attr("y", 35)
-      .attr("text-anchor","end")
-      .attr("fill","#333")
-      .text("Price")
-      .attr("marker-end","url(#arrow)");
+    axisG.select(".domain").remove();                         // hide baseline
+    axisG.selectAll(".tick line").attr("stroke","#e5e7eb");   // light gridlines
+    axisG.selectAll(".tick text").attr("dy","1.2em");
 
     // simulation
     filtered.forEach(d => { d.fx = xScale(d.price); if (!isFinite(d.y)) d.y = height/2; });
@@ -270,16 +272,14 @@ Promise.all([
       .force("collision", d3.forceCollide().radius(d => size(d.price) + 3))
       .force("x", d3.forceX(d => xScale(d.price)).strength(0.4))
       .force("y", d3.forceY(height/2).strength(0.12))
-      .on("tick", ticked);
+      .on("tick", () => {
+        const [x0,x1] = xScale.range();
+        const clampX = x => Math.max(x0, Math.min(x1, x));
+        svg.selectAll("circle").attr("cx", d => clampX(d.fx)).attr("cy", d => d.y);
+        svg.selectAll("g.brand-label").attr("transform", d => `translate(${clampX(d.fx)},${d.y})`);
+      });
 
-    function ticked(){
-      const [x0,x1] = xScale.range();
-      const clampX = x => Math.max(x0, Math.min(x1, x));
-      svg.selectAll("circle").attr("cx", d => clampX(d.fx)).attr("cy", d => d.y);
-      svg.selectAll("g.brand-label").attr("transform", d => `translate(${clampX(d.fx)},${d.y})`);
-    }
-
-    // bubbles (PIC-2 hover = BLUE FILL)
+    // bubbles — RING HOVER (no blue fill)
     const node = bubbleLayer.selectAll("circle").data(filtered, d => d.name);
     node.enter().append("circle")
       .attr("r", d => size(d.price))
@@ -289,17 +289,19 @@ Promise.all([
         d3.select(this)
           .raise()
           .transition().duration(150)
-          .attr("r", size(d.price)*1.15)
-          .attr("fill","#3B82F6"); // blue fill like pic-2
+          .attr("r", size(d.price)*1.08)
+          .attr("stroke", "#3B82F6")
+          .attr("stroke-width", 4);
         d3.select("#tooltip").style("opacity",1)
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s => d[s]===1).join(", ")}`)
           .style("left", (event.pageX+10)+"px").style("top", (event.pageY-28)+"px");
       })
-      .on("mouseout", function (event, d) {
+      .on("mouseout", function () {
         d3.select(this)
           .transition().duration(180)
-          .attr("r", size(d.price))
-          .attr("fill", d => color(d.rank));
+          .attr("r", d => size(d.price))
+          .attr("stroke", "#333")
+          .attr("stroke-width", 1);
         d3.select("#tooltip").style("opacity",0);
       })
       .merge(node)
@@ -314,8 +316,7 @@ Promise.all([
     const enterG = labelG.enter().append("g").attr("class","brand-label").attr("pointer-events","none");
     enterG.append("text").attr("class","label-halo").attr("text-anchor","middle").attr("dominant-baseline","middle");
     enterG.append("text").attr("class","label-text").attr("text-anchor","middle").attr("dominant-baseline","middle");
-    const merged = enterG.merge(labelG);
-    merged.each(function(d){
+    enterG.merge(labelG).each(function(d){
       const g = d3.select(this);
       const halo = g.select(".label-halo").text(d.brand);
       const fill = g.select(".label-text").text(d.brand);
@@ -325,10 +326,11 @@ Promise.all([
       fill.attr("font-size", fs).attr("fill","#111");
     });
 
-    // annotations stay
+    // annotations
     updateAnnotations({category, skin, maxPrice, filtered});
   }
 
+  // Listeners
   d3.select("#resetBtn").on("click", () => {
     d3.select("#categorySelect").property("value","All");
     d3.select("#skinSelect").property("value","All");
@@ -338,6 +340,7 @@ Promise.all([
   });
   d3.selectAll("#categorySelect,#skinSelect,#priceSlider").on("change input", updateChart);
 
+  // first render
   updateChart();
 }).catch(err => {
   console.error("Data load error:", err);
