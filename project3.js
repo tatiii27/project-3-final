@@ -29,9 +29,24 @@ function budgetNote(band){
 
 /* ===== Annotation panel ===== */
 function ensurePanel(){
-  const panel = d3.select("#annotations");
+  // Use existing panel if present
+  let panel = d3.select("#annotations");
   if (!panel.empty()) return panel;
-  throw new Error("Missing <aside id='annotations'> in HTML.");
+
+  // Fallback: create it before the <figure> inside .page
+  const page = d3.select(".page");
+  const before = page.select("figure").node() ? "figure" : null;
+
+  panel = page.insert("aside", before)
+    .attr("id", "annotations")
+    .attr("class", "anno");
+
+  panel.append("h3").attr("id","anno-head").attr("class","anno-head");
+  panel.append("p").attr("id","anno-tip").attr("class","anno-tip");
+  panel.append("p").attr("id","anno-budget").attr("class","anno-budget");
+  panel.append("p").attr("id","anno-compare").attr("class","anno-compare");
+
+  return panel;
 }
 
 function comparisonLine(filtered){
@@ -178,42 +193,46 @@ Promise.all([
 
   /* ===== Annotations ===== */
   function updateAnnotations({category, skin, maxPrice, filtered}){
-    const panel = ensurePanel();
-    const head = d3.select("#anno-head");
-    const tip  = d3.select("#anno-tip");
-    const budg = d3.select("#anno-budget");
-    const comp = d3.select("#anno-compare");
+  const panel = ensurePanel();
+  const head = panel.select("#anno-head");
+  const tip  = panel.select("#anno-tip");
+  const budg = panel.select("#anno-budget");
+  const comp = panel.select("#anno-compare");
 
-    if (skin === "All" || category === "All" || !filtered || filtered.length === 0) {
-      panel.attr("hidden", true);
-      head.text(""); tip.text(""); budg.text(""); comp.html("");
-      return;
-    }
+  // default: show panel unless we explicitly hide
+  panel.attr("hidden", null);
 
-    const band = bandFor(maxPrice);
-    head.text(`Tips for ${skin} skin — ${category}s under ${band ? money(band) : "no price limit"}`);
-    tip.text(SKIN_TIPS[skin] || "");
-    budg.text(budgetNote(band));
-
-    const line = comparisonLine(filtered);
-
-    const bestBrand = findBestBrandForSkin({skin, category});
-    let jsonLine = "";
-    if (bestBrand) {
-      const bestProd = findBestProductForBrand(bestBrand);
-      if (bestProd) {
-        const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
-        const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
-        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
-      } else {
-        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong> is a frequent top brand in our summary.`;
-      }
-    }
-
-    comp.html([line, jsonLine].filter(Boolean).join("<br>"));
-    panel.attr("hidden", null);
+  // Hide when filters are too broad or nothing to show
+  if (skin === "All" || category === "All" || !filtered || filtered.length === 0) {
+    panel.attr("hidden", true);
+    head.text(""); tip.text(""); budg.text(""); comp.html("");
+    return;
   }
 
+  const band = bandFor(maxPrice);
+  head.text(`Tips for ${skin} skin — ${category}s under ${band ? money(band) : "no price limit"}`);
+  tip.text(SKIN_TIPS[skin] || "");
+  budg.text(budgetNote(band));
+
+  // quick brand-to-brand comparison
+  const line = comparisonLine(filtered);
+
+  // optional JSON-driven sentence (safe if JSON structure varies)
+  const bestBrand = findBestBrandForSkin({ skin, category });
+  let jsonLine = "";
+  if (bestBrand) {
+    const bestProd = findBestProductForBrand(bestBrand);
+    if (bestProd) {
+      const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
+      const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
+      jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
+    } else {
+      jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, <strong>${bestBrand}</strong> is a frequent top brand in our summary.`;
+    }
+  }
+
+  comp.html([line, jsonLine].filter(Boolean).join("<br>"));
+}
   function updateChart(){
     const category = d3.select("#categorySelect").property("value");
     const skin = d3.select("#skinSelect").property("value");
