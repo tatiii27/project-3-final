@@ -319,17 +319,17 @@ Promise.all([
       .attr("opacity", 0.95)
       .attr("cursor", "pointer");
 
-    const isHighlited = d => canAnnotate && (
-       (highlightNames.size ? highlightName.has(d.name) : highlightedBrands.has(d.brand)));
+    const isHighlighted = d => canAnnotate && (
+       (highlightNames.size ? highlightNames.has(d.name) : highlightedBrands.has(d.brand)));
 
 
     const merged = enter.merge(node);
 
     // Set ring + highlighted class immediately (no flicker)
     merged
-      .classed("highlighted", d => highlightNames.has(d.name))
-      .attr("stroke", d => highlightNames.has(d.name) ? highlight_color : "#333")
-      .attr("stroke-width", d => highlightNames.has(d.name) ? 3 : 1)
+      .classed("highlighted", d => isHighlighted(d))
+      .attr("stroke", d => isHighlighted(d) ? highlight_color : "#333")
+      .attr("stroke-width", d => isHighlighted(d) ? 3 : 1)
       .transition().duration(500)
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank));
@@ -343,7 +343,7 @@ Promise.all([
           .attr("stroke-width", isHighlighted(d) ? 5 : 4);
          
         d3.select("#tooltip").style("opacity",1)
-          .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`);
+          .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
           .style("left", (event.pageX+10)+"px")
           .style("top", (event.pageY-28)+"px");
       })
