@@ -207,6 +207,8 @@ Promise.all([
       .filter(d => (category==="All"||d.Label===category) && (skin==="All"||d[skin]===1) && d.price<=maxPrice)
       .sort((a,b)=> d3.descending(a.rank,b.rank))
       .slice(0,20);
+     
+
 
     // early exit if no rows
     if (!filtered.length){
@@ -219,6 +221,27 @@ Promise.all([
     // Which brands to highlight (for the comparison line)
     const pair = pickComparisonPair(filtered);
     highlightedBrands = new Set(pair ? [pair.a.brand, pair.b.brand] : []);
+
+     // best product from the brand if more than 1 per category
+   // account for the tie within same brand --- to find best product
+     const highlightNames = new Set();
+     if (pair) {
+        const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
+        const tie_determinant = .001;
+
+        const byBrand = d3.group(
+           filtered.filter(d => comparedBrands.has(d.brand)), d => d.brand);
+
+        byBrand.forEach(items => {
+           const maxR = d3.max(items, d => d.rank);
+           items.forEach(d => {
+              if (Math.abs(d.rank - maxR) <= tie_determinant) {
+                 highlightNames.add(d.name);
+              }
+           });
+        });
+     }
+    
 
     // color scale
     let rMin=d3.min(filtered,d=>d.rank), rMax=d3.max(filtered,d=>d.rank);
@@ -287,9 +310,9 @@ Promise.all([
 
     // Set ring + highlighted class immediately (no flicker)
     merged
-      .classed("highlighted", d => highlightedBrands.has(d.brand))
-      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
-      .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
+      .classed("highlighted", d => highlightNames.has(d.name))
+      .attr("stroke", d => highlightNames.has(d.name) ? highlight_color : "#333")
+      .attr("stroke-width", d => highlightNames.has(d.name) ? 3 : 1)
       .transition().duration(500)
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank));
@@ -300,7 +323,7 @@ Promise.all([
         d3.select(this).raise().transition().duration(150)
           .attr("r", size(d.price)*1.08)
           .attr("stroke", highlight_color)
-          .attr("stroke-width", highlightedBrands.has(d.brand) ? 5 : 4);
+          .attr("stroke-width", highlightNames.has(d.name) ? 5 : 4);
         d3.select("#tooltip").style("opacity",1)
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`);
       })
@@ -312,8 +335,8 @@ Promise.all([
       .on("mouseout", function(event,d){
         d3.select(this).transition().duration(180)
           .attr("r", size(d.price))
-          .attr("stroke", highlightedBrands.has(d.brand) ? highlight_color : "#333")
-          .attr("stroke-width", highlightedBrands.has(d.brand) ? 3 : 1);
+          .attr("stroke", highlightNames.has(d.name) ? highlight_color : "#333")
+          .attr("stroke-width", highlightNames.has(d.name) ? 3 : 1);
         d3.select("#tooltip").style("opacity",0);
       });
 
