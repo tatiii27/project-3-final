@@ -145,10 +145,12 @@
       </section>
 
       <section>
-        <h2>Question</h2>
-        <p>
-          blah blah blah
-        </p>
+  <h2>Compelling Question</h2>
+  <p>
+    How do skincare product <strong>price</strong>, <strong>consumer rating</strong>, and 
+    <strong>skin-type suitability</strong> interact across brands and categories—and do higher prices reliably
+    correlate with better ratings?
+  </p>
       </section>
 
       <section>
@@ -180,20 +182,121 @@
       </section>
 
       <!-- (Optional) Write-up sections you can fill out later to match the rubric -->
-      <section>
-        <h2>Design Rationale</h2>
-        <p>
-          <!-- Briefly explain marks & channels, color scale choice, axis placement, label choices, etc. -->
-        </p>
-      </section>
+<section>
+  <h2>Design Rationale</h2>
 
-      <section>
-        <h2>Development Notes</h2>
-        <p>
-          <!-- Who did what, time spent, main challenges, etc. -->
-        </p>
-      </section>
-    </main>
+  <h3>Visual Encodings</h3>
+  <p>
+    We chose a clustered bubble chart because circular marks effectively convey multiple
+    quantitative attributes while supporting rapid comparison. Each bubble represents a single skincare product.
+  </p>
+  <ul>
+    <li><strong>Position (x-axis):</strong> Product price, mapped linearly left to right, emphasizes affordability versus luxury tiers.</li>
+    <li><strong>Size (radius):</strong> Encodes relative price magnitude to reinforce the cost dimension visually without requiring axis reference.</li>
+    <li><strong>Color (fill):</strong> Encodes average consumer rating using a perceptually ordered diverging red-yellow-green scale, where green is for higher satisfaction, red for lower. The scale re-computes dynamically 
+        for each filter state so color contrast remains meaningful within any subset.</li>
+    <li><strong>Text (label):</strong> Displays the brand name centered within the bubble to maintain identification at a glance.</li>
+    <li><strong>Tooltip (details-on-demand):</strong> Reveals the full product name, category, exact price, rating, and supported skin types.</li>
+  </ul>
+
+
+  <h3>Interaction Techniques</h3>
+  <p>
+    The visualization combines several complementary interactions to support exploration:
+  </p>
+  <ul>
+    <li><strong>Dropdown Filters:</strong> Users can filter by product category (e.g., moisturizer, serum) and by skin type (e.g., dry, oily).</li>
+    <li><strong>Dynamic Price Range:</strong> A slider restricts visible products by maximum price to explore affordability thresholds.</li>
+    <li><strong>Animated Re-layout:</strong> Bubbles re-cluster smoothly along the price axis after filters update, preserving spatial context.</li>
+    <li><strong>Tooltips:</strong> Hovering provides detailed product information on demand without visual clutter.</li>
+    <li><strong>Hover Highlight:</strong> The hovered bubble enlarges and turns the border blue,
+        a color outside the rating scale, clearly indicating focus while brand text remains visible above the highlight.</li>
+    <li><strong>Responsive Legend:</strong> The color legend updates dynamically to reflect rating range within the filtered subset.</li>
+  </ul>
+
+
+
+  <h3>Data Transformations</h3>
+  <p>
+    Raw CSV fields (<code>Label</code>, <code>brand</code>, <code>name</code>, <code>price</code>, 
+    <code>rank</code>, and binary skin-type columns) were parsed numerically. Only filtering and ranking are applied:
+    within each filter state, the top 20 highest-rated products are shown to maintain readability.
+    The color scale recalculates the minimum and maximum <code>rank</code> values in each subset so that relative
+    rating variation remains visible.
+  </p>
+</section>
+
+<section>
+  <h2>Development Process</h2>
+
+  <p>
+    This project was completed collaboratively over roughly <strong>30 person-hours</strong> of development.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Phase</th><th>Tasks</th><th>Approx. Hours</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Exploratory Analysis</td><td>Inspect dataset, identify compelling question, test static plots</td><td>5 h</td></tr>
+      <tr><td>D3 Structure Setup</td><td>Load data, create scales, implement force simulation</td><td>7 h</td></tr>
+      <tr><td>Interaction Logic</td><td>Dropdowns, slider, legend, and axis arrow implementation</td><td>6 h</td></tr>
+      <tr><td>Visual Polish</td><td>Hover effects, layering fixes, dynamic color scale tuning</td><td>7 h</td></tr>
+      <tr><td>Testing & Deployment</td><td>Debugging, browser testing, GitHub Pages hosting</td><td>5 h</td></tr>
+
+      <p>A data set was chosen as a collective and our group discussed potential directions for analysis and visuals. 
+        Group members each made 2 visuals for the project check point independently of one another. After assessing each others' work,
+        a choice was made to use one visual and encorporate elements in that visual that we all liked from each others work. Group members 
+        worked crossfunctionally to edit the repository with Git by adding new functionality to the bubble chart, further refine visual 
+        encodings and explore user-experience. A member did the write up and other members added and detracted to leave us with this final submission.</p>
+    </tbody>
+  </table>
+
+
+</section>
+
+<section>
+  <h2>Reflection and Outcome</h2>
+  <p>
+    Our final design balances exploratory flexibility with clarity. By limiting to three quantitative dimensions, we
+    maintained readability and visual balance. The blue hover cue and dynamic color legend enhance usability, while
+    smooth transitions preserve spatial context. Filters and details-on-demand encourage exploration of meaningful
+    sub-patterns, such as affordable yet highly rated options for specific skin types.
+  </p>
+  <p>
+    The visualization is implemented entirely in <strong>D3.js v7</strong> and hosted on <strong>GitHub Pages</strong>.
+    No server-side code or high-level libraries (e.g., Vega, Plotly) were used. All project files
+    (<code>index.html</code>, <code>project3.js</code>, <code>style.css</code>, <code>data/cosmetic_p.csv</code>)
+    are public for transparency and reproducibility.
+  </p>
+  <p>
+    Ultimately, this interactive visualization provides an engaging, data-driven view of how price and satisfaction
+    interact across the skincare market, helping users identify <strong>which products deliver the best value for
+    their skin type</strong>.
+  </p>
+
+
+    <p>
+    These encodings follow expressiveness and effectiveness principles: position and hue communicate quantitative
+    differences, while redundant cues (color + size) reinforce perceived value differences.
+  </p>
+  <p>
+    We considered alternatives such as scatterplots and small-multiples faceted by skin type, but these created
+    either overplotting or fragmented comparisons. The bubble layout offered the clearest synthesis of brand
+    identity and quantitative comparison while remaining visually engaging.
+  </p>
+
+    <p>
+    Together, these interactions enable users to ask “what-if” questions—such as 
+    <em>Which affordable moisturizers rate above 4.5 stars for oily skin?</em>—and immediately see patterns emerge.
+  </p>
+
+    <p>
+    The most time-intensive part involved tuning <em>force-layout physics</em> (collision radius, horizontal clustering)
+    and ensuring hover transitions did not interfere with label layering. Debugging z-order and dynamic color updates
+    required several iterative adjustments.
+  </p>
+</section>
+
 
     <!-- Your project scripts -->
     <script type="module" src="project3.js"></script>
