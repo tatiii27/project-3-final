@@ -334,7 +334,7 @@ Promise.all([
      .attr("r", d => size(d.price))
      .attr("fill", d => color(d.rank))
      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color : "#333")
-     .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1);
+     .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
      .selection()
      .classed("highlighted", d=> highlightedBrands.has(d.brand));
 
