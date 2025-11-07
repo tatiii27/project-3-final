@@ -5,6 +5,8 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
    ========================== */
 const BUDGET_BANDS = [25, 40, 60, 80, 120, 200, 0]; // 0 = "∞"
 const money = v => `$${(+v).toFixed(0)}`;
+const highlight_color = "#ec4889";
+let highlightedBrands = new Set();
 function bandFor(price){ const p=+price||0; for (const t of BUDGET_BANDS) if (t && p<=t) return t; return 0; }
 
 const SKIN_TIPS = {
@@ -190,6 +192,19 @@ Promise.all([
     comp.html([line,jsonLine].filter(Boolean).join("<br>"));
   }
 
+
+   /* get the two brands comapred in comments*/
+  function pickComparisonPair(filtered){
+     if (!filtered || filtered.length < 2):
+        return null;
+     const sorted = [...filtered].sort(
+        (a,b) => d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price)
+      );
+     const a = sorted[0];
+     const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
+     return (a && b) ? {a,b} : null;
+  }
+        
   /* ==========================
      Update / render
      ========================== */
@@ -201,6 +216,9 @@ Promise.all([
 
     let filtered=data.filter(d=>(category==="All"||d.Label===category)&&(skin==="All"||d[skin]===1)&&d.price<=maxPrice)
                      .sort((a,b)=>d3.descending(a.rank,b.rank)).slice(0,20);
+
+    const pair = pickComparisonPair(filtered);
+    highlightedBrand = new Set(pair ? [pair.a.brand, pair.b.brand] : []);
 
     // color scale
     let rMin=d3.min(filtered,d=>d.rank), rMax=d3.max(filtered,d=>d.rank);
@@ -280,25 +298,40 @@ Promise.all([
     node.enter().append("circle")
       .attr("r", d=>size(d.price))
       .attr("fill", d=>color(d.rank))
-      .attr("stroke","#333").attr("stroke-width",1).attr("opacity",0.95).attr("cursor","pointer")
+      .attr("stroke", d => highlightedBrands.has(d.brand) ? highlight_color: "#333")
+      .attr("stroke-width", d => highlightedBrands.has(d.brand) ? 3 : 1)
+      .attr("opacity",0.95)
+      .attr("cursor","pointer")
       .on("mouseover", function(event,d){
         d3.select(this).raise().transition().duration(150)
           .attr("r", size(d.price)*1.08)
-          .attr("stroke","#3B82F6").attr("stroke-width",4);
-        d3.select("#tooltip").style("opacity",1)
-          .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
-          .style("left",(event.pageX+10)+"px").style("top",(event.pageY-28)+"px");
+          .attr("stroke", highlight_color)
+          .attr("stroke-width", highlightedBrands.has(d.brand) ? 5 : 4);
+
+         d3.select("#tooltip").style("opacity",1)
+           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
+           .style("left",(event.pageX+10)+"px")
+           .style("top",(event.pageY-28)+"px");
       })
-      .on("mouseout", function(){
-        d3.select(this).transition().duration(180)
-          .attr("r", d=>size(d.price))
-          .attr("stroke","#333").attr("stroke-width",1);
-        d3.select("#tooltip").style("opacity",0);
+      .on("mouseout", function(event){
+         d3.select("#tooltip")
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
       })
+      .on("mouseout", function(event, d){
+         d3.select(this).transition().duration(180)
+            .attr("r", size(d.price))
+            .attr("stroke", highlightedBrands.has(d.brand) ? highlight_color : "#333")
+            .attr("stroke-width", highlightedBrands.has(d.brand) ? 3 : 1);
+         d3.select("#tooltip").style("opacity",0)
+      })
+   
       .merge(node)
       .transition().duration(500)
       .attr("r", d=>size(d.price))
-      .attr("fill", d=>color(d.rank));
+      .attr("fill", d=>color(d.rank))
+      .attr("stroke", d => highlightedBrands.has(d.brand) ? highligh_color : "#333")
+      .attr("stroke-width", d => hightedBrands.has(d.brand) ? 3 : 1);
     node.exit().remove();
 
     // labels
