@@ -254,10 +254,12 @@ Promise.all([
     // determine compare pair
     let pair = null;
     let highlightedBrands = new Set();
-    if (category !== "All" && skin !== "All") {
-      const sorted = [...filtered].sort((a,b)=> d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price));
+    if (category !== "All" && filtered.length >= 2) {
+      const sorted = [...filtered].sort(
+         (a, b) => d3.descending(a.rank, b.rank) || d3.ascending(a.price, b.price)
+      );
       const a = sorted[0];
-      const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
+      const b = sorted.find(x => x !== a && Math.abs((x.rank ?? 0)-(a.rank ?? 0)) <= 0.1) || sorted[1];
       if (a && b) {
         pair = {a,b};
         highlightedBrands = new Set([a.brand, b.brand]);
