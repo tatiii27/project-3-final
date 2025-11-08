@@ -1,67 +1,104 @@
-:root{
-  --ink:#1f2937;
-  --muted:#6b7280;
-  --panel:#f8fafc;
-  --line:#e5e7eb;
-  --halo:#ffffff;
+ :root{
+  --color-neutral-95:hsl(220 10% 95%);
+  --color-neutral-90:hsl(220 10% 90%);
+  --color-neutral-80:hsl(220 10% 80%);
+  --color-neutral-70:hsl(220 10% 70%);
+  --color-neutral-60:hsl(220 10% 60%);
+  --color-neutral-50:hsl(220 10% 50%);
+  --color-neutral-40:hsl(220 10% 40%);
+  --color-neutral-30:hsl(220 10% 30%);
+  --color-neutral-20:hsl(220 10% 20%);
+  --color-neutral-10:hsl(220 10% 10%);
 }
 
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;padding:0;background:#fff;color:var(--ink);
-  font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-
-header{padding:16px 20px;border-bottom:1px solid var(--line);text-align:center}
-header h1{margin:0 0 4px}
-.byline{margin:0;color:var(--muted);font-size:.95rem}
-
-main{max-width:1200px;margin:20px auto;padding:0 16px}
-.figure{border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
-.figure figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
-
-/* controls */
-.controls{
-  display:flex;gap:12px 16px;flex-wrap:wrap;align-items:center;
-  background:var(--panel);border:1px solid var(--line);
-  padding:10px 12px;border-radius:10px;margin-bottom:12px;
+html{
+  font:100%/1.5 system-ui,sans-serif;
+  counter-reset:figure;
+  background:var(--color-neutral-95);
+  max-width:min(75vw,80em);
+  margin:0 auto;
 }
-.controls label{font-weight:600}
-.controls select,.controls input[type="range"],.controls button{font:inherit}
-.controls button{cursor:pointer}
+h1,h2,h3,h4,h5,h6{line-height:1.1;font-weight:600;text-wrap:balance}
+h1,h2{border-bottom:1px solid var(--color-neutral-80);padding-bottom:.2em}
+h1{
+  margin-block:1em .5rem;
+  font-size:clamp(2.2em,150% + 2vh + 2vw,10vmin);
+  font-weight:800;
+}
+h1 small{
+  display:block;width:fit-content;padding:.2em .5em;margin-inline:auto;
+  color:#fff;background:var(--color-neutral-40);font-size:40%;
+  text-transform:uppercase;white-space:nowrap;
+}
+h2{font-size:180%;color:var(--color-neutral-30)}
+h3{font-size:130%}
+header{padding-block:1em;text-align:center}
+main{
+  background:#fff;color:var(--color-neutral-20);border-radius:1rem;
+  padding:.5rem 2rem 2rem 2rem;box-shadow:0 .1em .2em var(--color-neutral-90);
+}
 
-/* annotations */
+/* Figure + caption */
+figure{
+  margin:1em 0;padding:.5rem;margin-inline:-.5em;
+  border:1px solid var(--color-neutral-80);
+  box-shadow:0 .1em .2em var(--color-neutral-95);
+  text-align:center;background:#fff;
+}
+figure>figcaption{
+  font:500 75% system-ui,sans-serif;background:var(--color-neutral-95);
+  padding:.5rem;margin:-.5rem;margin-top:.5rem;counter-increment:figure;text-align:left;
+}
+figure>figcaption::before{
+  content:'Figure ' counter(figure) ': ';
+  font-weight:bold;color:var(--color-neutral-40);
+}
+
+/* Controls (team style) */
+#controls{
+  display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:flex-start;
+  padding:.5rem;background:var(--color-neutral-95);border:1px solid var(--color-neutral-80);
+  border-radius:.5rem;margin:.5rem 0 .75rem 0;
+}
+#controls label{font-weight:600;color:var(--color-neutral-30)}
+#controls select,#controls input[type="range"],#controls button{font:inherit}
+
+/* Annotations panel (your copy) */
 .anno{
-  border:1px solid var(--line);border-radius:10px;background:#fff;
-  padding:12px;margin:12px 0;box-shadow:0 1px 0 #f3f4f6;
+  border:1px solid var(--color-neutral-80);border-radius:.5rem;
+  background:#fff;padding:12px;margin:.5rem 0 1rem 0;
+  box-shadow:0 1px 0 var(--color-neutral-90);
 }
 .anno-head{margin:.1rem 0 .3rem;font-size:1.05rem}
 .anno-tip,.anno-budget,.anno-compare{margin:.25rem 0}
-.anno-compare strong{font-weight:700}
 
-/* viewport + canvas (teammate style) */
+/* Viewport + canvas so the whole chart is visible at 100% zoom */
 .viz-viewport{
   width:100%;
-  max-height:70vh;     /* graph fully visible at 100% with scroll if needed */
-  border:1px solid var(--line);
-  border-radius:8px;
-  overflow:auto;       /* scroll when zoomed in */
+  max-height:70vh;      /* ensures full chart fits at normal zoom */
+  border:1px solid var(--color-neutral-80);
+  border-radius:.5rem;
+  overflow:auto;        /* scroll when zoomed in */
   background:#fff;
 }
 .viz-canvas{
-  width:1100px;        /* logical drawing size */
+  width:1100px;         /* logical drawing size */
   height:750px;
   position:relative;
-  transform-origin: top left;
+  transform-origin:top left;
 }
 
-/* keep svg fixed to canvas size; zoom is via canvas scale */
+/* SVG fixed to the logical canvas size (zoom is applied to .viz-canvas via JS) */
 #brand-bubble-chart{width:1100px;height:750px;display:block}
 
-/* labels/tooltip */
-.brand-label .label-halo{paint-order:stroke;stroke:var(--halo);stroke-width:3px}
+/* Labels + tooltip */
+.brand-label .label-halo{paint-order:stroke;stroke:#fff;stroke-width:3px}
 .brand-label .label-text{fill:#111}
 #tooltip{
-  position:absolute;background:#fff;border:1px solid var(--line);
+  position:absolute;background:#fff;border:1px solid var(--color-neutral-80);
   padding:6px 10px;border-radius:6px;pointer-events:none;opacity:0;
   box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:.92rem
 }
 circle.highlighted{filter:drop-shadow(0 0 6px rgba(255,45,155,.65))}
+
