@@ -1,4 +1,3 @@
-// project3.js  — final (no zoom, no click toggle, hover-only tooltip, compare highlights)
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
 /* ==========================
@@ -134,7 +133,7 @@ Promise.all([
       .style("max-width","520px")
       .style("font","600 16px/1.35 system-ui, sans-serif");
   }
-  // Global hide on any mouse leaving the SVG area (prevents “stuck” tooltip)
+  // Global hide when leaving the SVG area
   svg.on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
 
   /* ==========================
@@ -193,7 +192,7 @@ Promise.all([
     tip.html(SKIN_TIPS[skin] || "");
     budg.html(budgetNote(band));
 
-    // comparison line
+    // comparison line — includes pink reference
     let compareLine = "";
     if (filtered.length >= 2) {
       const sorted = [...filtered].sort(
@@ -207,7 +206,8 @@ Promise.all([
         compareLine =
           `Both <strong>${a.brand.toUpperCase()}</strong> and <strong>${b.brand.toUpperCase()}</strong> `
           + `are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand.toUpperCase()}</strong> `
-          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
+          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}). `
+          + `<em style="color:${highlight_color}">*see pink highlighted bubbles below*</em>`;
       }
     }
 
@@ -369,7 +369,6 @@ Promise.all([
           .attr("stroke", highlight_color)
           .attr("stroke-width", isComparedHighlight(d) ? 5 : 4);
 
-        // tooltip content (compact, but readable)
         const skins = ["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ");
         d3.select("#tooltip")
           .style("opacity",1)
@@ -395,8 +394,6 @@ Promise.all([
           .attr("r", size(d.price))
           .attr("stroke", isComparedHighlight(d) ? highlight_color : "#333")
           .attr("stroke-width", isComparedHighlight(d) ? 3 : 1);
-
-        // hide tooltip immediately when hover ends
         d3.select("#tooltip").style("opacity",0);
       });
 
@@ -437,6 +434,8 @@ Promise.all([
   // initial draw
   updateChart();
 }).catch(err => console.error("Data load error:", err));
+
+
 
 
 
