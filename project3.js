@@ -58,7 +58,7 @@ function comparisonLine(filtered){
   if (!a || !b) return "";
   const left  = a.price <= b.price ? a : b;
   const right = a.price <= b.price ? b : a;
-  return `Both **${a.brand}** and **${b.brand}** are highly rated (≈ ${a.rank.toFixed(2)}), but ${left.brand} is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
+  return `Both <strong>${a.brand}</strong> and <strong>${b.brand}</strong> are highly rated (≈ ${a.rank.toFixed(2)}), but <strong>${left.brand}</strong> is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
 }
 
 /* ==========================
