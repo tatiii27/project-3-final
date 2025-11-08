@@ -96,9 +96,12 @@
 
         <h3>Data Transformations</h3>
         <p>
-          CSV fields (<code>Label</code>, <code>brand</code>, <code>name</code>, <code>price</code>, <code>rank</code>,
-          and binary skin-type columns) are parsed numerically. Within any filter state, the top 20 highest-rated products are shown to preserve readability.
-          The color scale recalculates the subset’s min/max <code>rank</code> so relative variation remains visible. Skin-type flags are mapped into a display string for the tooltip.
+          Raw CSV fields (<code>Label</code>, <code>brand</code>, <code>name</code>, <code>price</code>, 
+          <code>rank</code>, and binary skin-type columns) were parsed numerically. Only filtering and ranking are applied:
+          within each filter state, the top 20 highest-rated products are shown to maintain readability.
+          The color scale recalculates the minimum and maximum <code>rank</code> values in each subset so that relative
+          rating variation remains visible. Data annotations were added to map skin-type suitability from binary columns
+          into a single array for tooltip display.
         </p>
       </section>
 
@@ -118,27 +121,37 @@
           </tbody>
         </table>
         <p>
-          A dataset was chosen collectively; each member built checkpoint visuals. We merged the strongest ideas into
-          this bubble chart, collaborated via Git, refined encodings, and iterated on UX. One member led the write-up,
-          with edits across the team.
+          A data set was chosen as a collective and our group discussed potential directions for analysis and visuals. 
+          Group members each made 2 visuals for the project check point independently of one another. After assessing each others' work,
+          a choice was made to use one visual and encorporate elements in that visual that we all liked from each others work. Group members 
+          worked crossfunctionally to edit the repository with Git by adding new functionality to the bubble chart, further refine visual 
+          encodings and explore user-experience. A member did the write up and other members added and detracted to leave us with this final submission.
         </p>
       </section>
 
       <section>
         <h2>Reflection and Outcome</h2>
         <p>
-          Our design balances exploration with clarity by limiting dimensions and using strong affordances
-          (hover focus, dynamic legend, smooth transitions). Filters and details-on-demand surface sub-patterns—like
-          affordable, highly-rated options for specific skin types. The most time-intensive work was tuning the force layout
-          and ensuring labels/hovers layer cleanly.
+          Our final design balances exploratory flexibility with clarity. By limiting to three quantitative dimensions, we
+          maintained readability and visual balance. The blue hover cue and dynamic color legend enhance usability, while
+          smooth transitions preserve spatial context. Filters and details-on-demand encourage exploration of meaningful
+          sub-patterns, such as affordable yet highly rated options for specific skin types. The most time-intensive part involved 
+          tuning force-layout physics (collision radius, horizontal clustering)
+          and ensuring hover transitions did not interfere with label layering. Debugging and dynamic color updates
+          required several iterative adjustments.
         </p>
         <p>
-          Compared to alternatives (scatterplots, bar charts, small multiples), the bubble layout preserved brand
-          identity while enabling quantitative comparison and kept the page visually engaging.
+          Ultimately, this interactive visualization provides an engaging, data-driven view of how price and satisfaction
+          interact across the skincare market, helping users identify which products deliver the best value for
+          their skin type. We considered alternatives such as scatterplots, bar-plots and small-multiples faceted by skin type, but these created
+          either overplotting, fragmented comparisons or lacked visual intrigue. The bubble layout offered the clearest synthesis of brand
+          identity and quantitative comparison while remaining visually engaging.
         </p>
         <p>
-          Collaboration was genuinely synergistic—multiple Zoom sessions plus async commits, with everyone
-          contributing to a result we’re proud of.
+          Ultimately, working together was an awesome experience! Our team really worked in unison to develop something we were all equally proud of. 
+          During our collaboration there were several moments where ideas were bounced around and we all contributed to the final product, 
+          highlighting how this project was truly a team effort. We spent over 3 sessions working together on zoom and several more hours working 
+          independently to contribute to the final product.
         </p>
       </section>
     </main>
