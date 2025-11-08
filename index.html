@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="style.css" rel="stylesheet" />
 
-    <!-- Page framing to match teammate -->
+   
     <style>
       :root{
         --color-neutral-95:hsl(220 10% 95%);
@@ -61,7 +61,7 @@
         font-weight:bold;color:var(--color-neutral-40);
       }
 
-      /* Controls row (inside figure like teammate) */
+   
       #controls{
         display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:flex-start;
         padding:.5rem;background:var(--color-neutral-95);border:1px solid var(--color-neutral-80);
@@ -70,10 +70,10 @@
       #controls label{font-weight:600;color:var(--color-neutral-30)}
       #controls select,#controls input[type="range"],#controls button{font:inherit}
 
-      /* Make SVG fully visible without scrolling: scale to container */
+      
       #brand-bubble-chart{
-        width:100%;            /* scale down responsively */
-        height:auto;           /* preserve aspect ratio */
+        width:100%;           
+        height:auto;         
         display:block;
       }
     </style>
@@ -111,7 +111,7 @@
       <section>
         <h2>Interactive Visualization</h2>
 
-        <!-- Controls first (inside figure like teammate) -->
+        
         <figure>
           <div id="controls"></div>
 
@@ -123,7 +123,7 @@
             <p id="anno-compare" class="anno-compare"></p>
           </aside>
 
-          <!-- Responsive SVG (no scroll). JS still uses 1100x750 internally. -->
+          
           <svg
             id="brand-bubble-chart"
             role="img"
