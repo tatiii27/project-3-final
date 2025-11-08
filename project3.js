@@ -1,3 +1,4 @@
+// project3.js
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
 /* ==========================
@@ -14,16 +15,16 @@ function bandFor(price){
 }
 
 const SKIN_TIPS = {
-  Dry: "Look for <strong>hyaluronic acid</strong> or <strong>glycerin</strong>, they pull water into the skin. <strong>Ceramides</strong> help seal moisture so skin doesn’t feel tight.",
-  Oily: "<strong>Salicylic acid</strong> can clear pores and reduce shine. <strong>Niacinamide</strong> helps with oil balance; lighter gel textures avoid heaviness.",
-  Combination: "Aim for light hydration (<strong>hyaluronic acid</strong>) without heavy creams. If T-zone is shiny, a touch of salicylic acid helps.",
-  Sensitive: "Keep it simple and fragrance-free. <strong>Centella</strong>, <strong>aloe</strong>, or <strong>oat</strong> can feel calming; avoid strong exfoliants unless tolerated.",
-  Normal: "Pick by goal: brightening (<strong>vitamin C</strong>), smoothing (<strong>centella</strong>), or hydration (<strong>HA/glycerin</strong>). Gentle formulas keep the barrier happy."
+  Dry: "Look for <strong>hyaluronic acid</strong> or <strong>glycerin</strong>; <strong>ceramides</strong> help seal moisture.",
+  Oily: "<strong>Salicylic acid</strong> clears pores; <strong>niacinamide</strong> helps oil balance; gels avoid heaviness.",
+  Combination: "Light hydration (<strong>HA</strong>) without heavy creams; a touch of salicylic acid helps a shiny T-zone.",
+  Sensitive: "Keep it simple and fragrance-free. <strong>Centella</strong>, <strong>aloe</strong>, or <strong>oat</strong> can be calming.",
+  Normal: "Pick by goal: brightening (<strong>vitamin C</strong>), smoothing (<strong>centella</strong>), or hydration (<strong>HA/glycerin</strong>)."
 };
 
 function budgetNote(band){
-  if (band === 0)   return "Higher prices often bundle multiple actives or luxe textures. Results can be similar so check rating, not just price.";
-  if (band <= 40)   return "You can get gentle, well-rated options without going luxury in this price range.";
+  if (band === 0)   return "Higher prices often bundle multiple actives or luxe textures—check rating, not just price.";
+  if (band <= 40)   return "You can get gentle, well-rated options without going luxury here.";
   if (band <= 80)   return "Mid-range often adds brighteners or pore helpers without luxury pricing.";
   return "This tier usually adds more actives/polish. Consider whether ratings justify the spend.";
 }
@@ -81,11 +82,11 @@ Promise.all([
     Combination:+d.Combination||0, Dry:+d.Dry||0, Normal:+d.Normal||0, Oily:+d.Oily||0, Sensitive:+d.Sensitive||0
   }));
 
-  const findBestBrandForSkin = bestBrandFinder(bestBrandBySkinJSON);
-  const findBestProductForBrand = bestProductFinder(bestProductsByBrandJSON);
+  const findBestBrandForSkin   = bestBrandFinder(bestBrandBySkinJSON);
+  const findBestProductForBrand= bestProductFinder(bestProductsByBrandJSON);
 
   /* ==========================
-     SVG & layers (fixed coordinate system; CSS controls display size)
+     SVG & layers (fixed logical size; viewport scroll/zoom handles display)
      ========================== */
   const width = 1100, height = 750;
   const axisY = height - 80, gridHeight = height - 160;
@@ -93,7 +94,8 @@ Promise.all([
   const svg = d3.select("#brand-bubble-chart")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("preserveAspectRatio", "xMidYMid meet")
-    .attr("overflow", "visible");
+    .attr("role","img")
+    .attr("aria-label","Brand bubble chart");
 
   const gridG   = svg.append("g").attr("class","grid-layer");   // back
   const bubbleG = svg.append("g").attr("class","bubble-layer");
@@ -118,20 +120,12 @@ Promise.all([
 
   // Tooltip (singleton)
   if (d3.select("#tooltip").empty()) {
-    d3.select("body").append("div")
-      .attr("id","tooltip")
-      .style("position","absolute")
-      .style("background","#fff")
-      .style("border","1px solid #e5e7eb")
-      .style("padding","6px 10px")
-      .style("border-radius","6px")
-      .style("pointer-events","none")
-      .style("opacity",0)
-      .style("box-shadow","0 2px 10px rgba(0,0,0,.06)")
-      .style("font-size",".92rem");
+    d3.select("body").append("div").attr("id","tooltip");
   }
 
-  // Controls
+  /* ==========================
+     Controls (team-style) + Zoom control
+     ========================== */
   const categories=[...new Set(data.map(d=>d.Label))].sort();
   const skinTypes=["Combination","Dry","Normal","Oily","Sensitive"];
   const maxPGlobal=d3.max(data,d=>d.price) || 0;
@@ -139,14 +133,36 @@ Promise.all([
   d3.select("#controls").html(`
     <label>Category:</label>
     <select id="categorySelect"><option value="All">All</option>${categories.map(c=>`<option value="${c}">${c}</option>`).join("")}</select>
+
     <label>Skin Type:</label>
     <select id="skinSelect"><option value="All">All</option>${skinTypes.map(s=>`<option value="${s}">${s}</option>`).join("")}</select>
+
     <label>Max Price:</label>
     <input id="priceSlider" type="range" min="0" max="${maxPGlobal}" step="1" value="${maxPGlobal}">
     <span id="priceLabel">${money(maxPGlobal)}</span>
+
     <button id="resetBtn">Reset Filters</button>
+
+    <span style="margin-left:auto"></span>
+    <label>Zoom:</label>
+    <input id="zoomSlider" type="range" min="50" max="200" step="5" value="100">
+    <span id="zoomLabel">100%</span>
   `);
 
+  // Canvas zoom (expects #vizCanvas & #vizViewport in HTML wrapping the SVG)
+  const canvas   = document.getElementById("vizCanvas");
+  const viewport = document.getElementById("vizViewport");
+  function applyZoom(){
+    const z = +document.getElementById("zoomSlider").value;
+    if (canvas) canvas.style.transform = `scale(${z/100})`;
+    const zl = document.getElementById("zoomLabel");
+    if (zl) zl.textContent = `${z}%`;
+  }
+  const zoomSliderEl = document.getElementById("zoomSlider");
+  if (zoomSliderEl) zoomSliderEl.addEventListener("input", applyZoom);
+  applyZoom();
+
+  // Size scale
   const size=d3.scaleSqrt().domain(d3.extent(data,d=>d.price)).range([10,60]);
 
   // Legend (bottom center)
@@ -157,7 +173,7 @@ Promise.all([
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   /* ==========================
-     Annotations — HIDE when either filter is "All"
+     Annotations (hide when either filter is “All”)
      ========================== */
   function updateAnnotations({ category, skin, maxPrice, filtered }){
     const panel = d3.select("#annotations");
@@ -166,23 +182,21 @@ Promise.all([
     const budg  = panel.select("#anno-budget");
     const comp  = panel.select("#anno-compare");
 
-    // Hide when empty OR either dropdown is "All"
-    if (!filtered?.length || category === "All" || skin === "All") {
+    // HIDE comments when either filter is All OR no data
+    if (category === "All" || skin === "All" || !filtered || !filtered.length) {
       panel.attr("hidden", true);
       head.html(""); tip.html(""); budg.html(""); comp.html("");
       return;
     }
-
     panel.attr("hidden", null);
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    const skinText = `${skin} skin`;
+    // Capitalize “For Combination Skin …”
+    const skinText = (skin === "Combination") ? "Combination Skin" : `${skin} skin`;
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
-    if (SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]);
-    else tip.html("");
-
+    if (SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]); else tip.html("");
     budg.html(budgetNote(band));
 
     // Comparison line
@@ -199,11 +213,12 @@ Promise.all([
         compareLine =
           `Both <strong>${a.brand.toUpperCase()}</strong> and <strong>${b.brand.toUpperCase()}</strong> `
           + `are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand.toUpperCase()}</strong> `
-          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
+          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}). `
+          + `<em style="color:${highlight_color}">*see pink highlighted bubbles below*</em>`;
       }
     }
 
-    // JSON line
+    // JSON-driven brand/product line
     let jsonLine = "";
     const bestBrand = findBestBrandForSkin({skin, category});
     if (bestBrand) {
@@ -244,7 +259,7 @@ Promise.all([
       return;
     }
 
-    // comparison pair for highlights
+    // Determine pair for highlight (only when both filters specified)
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && skin !== "All") {
@@ -292,7 +307,7 @@ Promise.all([
        .domain([minP - pad, maxP + pad])
        .range([plot.x + bubbleMax, plot.x + plot.w - bubbleMax]);
 
-    // GRIDLINES
+    // GRID (behind)
     const ticks=xScale.ticks(6);
     const lines=gridG.selectAll("line.vgrid").data(ticks, d=>d);
     lines.enter().append("line").attr("class","vgrid")
@@ -329,7 +344,9 @@ Promise.all([
         labelG.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${clampY(d.y)})`);
       });
 
-    // BUBBLES
+    /* ==========================
+       BUBBLES
+       ========================== */
     const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
     const enter = node.enter().append("circle")
       .attr("r", d => size(d.price))
@@ -367,17 +384,19 @@ Promise.all([
           .style("left",(event.pageX+10)+"px")
           .style("top",(event.pageY-28)+"px");
       })
-      .on("mouseout", function(event,d){
+      .on("mouseout", function(){
         d3.select(this).transition().duration(180)
           .attr("r", size(d.price))
-          .attr("stroke", isHighlighted(d) ? highlight_color : "#333")
-          .attr("stroke-width", isHighlighted(d) ? 3 : 1);
+          .attr("stroke", isHighlighted(this.__data__) ? highlight_color : "#333")
+          .attr("stroke-width", isHighlighted(this.__data__) ? 3 : 1);
         d3.select("#tooltip").style("opacity",0);
       });
 
     node.exit().remove();
 
-    // LABELS
+    /* ==========================
+       LABELS
+       ========================== */
     const lab = labelG.selectAll("g.brand-label").data(filtered, d=>d.name);
     const labEnter = lab.enter().append("g").attr("class","brand-label").attr("pointer-events","none");
     labEnter.append("text").attr("class","label-halo").attr("text-anchor","middle").attr("dominant-baseline","middle");
@@ -393,7 +412,7 @@ Promise.all([
 
     lab.exit().remove();
 
-    
+    // finally update annotations
     updateAnnotations({category, skin, maxPrice, filtered});
   }
 
@@ -410,6 +429,23 @@ Promise.all([
   // initial draw
   updateChart();
 }).catch(err => console.error("Data load error:", err));
+
+/* ============ Tooltip base CSS (injected once) ============ */
+(() => {
+  if (document.getElementById("tooltip-style")) return;
+  const s = document.createElement("style");
+  s.id = "tooltip-style";
+  s.textContent = `
+    #tooltip{
+      position:absolute;background:#fff;border:1px solid #e5e7eb;
+      padding:6px 10px;border-radius:6px;pointer-events:none;opacity:0;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:.92rem
+    }
+    circle.highlighted{ filter: drop-shadow(0 0 6px rgba(255,45,155,.65)); }
+  `;
+  document.head.appendChild(s);
+})();
+
 
 
 
