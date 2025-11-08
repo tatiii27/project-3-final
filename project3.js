@@ -5,8 +5,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
    ========================== */
 const BUDGET_BANDS = [25, 40, 60, 80, 120, 200, 0]; // 0 = "∞"
 const money = v => `$${(+v).toFixed(0)}`;
-const highlight_color = "#FF2D9B";                 // ring color
-let highlightedBrands = new Set();
+const highlight_color = "#FF2D9B"; // ring color
 
 function bandFor(price){
   const p = +price || 0;
@@ -35,7 +34,13 @@ function budgetNote(band){
 function ensurePanel(){
   let panel = d3.select("#annotations");
   if (!panel.empty()) return panel;
-  panel = d3.select(".page").insert("aside", "figure").attr("id","annotations").attr("class","anno");
+
+  // Safe host: prefer .page, fall back to body
+  const host = d3.select(".page").empty() ? d3.select("body") : d3.select(".page");
+  panel = host.insert("aside", host.select("figure").empty() ? null : "figure")
+    .attr("id","annotations")
+    .attr("class","anno");
+
   panel.append("h3").attr("id","anno-head").attr("class","anno-head");
   panel.append("p").attr("id","anno-tip").attr("class","anno-tip");
   panel.append("p").attr("id","anno-budget").attr("class","anno-budget");
@@ -45,7 +50,9 @@ function ensurePanel(){
 
 function comparisonLine(filtered){
   if (!filtered || filtered.length < 2) return "";
-  const sorted = [...filtered].sort((a,b)=> d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price));
+  const sorted = [...filtered].sort(
+    (a,b)=> d3.descending(a.rank,b.rank) || d3.ascending(a.price,b.price)
+  );
   const a = sorted[0];
   const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
   if (!a || !b) return "";
@@ -106,16 +113,19 @@ Promise.all([
      SVG & layers
      ========================== */
   const width=1100, height=750, axisY=height-80, gridHeight=height-160;
-  const svg=d3.select("#brand-bubble-chart").attr("width",width).attr("height",height).attr("overflow","visible");
+  const svg=d3.select("#brand-bubble-chart")
+    .attr("width",width).attr("height",height)
+    .attr("overflow","visible");
 
   const gridG   = svg.append("g").attr("class","grid-layer");   // back
   const bubbleG = svg.append("g").attr("class","bubble-layer");
   const labelG  = svg.append("g").attr("class","label-layer");
-  const axisG   = svg.append("g").attr("class","x-axis");        // front
+  const axisG   = svg.append("g").attr("class","x-axis");       // front
 
   // defs: legend gradient + axis arrow
   const defs = svg.append("defs");
-  const legendGradient = defs.append("linearGradient").attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
+  const legendGradient = defs.append("linearGradient")
+    .attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
   defs.append("marker").attr("id","axis-arrow").attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
     .attr("markerWidth",6).attr("markerHeight",6).attr("orient","auto")
     .append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill","#333");
@@ -207,8 +217,6 @@ Promise.all([
       .filter(d => (category==="All"||d.Label===category) && (skin==="All"||d[skin]===1) && d.price<=maxPrice)
       .sort((a,b)=> d3.descending(a.rank,b.rank))
       .slice(0,20);
-     
-
 
     // early exit if no rows
     if (!filtered.length){
@@ -218,43 +226,29 @@ Promise.all([
       return;
     }
 
-    // Which brands to highlight (for the comparison line)
-     const canAnnotate = category !== "All" && skin !=="All";
+    // Can we annotate? (both category and skin must be chosen)
+    const canAnnotate = category !== "All" && skin !== "All";
 
-     let pair = null;
-     let nextHighlights = new Set();
-     
-     if (canAnnotate) {
-        pair = pickComparisonPair(filtered);
-        if (pair) nextHighlights = new Set([pair.a.brand, pair.b.brand]);
+    // Comparison pair + brands to highlight (brand-level)
+    let pair = null;
+    let highlightedBrands = new Set();
+    if (canAnnotate) {
+      pair = pickComparisonPair(filtered);
+      if (pair) highlightedBrands = new Set([pair.a.brand, pair.b.brand]);
+    }
 
-     }
-     highlightedBrands = nextHighlights;
-     
-   
-
-     // best product from the brand if more than 1 per category
-   // account for the tie within same brand --- to find best product
-     const highlightNames = new Set();
-     if (canAnnotate && pair) {
-        const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
-        const tie_determinant = .001;
-
-        const byBrand = d3.group(
-           filtered.filter(d => comparedBrands.has(d.brand)), d => d.brand);
-
-        byBrand.forEach(items => {
-           const maxR = d3.max(items, d => d.rank);
-           items.forEach(d => {
-              if (Math.abs(d.rank - maxR) <= tie_determinant) {
-                 highlightNames.add(d.name);
-              }
-           });
+    // Product-level highlight: only the best product(s) within the compared brands (ties allowed)
+    const highlightNames = new Set();
+    if (canAnnotate && pair) {
+      const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
+      const byBrand = d3.group(filtered.filter(d => comparedBrands.has(d.brand)), d => d.brand);
+      byBrand.forEach(items => {
+        const maxR = d3.max(items, d => d.rank);
+        items.forEach(d => {
+          if (Math.abs(d.rank - maxR) <= 1e-6) highlightNames.add(d.name); // tie friendly
         });
-     }
-
-     
-    
+      });
+    }
 
     // color scale
     let rMin=d3.min(filtered,d=>d.rank), rMax=d3.max(filtered,d=>d.rank);
@@ -311,7 +305,9 @@ Promise.all([
         labelG.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${d.y})`);
       });
 
-    // BUBBLES
+    /* ==========================
+       BUBBLES
+       ========================== */
     const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
     const enter = node.enter().append("circle")
       .attr("r", d => size(d.price))
@@ -319,33 +315,33 @@ Promise.all([
       .attr("opacity", 0.95)
       .attr("cursor", "pointer");
 
-    const isHighlighted = d => canAnnotate && (
-       (highlightNames.size ? highlightNames.has(d.name) : highlightedBrands.has(d.brand)));
-
+    // decide highlight per bubble (only when we have comments)
+    const isHighlighted = d =>
+      canAnnotate && (highlightNames.size ? highlightNames.has(d.name) : highlightedBrands.has(d.brand));
 
     const merged = enter.merge(node);
 
-    // Set ring + highlighted class immediately (no flicker)
+    // apply ring immediately (no flicker)
     merged
       .classed("highlighted", d => isHighlighted(d))
-      .attr("stroke", d => isHighlighted(d) ? highlight_color : "#333")
-      .attr("stroke-width", d => isHighlighted(d) ? 3 : 1)
+      .attr("stroke", d => (isHighlighted(d) ? highlight_color : "#333"))
+      .attr("stroke-width", d => (isHighlighted(d) ? 3 : 1))
       .transition().duration(500)
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank));
 
-    // Interactions
+    // interactions
     merged
       .on("mouseover", function(event,d){
         d3.select(this).raise().transition().duration(150)
           .attr("r", size(d.price)*1.08)
           .attr("stroke", highlight_color)
           .attr("stroke-width", isHighlighted(d) ? 5 : 4);
-         
+
         d3.select("#tooltip").style("opacity",1)
           .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
-          .style("left", (event.pageX+10)+"px")
-          .style("top", (event.pageY-28)+"px");
+          .style("left",(event.pageX+10)+"px")
+          .style("top",(event.pageY-28)+"px");
       })
       .on("mousemove", function(event){
         d3.select("#tooltip")
@@ -362,7 +358,9 @@ Promise.all([
 
     node.exit().remove();
 
-    // LABELS
+    /* ==========================
+       LABELS
+       ========================== */
     const lab = labelG.selectAll("g.brand-label").data(filtered, d=>d.name);
     const labEnter = lab.enter().append("g").attr("class","brand-label").attr("pointer-events","none");
     labEnter.append("text").attr("class","label-halo").attr("text-anchor","middle").attr("dominant-baseline","middle");
@@ -391,8 +389,10 @@ Promise.all([
   });
   d3.selectAll("#categorySelect,#skinSelect,#priceSlider").on("change input", updateChart);
 
+  // initial draw
   updateChart();
 }).catch(err => console.error("Data load error:", err));
+
 
 
 
