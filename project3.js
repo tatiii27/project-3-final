@@ -85,67 +85,20 @@ Promise.all([
   const findBestProductForBrand = bestProductFinder(bestProductsByBrandJSON);
 
   /* ==========================
-     SVG & layers (1100x750 coordinates; responsive via viewBox in HTML)
+     SVG & layers (fixed coordinate system; CSS controls display size)
      ========================== */
   const width = 1100, height = 750;
-const axisY = height - 80, gridHeight = height - 160;
+  const axisY = height - 80, gridHeight = height - 160;
 
-const svg = d3.select("#brand-bubble-chart")
-  .attr("viewBox", `0 0 ${width} ${height}`)
-  .attr("preserveAspectRatio", "xMidYMid meet")
-  .attr("overflow", "visible");
+  const svg = d3.select("#brand-bubble-chart")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("overflow", "visible");
 
-/* === Fit the SVG so filters + comments + chart + legend all fit at 100% zoom === */
-function fitSVGToViewport() {
-  const fig      = document.querySelector("figure");
-  const svgEl    = document.getElementById("brand-bubble-chart");
-  const controls = document.getElementById("controls");
-  const anno     = document.getElementById("annotations");
-  const caption  = fig ? fig.querySelector("figcaption") : null;
-
-  if (!fig || !svgEl) return;
-
-  // available width inside the figure
-  const wAvail = Math.max(320, fig.clientWidth - 16);
-
-  // heights of elements above the svg (only count anno if visible)
-  const hControls = controls ? controls.offsetHeight : 0;
-  const hAnno     = (anno && !anno.hasAttribute("hidden")) ? anno.offsetHeight : 0;
-  const hCaption  = caption ? caption.offsetHeight : 0;
-
-  // remaining viewport height for the svg
-  const figTop  = fig.getBoundingClientRect().top;
-  const vRemain = window.innerHeight - figTop - hCaption - 12; // bottom padding
-  const hAvail  = Math.max(300, vRemain - hControls - hAnno);
-
-  // keep chart aspect ratio
-  const aspect = height / width; // 750/1100
-
-  // try fitting by height first
-  let hTarget = Math.floor(hAvail);
-  let wTarget = Math.floor(hTarget / aspect);
-
-  // if too wide, fit by width instead
-  if (wTarget > wAvail) {
-    wTarget = Math.floor(wAvail);
-    hTarget = Math.floor(wTarget * aspect);
-  }
-
-  svgEl.style.width  = wTarget + "px";
-  svgEl.style.height = hTarget + "px";
-}
-
-// Re-fit on resize
-window.addEventListener("resize", fitSVGToViewport);
-
-// call once on load (keep this after the block above)
-fitSVGToViewport();
-       
-
- const gridG   = svg.append("g").attr("class","grid-layer");   // back
- const bubbleG = svg.append("g").attr("class","bubble-layer");
- const labelG  = svg.append("g").attr("class","label-layer");
- const axisG   = svg.append("g").attr("class","x-axis");       // front
+  const gridG   = svg.append("g").attr("class","grid-layer");   // back
+  const bubbleG = svg.append("g").attr("class","bubble-layer");
+  const labelG  = svg.append("g").attr("class","label-layer");
+  const axisG   = svg.append("g").attr("class","x-axis");       // front
 
   const plot = { x: 60, y: axisY - gridHeight, w: width-120, h: gridHeight };
 
@@ -204,7 +157,7 @@ fitSVGToViewport();
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   /* ==========================
-     Annotations (ALWAYS visible when there is data)
+     Annotations — HIDE when either filter is "All"
      ========================== */
   function updateAnnotations({ category, skin, maxPrice, filtered }){
     const panel = d3.select("#annotations");
@@ -213,11 +166,13 @@ fitSVGToViewport();
     const budg  = panel.select("#anno-budget");
     const comp  = panel.select("#anno-compare");
 
-    if (!filtered || !filtered.length) {
+    // Hide when empty OR either dropdown is "All"
+    if (!filtered?.length || category === "All" || skin === "All") {
       panel.attr("hidden", true);
       head.html(""); tip.html(""); budg.html(""); comp.html("");
       return;
     }
+
     panel.attr("hidden", null);
 
     const band = bandFor(maxPrice);
@@ -225,11 +180,8 @@ fitSVGToViewport();
     const skinText = `${skin} skin`;
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
-    if (skin !== "All" && SKIN_TIPS[skin]) {
-      tip.html(SKIN_TIPS[skin]);
-    } else {
-      tip.html("Adjust filters to get tailored tips by skin type and category. Ratings help compare value at any price.");
-    }
+    if (SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]);
+    else tip.html("");
 
     budg.html(budgetNote(band));
 
@@ -251,30 +203,24 @@ fitSVGToViewport();
       }
     }
 
-   
+    // JSON line
     let jsonLine = "";
-    if (category !== "All" && skin !== "All") {
-      const bestBrand = findBestBrandForSkin({skin, category});
-      if (bestBrand) {
-        const bestProd = findBestProductForBrand(bestBrand);
-        if (bestProd) {
-          const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
-          const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
-          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-            + `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
-        } else {
-          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-            + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
-        }
+    const bestBrand = findBestBrandForSkin({skin, category});
+    if (bestBrand) {
+      const bestProd = findBestProductForBrand(bestBrand);
+      if (bestProd) {
+        const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
+        const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
+        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
+          + `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
+      } else {
+        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
+          + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
       }
-    } else {
-      jsonLine = "Refine by both Category and Skin Type for brand-specific recommendations.";
     }
 
     comp.html([compareLine, jsonLine].filter(Boolean).join("<br>"));
-    fitSVGToViewport();
   }
-  
 
   /* ==========================
      Update / render
@@ -295,10 +241,10 @@ fitSVGToViewport();
       bubbleG.selectAll("circle").remove();
       labelG.selectAll("g.brand-label").remove();
       updateAnnotations({category, skin, maxPrice, filtered});
-      
       return;
     }
 
+    // comparison pair for highlights
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && skin !== "All") {
@@ -311,7 +257,6 @@ fitSVGToViewport();
       }
     }
 
- 
     const highlightNames = new Set();
     if (pair) {
       const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
@@ -347,7 +292,7 @@ fitSVGToViewport();
        .domain([minP - pad, maxP + pad])
        .range([plot.x + bubbleMax, plot.x + plot.w - bubbleMax]);
 
-    
+    // GRIDLINES
     const ticks=xScale.ticks(6);
     const lines=gridG.selectAll("line.vgrid").data(ticks, d=>d);
     lines.enter().append("line").attr("class","vgrid")
@@ -368,7 +313,7 @@ fitSVGToViewport();
       .attr("y",26).attr("text-anchor","middle").attr("fill","#333")
       .style("font-size","12px").style("pointer-events","none").text("Price");
 
-    
+    // Force simulation (position)
     const plotYCenter = plot.y + plot.h / 2;
     filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=plotYCenter; });
     d3.forceSimulation(filtered)
@@ -384,9 +329,7 @@ fitSVGToViewport();
         labelG.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${clampY(d.y)})`);
       });
 
-    /* ==========================
-       BUBBLES
-       ========================== */
+    // BUBBLES
     const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
     const enter = node.enter().append("circle")
       .attr("r", d => size(d.price))
@@ -434,9 +377,7 @@ fitSVGToViewport();
 
     node.exit().remove();
 
-    /* ==========================
-       LABELS
-       ========================== */
+    // LABELS
     const lab = labelG.selectAll("g.brand-label").data(filtered, d=>d.name);
     const labEnter = lab.enter().append("g").attr("class","brand-label").attr("pointer-events","none");
     labEnter.append("text").attr("class","label-halo").attr("text-anchor","middle").attr("dominant-baseline","middle");
@@ -452,9 +393,8 @@ fitSVGToViewport();
 
     lab.exit().remove();
 
-    // finally update annotations
+    
     updateAnnotations({category, skin, maxPrice, filtered});
-    fitSVGToViewport();
   }
 
   // listeners
