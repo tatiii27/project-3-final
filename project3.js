@@ -133,7 +133,7 @@ Promise.all([
       .style("max-width","520px")
       .style("font","600 16px/1.35 system-ui, sans-serif");
   }
-  // Global hide when leaving the SVG area
+  // Hide tooltip when leaving the SVG area
   svg.on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
 
   /* ==========================
@@ -168,7 +168,7 @@ Promise.all([
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   /* ==========================
-     Annotations (HIDDEN if Category or Skin is “All”)
+     Annotations (show when a Category is chosen; Skin may be All)
      ========================== */
   function updateAnnotations({ category, skin, maxPrice, filtered }){
     const panel = d3.select("#annotations");
@@ -186,18 +186,17 @@ Promise.all([
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    const skinText = 
-       skin == "All"
-         ? "All skin types"
-         : (skin === "Combination" ? "Combination Skin" : `${skin} Skin`);
-     
+    const skinText =
+      skin === "All"
+        ? "All skin types"
+        : (skin === "Combination" ? "Combination Skin" : `${skin} Skin`);
+
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
-    if (skin !== "All" && SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]);
-    else tip.html("");
-    
+
+    if (skin !== "All" && SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]); else tip.html("");
     budg.html(budgetNote(band));
 
-    // comparison line — includes pink reference
+    // Comparison line — includes pink reference
     let compareLine = "";
     if (filtered.length >= 2) {
       const sorted = [...filtered].sort(
@@ -216,22 +215,24 @@ Promise.all([
       }
     }
 
-    // JSON line
+    // JSON line (only when a specific skin is selected)
     let jsonLine = "";
     if (skin !== "All") {
-      const bestBrand = findBestBrandForSkin({skin, category});
-    if (bestBrand) {
-      const bestProd = findBestProductForBrand(bestBrand);
-      if (bestProd) {
-        const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
-        const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
-        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-          + `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
-      } else {
-        jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-          + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
+      const bestBrand = findBestBrandForSkin({ skin, category });
+      if (bestBrand) {
+        const bestProd = findBestProductForBrand(bestBrand);
+        if (bestProd) {
+          const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
+          const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
+          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
+            + `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
+        } else {
+          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
+            + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
+        }
       }
     }
+
     comp.html([compareLine, jsonLine].filter(Boolean).join("<br>"));
   }
 
@@ -257,7 +258,7 @@ Promise.all([
       return;
     }
 
-    // determine compare pair
+    // determine compare pair (works even when Skin = All as long as Category != All)
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && filtered.length >= 2) {
@@ -442,6 +443,23 @@ Promise.all([
   // initial draw
   updateChart();
 }).catch(err => console.error("Data load error:", err));
+
+/* ============ Tooltip base CSS (injected once) ============ */
+(() => {
+  if (document.getElementById("tooltip-style")) return;
+  const s = document.createElement("style");
+  s.id = "tooltip-style";
+  s.textContent = `
+    #tooltip{
+      position:absolute;background:#fff;border:1px solid #e5e7eb;
+      padding:10px 14px;border-radius:10px;pointer-events:none;opacity:0;
+      box-shadow:0 4px 16px rgba(0,0,0,.12);font:600 16px/1.35 system-ui, sans-serif;
+      max-width:520px
+    }
+    circle.highlighted{ filter: drop-shadow(0 0 6px rgba(255,45,155,.65)); }
+  `;
+  document.head.appendChild(s);
+})();
 
 
 
