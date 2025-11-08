@@ -89,7 +89,29 @@ Promise.all([
      ========================== */
   const width=1100, height=750, axisY=height-80, gridHeight=height-160;
   const svg=d3.select("#brand-bubble-chart")
-    .attr("overflow","visible"); // do NOT set width/height to preserve responsiveness
+    .attr("overflow","visible"); 
+ function fitSVGToViewport() {
+   const fig   = document.querySelector("figure");
+   const svgEl = document.getElementById("brand-bubble-chart");
+   const controls = document.getElementById("controls");
+   const anno  = document.getElementById("annotations");
+   const caption = fig ? fig.querySelector("figcaption") : null;
+
+   const used =
+      (controls ? controls.offsetHeight : 0) +
+      (anno ? anno.offsetHeight : 0) +
+      (caption ? caption.offsetHeight : 0) +
+      24;
+   const figTop = fig ? fig.getBoundingClientRect().top : 0;
+   const available = Math.max(360, window.innerHeight - figTop - used);
+
+   svgEl.style.width = "auto";
+   svgEl.style.maxWidth = "100%";
+   svgEl.style.height = `${available}px`;
+ }
+
+ window.addEventListener("resize", fitSVGToViewport);
+       
 
   const gridG   = svg.append("g").attr("class","grid-layer");   // back
   const bubbleG = svg.append("g").attr("class","bubble-layer");
@@ -200,7 +222,7 @@ Promise.all([
       }
     }
 
-    // JSON-driven callout only when both filters chosen
+   
     let jsonLine = "";
     if (category !== "All" && skin !== "All") {
       const bestBrand = findBestBrandForSkin({skin, category});
@@ -221,7 +243,9 @@ Promise.all([
     }
 
     comp.html([compareLine, jsonLine].filter(Boolean).join("<br>"));
+    fitSVGToViewport();
   }
+  
 
   /* ==========================
      Update / render
@@ -242,10 +266,11 @@ Promise.all([
       bubbleG.selectAll("circle").remove();
       labelG.selectAll("g.brand-label").remove();
       updateAnnotations({category, skin, maxPrice, filtered});
+      
+      fitSVGToViewport();
       return;
     }
 
-    // Optional highlight pair (kept from your logic)
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && skin !== "All") {
@@ -258,7 +283,7 @@ Promise.all([
       }
     }
 
-    // Product-level highlight (best within each highlighted brand)
+ 
     const highlightNames = new Set();
     if (pair) {
       const comparedBrands = new Set([pair.a.brand, pair.b.brand]);
@@ -294,7 +319,7 @@ Promise.all([
        .domain([minP - pad, maxP + pad])
        .range([plot.x + bubbleMax, plot.x + plot.w - bubbleMax]);
 
-    // GRIDLINES behind
+    
     const ticks=xScale.ticks(6);
     const lines=gridG.selectAll("line.vgrid").data(ticks, d=>d);
     lines.enter().append("line").attr("class","vgrid")
@@ -315,7 +340,7 @@ Promise.all([
       .attr("y",26).attr("text-anchor","middle").attr("fill","#333")
       .style("font-size","12px").style("pointer-events","none").text("Price");
 
-    // Force simulation (position)
+    
     const plotYCenter = plot.y + plot.h / 2;
     filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=plotYCenter; });
     d3.forceSimulation(filtered)
@@ -401,6 +426,7 @@ Promise.all([
 
     // finally update annotations
     updateAnnotations({category, skin, maxPrice, filtered});
+    fitSVGToViewport();
   }
 
   // listeners
