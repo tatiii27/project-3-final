@@ -99,7 +99,9 @@ circle.highlighted {
 
 #brand-bubble-chart {
   width: 100%;
+  max-width: 100%;
   height: auto;
+  aspect-ratio: 1100/7 50;
   display: block;
 }
 
