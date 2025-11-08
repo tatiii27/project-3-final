@@ -17,17 +17,17 @@
 /* The visible “box” */
 .viz-viewport {
   width: 100%;
-  max-height: 90vh;          /* how tall the box can be */
+  max-height: 80vh;          /* how tall the box can be */
   border: 1px solid #ddd;
   border-radius: 8px;
-  overflow: visible;            /* <-- enables both scrollbars */
+  overflow: hidden;            /* <-- enables both scrollbars */
   background: #fff;
 }
 
 /* The inner canvas holds your full chart size */
 .viz-canvas {
-  width: 1400px;             /* your design width */
-  height: 770px;             /* your design height */
+  width: 1100px;             /* your design width */
+  height: 6800px;             /* your design height */
   position: relative;
 }
 
