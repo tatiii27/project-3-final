@@ -1,4 +1,4 @@
-// project3.js
+// project3.js  — final (no zoom, no click toggle, hover-only tooltip, compare highlights)
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 
 /* ==========================
@@ -76,17 +76,18 @@ Promise.all([
   d3.json("data/best_brand_for_skin_types.json"),
   d3.json("data/best_products_for_brand.json")
 ]).then(([raw, bestBrandBySkinJSON, bestProductsByBrandJSON]) => {
+
   const data = raw.map(d => ({
     ...d,
     price:+d.price||0, rank:+d.rank||0,
     Combination:+d.Combination||0, Dry:+d.Dry||0, Normal:+d.Normal||0, Oily:+d.Oily||0, Sensitive:+d.Sensitive||0
   }));
 
-  const findBestBrandForSkin   = bestBrandFinder(bestBrandBySkinJSON);
-  const findBestProductForBrand= bestProductFinder(bestProductsByBrandJSON);
+  const findBestBrandForSkin    = bestBrandFinder(bestBrandBySkinJSON);
+  const findBestProductForBrand = bestProductFinder(bestProductsByBrandJSON);
 
   /* ==========================
-     SVG & layers (fixed logical size; viewport scroll/zoom handles display)
+     SVG & layers
      ========================== */
   const width = 1100, height = 750;
   const axisY = height - 80, gridHeight = height - 160;
@@ -97,14 +98,14 @@ Promise.all([
     .attr("role","img")
     .attr("aria-label","Brand bubble chart");
 
-  const gridG   = svg.append("g").attr("class","grid-layer");   // back
+  const gridG   = svg.append("g").attr("class","grid-layer");
   const bubbleG = svg.append("g").attr("class","bubble-layer");
   const labelG  = svg.append("g").attr("class","label-layer");
-  const axisG   = svg.append("g").attr("class","x-axis");       // front
+  const axisG   = svg.append("g").attr("class","x-axis");
 
   const plot = { x: 60, y: axisY - gridHeight, w: width-120, h: gridHeight };
 
-  // defs: legend gradient + axis arrow + clip
+  // defs
   const defs = svg.append("defs");
   const legendGradient = defs.append("linearGradient")
     .attr("id","legend-gradient").attr("x1","0%").attr("x2","100%");
@@ -118,13 +119,26 @@ Promise.all([
   bubbleG.attr("clip-path","url(#plot-clip)");
   labelG.attr("clip-path","url(#plot-clip)");
 
-  // Tooltip (singleton)
+  // Tooltip (singleton) — pointer-events: none so it never “captures” hover
   if (d3.select("#tooltip").empty()) {
-    d3.select("body").append("div").attr("id","tooltip");
+    d3.select("body").append("div")
+      .attr("id","tooltip")
+      .style("position","absolute")
+      .style("background","#fff")
+      .style("border","1px solid #e5e7eb")
+      .style("padding","10px 14px")
+      .style("border-radius","10px")
+      .style("box-shadow","0 4px 16px rgba(0,0,0,.12)")
+      .style("pointer-events","none")
+      .style("opacity",0)
+      .style("max-width","520px")
+      .style("font","600 16px/1.35 system-ui, sans-serif");
   }
+  // Global hide on any mouse leaving the SVG area (prevents “stuck” tooltip)
+  svg.on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
 
   /* ==========================
-     Controls (team-style) + Zoom control
+     Controls (team-style)
      ========================== */
   const categories=[...new Set(data.map(d=>d.Label))].sort();
   const skinTypes=["Combination","Dry","Normal","Oily","Sensitive"];
@@ -142,30 +156,12 @@ Promise.all([
     <span id="priceLabel">${money(maxPGlobal)}</span>
 
     <button id="resetBtn">Reset Filters</button>
-
-    <span style="margin-left:auto"></span>
-    <label>Zoom:</label>
-    <input id="zoomSlider" type="range" min="50" max="200" step="5" value="100">
-    <span id="zoomLabel">100%</span>
   `);
-
-  // Canvas zoom (expects #vizCanvas & #vizViewport in HTML wrapping the SVG)
-  const canvas   = document.getElementById("vizCanvas");
-  const viewport = document.getElementById("vizViewport");
-  function applyZoom(){
-    const z = +document.getElementById("zoomSlider").value;
-    if (canvas) canvas.style.transform = `scale(${z/100})`;
-    const zl = document.getElementById("zoomLabel");
-    if (zl) zl.textContent = `${z}%`;
-  }
-  const zoomSliderEl = document.getElementById("zoomSlider");
-  if (zoomSliderEl) zoomSliderEl.addEventListener("input", applyZoom);
-  applyZoom();
 
   // Size scale
   const size=d3.scaleSqrt().domain(d3.extent(data,d=>d.price)).range([10,60]);
 
-  // Legend (bottom center)
+  // Legend
   const legendWidth=200, legendHeight=10;
   const legendGroup=svg.append("g").attr("class","legend-group")
     .attr("transform",`translate(${(width-legendWidth)/2},${height-20})`);
@@ -173,7 +169,7 @@ Promise.all([
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   /* ==========================
-     Annotations (hide when either filter is “All”)
+     Annotations (HIDDEN if Category or Skin is “All”)
      ========================== */
   function updateAnnotations({ category, skin, maxPrice, filtered }){
     const panel = d3.select("#annotations");
@@ -182,8 +178,7 @@ Promise.all([
     const budg  = panel.select("#anno-budget");
     const comp  = panel.select("#anno-compare");
 
-    // HIDE comments when either filter is All OR no data
-    if (category === "All" || skin === "All" || !filtered || !filtered.length) {
+    if (category === "All" || skin === "All" || !filtered?.length) {
       panel.attr("hidden", true);
       head.html(""); tip.html(""); budg.html(""); comp.html("");
       return;
@@ -192,14 +187,13 @@ Promise.all([
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    // Capitalize “For Combination Skin …”
     const skinText = (skin === "Combination") ? "Combination Skin" : `${skin} skin`;
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
-    if (SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]); else tip.html("");
+    tip.html(SKIN_TIPS[skin] || "");
     budg.html(budgetNote(band));
 
-    // Comparison line
+    // comparison line
     let compareLine = "";
     if (filtered.length >= 2) {
       const sorted = [...filtered].sort(
@@ -213,12 +207,11 @@ Promise.all([
         compareLine =
           `Both <strong>${a.brand.toUpperCase()}</strong> and <strong>${b.brand.toUpperCase()}</strong> `
           + `are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand.toUpperCase()}</strong> `
-          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}). `
-          + `<em style="color:${highlight_color}">*see pink highlighted bubbles below*</em>`;
+          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
       }
     }
 
-    // JSON-driven brand/product line
+    // JSON line
     let jsonLine = "";
     const bestBrand = findBestBrandForSkin({skin, category});
     if (bestBrand) {
@@ -233,7 +226,6 @@ Promise.all([
           + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
       }
     }
-
     comp.html([compareLine, jsonLine].filter(Boolean).join("<br>"));
   }
 
@@ -251,7 +243,7 @@ Promise.all([
       .sort((a,b)=> d3.descending(a.rank,b.rank))
       .slice(0,20);
 
-    // If no rows, clear and update annotations (which will hide)
+    // clear if none
     if (!filtered.length){
       bubbleG.selectAll("circle").remove();
       labelG.selectAll("g.brand-label").remove();
@@ -259,7 +251,7 @@ Promise.all([
       return;
     }
 
-    // Determine pair for highlight (only when both filters specified)
+    // determine compare pair
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && skin !== "All") {
@@ -282,13 +274,13 @@ Promise.all([
       });
     }
 
-    // Color scale
+    // dynamic color
     let rMin=d3.min(filtered,d=>d.rank), rMax=d3.max(filtered,d=>d.rank);
     if (!(rMin>=0) || !(rMax>=0)) { rMin=3.0; rMax=5.0; }
     else if (rMin===rMax) { rMin=Math.max(0,rMin-0.2); rMax=Math.min(5,rMax+0.2); }
     const color=d3.scaleSequential(d3.interpolateRdYlGn).domain([rMin,rMax]);
 
-    // Legend stops + labels
+    // legend stops
     const stops=legendGradient.selectAll("stop").data(d3.ticks(0,1,10));
     stops.enter().append("stop").merge(stops)
       .attr("offset",d=>`${d*100}%`).attr("stop-color",d=>d3.interpolateRdYlGn(d));
@@ -307,7 +299,7 @@ Promise.all([
        .domain([minP - pad, maxP + pad])
        .range([plot.x + bubbleMax, plot.x + plot.w - bubbleMax]);
 
-    // GRID (behind)
+    // GRID
     const ticks=xScale.ticks(6);
     const lines=gridG.selectAll("line.vgrid").data(ticks, d=>d);
     lines.enter().append("line").attr("class","vgrid")
@@ -318,7 +310,7 @@ Promise.all([
     lines.exit().remove();
     gridG.lower(); bubbleG.raise(); labelG.raise(); axisG.raise();
 
-    // AXIS with label + arrow
+    // AXIS
     const axis = d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("$~s")).tickSize(0);
     axisG.attr("transform",`translate(0,${axisY})`).call(axis);
     axisG.select(".domain").attr("stroke","#333").attr("stroke-width",1.5).attr("stroke-linecap","butt").attr("marker-end","url(#axis-arrow)");
@@ -328,7 +320,7 @@ Promise.all([
       .attr("y",26).attr("text-anchor","middle").attr("fill","#333")
       .style("font-size","12px").style("pointer-events","none").text("Price");
 
-    // Force simulation (position)
+    // Force
     const plotYCenter = plot.y + plot.h / 2;
     filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=plotYCenter; });
     d3.forceSimulation(filtered)
@@ -348,47 +340,63 @@ Promise.all([
        BUBBLES
        ========================== */
     const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
+
     const enter = node.enter().append("circle")
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank))
       .attr("opacity", 0.95)
       .attr("cursor", "pointer");
 
-    const isHighlighted = d =>
+    const isComparedHighlight = d =>
       (highlightNames.size ? highlightNames.has(d.name) : highlightedBrands.has(d.brand));
 
     const merged = enter.merge(node);
 
     merged
-      .classed("highlighted", d => isHighlighted(d))
-      .attr("stroke", d => (isHighlighted(d) ? highlight_color : "#333"))
-      .attr("stroke-width", d => (isHighlighted(d) ? 3 : 1))
-      .transition().duration(500)
+      .classed("highlighted", d => isComparedHighlight(d))
+      .attr("stroke", d => (isComparedHighlight(d) ? highlight_color : "#333"))
+      .attr("stroke-width", d => (isComparedHighlight(d) ? 3 : 1))
+      .transition().duration(400)
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank));
 
+    // STRICT HOVER-ONLY PINK + TOOLTIP (no click state)
     merged
       .on("mouseover", function(event,d){
-        d3.select(this).raise().transition().duration(150)
+        const self = d3.select(this);
+        self.raise().interrupt().transition().duration(120)
           .attr("r", size(d.price)*1.08)
           .attr("stroke", highlight_color)
-          .attr("stroke-width", isHighlighted(d) ? 5 : 4);
+          .attr("stroke-width", isComparedHighlight(d) ? 5 : 4);
 
-        d3.select("#tooltip").style("opacity",1)
-          .html(`<strong>${d.name}</strong><br/>Brand: ${d.brand}<br/>Category: ${d.Label}<br/>${money(d.price)}<br/>⭐ ${d.rank.toFixed(2)}<br/>Skin Types: ${["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ")}`)
-          .style("left",(event.pageX+10)+"px")
-          .style("top",(event.pageY-28)+"px");
+        // tooltip content (compact, but readable)
+        const skins = ["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ");
+        d3.select("#tooltip")
+          .style("opacity",1)
+          .html(
+            `<div style="font-weight:800;margin-bottom:.2rem">${d.name}</div>
+             <div style="font-weight:600">Brand: <span style="font-weight:700">${d.brand}</span></div>
+             <div>Category: ${d.Label}</div>
+             <div>${money(d.price)}</div>
+             <div>⭐ ${d.rank.toFixed(2)}</div>
+             <div style="margin-top:.15rem">Skin Types: ${skins || "—"}</div>`
+          )
+          .style("left",(event.pageX + 14) + "px")
+          .style("top",(event.pageY - 28) + "px");
       })
       .on("mousemove", function(event){
         d3.select("#tooltip")
-          .style("left",(event.pageX+10)+"px")
-          .style("top",(event.pageY-28)+"px");
+          .style("left",(event.pageX + 14) + "px")
+          .style("top",(event.pageY - 28) + "px");
       })
-      .on("mouseout", function(){
-        d3.select(this).transition().duration(180)
+      .on("mouseout", function(event,d){
+        const self = d3.select(this);
+        self.interrupt().transition().duration(140)
           .attr("r", size(d.price))
-          .attr("stroke", isHighlighted(this.__data__) ? highlight_color : "#333")
-          .attr("stroke-width", isHighlighted(this.__data__) ? 3 : 1);
+          .attr("stroke", isComparedHighlight(d) ? highlight_color : "#333")
+          .attr("stroke-width", isComparedHighlight(d) ? 3 : 1);
+
+        // hide tooltip immediately when hover ends
         d3.select("#tooltip").style("opacity",0);
       });
 
@@ -412,7 +420,7 @@ Promise.all([
 
     lab.exit().remove();
 
-    // finally update annotations
+    // annotations
     updateAnnotations({category, skin, maxPrice, filtered});
   }
 
@@ -429,22 +437,6 @@ Promise.all([
   // initial draw
   updateChart();
 }).catch(err => console.error("Data load error:", err));
-
-/* ============ Tooltip base CSS (injected once) ============ */
-(() => {
-  if (document.getElementById("tooltip-style")) return;
-  const s = document.createElement("style");
-  s.id = "tooltip-style";
-  s.textContent = `
-    #tooltip{
-      position:absolute;background:#fff;border:1px solid #e5e7eb;
-      padding:6px 10px;border-radius:6px;pointer-events:none;opacity:0;
-      box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:.92rem
-    }
-    circle.highlighted{ filter: drop-shadow(0 0 6px rgba(255,45,155,.65)); }
-  `;
-  document.head.appendChild(s);
-})();
 
 
 
