@@ -87,40 +87,65 @@ Promise.all([
   /* ==========================
      SVG & layers (1100x750 coordinates; responsive via viewBox in HTML)
      ========================== */
-  const width=1100, height=750, axisY=height-80, gridHeight=height-160;
-  const svg=d3.select("#brand-bubble-chart")
-    .attr("overflow","visible"); 
- function fitSVGToViewport() {
-   const fig   = document.querySelector("figure");
-   const svgEl = document.getElementById("brand-bubble-chart");
-   const controls = document.getElementById("controls");
-   const anno  = document.getElementById("annotations");
-   const caption = fig ? fig.querySelector("figcaption") : null;
+  const width = 1100, height = 750;
+const axisY = height - 80, gridHeight = height - 160;
 
-   const used =
-      (controls ? controls.offsetHeight : 0) +
-      (anno ? anno.offsetHeight : 0) +
-      (caption ? caption.offsetHeight : 0) +
-      24;
-   const figTop = fig ? fig.getBoundingClientRect().top : 0;
-   const available = Math.max(360, window.innerHeight - figTop - used);
-   const aspect = 750 / 1100;
-   const cw = (fig ? fig.clientWidth : window.innerWidth) - 16;
-   const hByWidth  = cw * aspect;   
-   const targetH = Math.min(availH, hByWidth);
+const svg = d3.select("#brand-bubble-chart")
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("preserveAspectRatio", "xMidYMid meet")
+  .attr("overflow", "visible");
 
-   svgEl.style.width = "100%";
-   svgEl.style.maxWidth = "100%";
-   svgEl.style.height = `${available}px`;
- }
+/* === Fit the SVG so filters + comments + chart + legend all fit at 100% zoom === */
+function fitSVGToViewport() {
+  const fig      = document.querySelector("figure");
+  const svgEl    = document.getElementById("brand-bubble-chart");
+  const controls = document.getElementById("controls");
+  const anno     = document.getElementById("annotations");
+  const caption  = fig ? fig.querySelector("figcaption") : null;
 
- window.addEventListener("resize", fitSVGToViewport);
+  if (!fig || !svgEl) return;
+
+  // available width inside the figure
+  const wAvail = Math.max(320, fig.clientWidth - 16);
+
+  // heights of elements above the svg (only count anno if visible)
+  const hControls = controls ? controls.offsetHeight : 0;
+  const hAnno     = (anno && !anno.hasAttribute("hidden")) ? anno.offsetHeight : 0;
+  const hCaption  = caption ? caption.offsetHeight : 0;
+
+  // remaining viewport height for the svg
+  const figTop  = fig.getBoundingClientRect().top;
+  const vRemain = window.innerHeight - figTop - hCaption - 12; // bottom padding
+  const hAvail  = Math.max(300, vRemain - hControls - hAnno);
+
+  // keep chart aspect ratio
+  const aspect = height / width; // 750/1100
+
+  // try fitting by height first
+  let hTarget = Math.floor(hAvail);
+  let wTarget = Math.floor(hTarget / aspect);
+
+  // if too wide, fit by width instead
+  if (wTarget > wAvail) {
+    wTarget = Math.floor(wAvail);
+    hTarget = Math.floor(wTarget * aspect);
+  }
+
+  svgEl.style.width  = wTarget + "px";
+  svgEl.style.height = hTarget + "px";
+}
+
+// Re-fit on resize
+window.addEventListener("resize", fitSVGToViewport);
+
+// call once on load (keep this after the block above)
+fitSVGToViewport();
        
 
-  const gridG   = svg.append("g").attr("class","grid-layer");   // back
-  const bubbleG = svg.append("g").attr("class","bubble-layer");
-  const labelG  = svg.append("g").attr("class","label-layer");
-  const axisG   = svg.append("g").attr("class","x-axis");       // front
+ const gridG   = svg.append("g").attr("class","grid-layer");   // back
+ const bubbleG = svg.append("g").attr("class","bubble-layer");
+ const labelG  = svg.append("g").attr("class","label-layer");
+ const axisG   = svg.append("g").attr("class","x-axis");       // front
 
   const plot = { x: 60, y: axisY - gridHeight, w: width-120, h: gridHeight };
 
