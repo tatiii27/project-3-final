@@ -22,7 +22,7 @@ const SKIN_TIPS = {
 };
 
 function budgetNote(band){
-  if (band === 0)   return "Higher prices often bundle multiple actives or luxe textures. Results can be similar — check rating, not just price.";
+  if (band === 0)   return "Higher prices often bundle multiple actives or luxe textures. Results can be similar so check rating, not just price.";
   if (band <= 40)   return "You can get gentle, well-rated options without going luxury in this price range.";
   if (band <= 80)   return "Mid-range often adds brighteners or pore helpers without luxury pricing.";
   return "This tier usually adds more actives/polish. Consider whether ratings justify the spend.";
@@ -58,7 +58,7 @@ function comparisonLine(filtered){
   if (!a || !b) return "";
   const left  = a.price <= b.price ? a : b;
   const right = a.price <= b.price ? b : a;
-  return `Both <strong>${a.brand}</strong> and <strong>${b.brand}</strong> are highly rated (≈ ${a.rank.toFixed(2)}), but <strong>${left.brand}</strong> is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
+  return `Both <strong>${a.brand}</strong> and <strong>${b.brand}</strong> are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand}</strong> is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}).`;
 }
 
 /* ==========================
