@@ -28,7 +28,7 @@
         margin: 0 auto;
       }
 
-      /* Headings */
+      
       h1, h2, h3, h4, h5, h6 {
         line-height: 1.1;
         font-weight: 600;
@@ -60,7 +60,7 @@
       h2 { font-size: 180%; color: var(--color-neutral-30); }
       h3 { font-size: 130%; }
 
-      /* Sectioning elements */
+     
       header { padding-block: 1em; text-align: center; }
       main {
         background: white;
@@ -70,7 +70,7 @@
         box-shadow: 0 0.1em 0.2em var(--color-neutral-90);
       }
 
-      /* Figures */
+      
       figure {
         margin: 1em 0;
         padding: 0.5rem;
@@ -104,10 +104,10 @@
       #controls label { font-weight: 600; color: var(--color-neutral-30); }
       #controls select, #controls input[type="range"], #controls button { font: inherit; }
 
-      /* Viz sizing */
+      /* viz size */
       #brand-bubble-chart { width: auto; height: auto; display: block; }
 
-      /* Optional: a tiny margin under the annotation panel */
+      
       aside.anno { margin-bottom: 0.75rem; }
     </style>
   </head>
@@ -140,14 +140,14 @@
         </p>
       </section>
 
-      <!-- Your visualization section with YOUR hooks preserved -->
+     
       <section>
         <h2>Interactive Visualization</h2>
 
-        <!-- Controls (your exact hook) -->
+        
         <div id="controls" class="controls"></div>
 
-        <!-- Dynamic annotation panel (your exact hook) -->
+        
         <aside id="annotations" class="anno" hidden>
           <h3 id="anno-head" class="anno-head"></h3>
           <p id="anno-tip" class="anno-tip"></p>
@@ -155,7 +155,7 @@
           <p id="anno-compare" class="anno-compare"></p>
         </aside>
 
-        <!-- Chart (your exact hook) -->
+        
         <figure class="figure">
           <svg id="brand-bubble-chart" width="1100" height="750" role="img" aria-label="Brand bubble chart"></svg>
           <figcaption>Brand-level bubble chart with interactive filters, a price axis, and JSON-driven annotations.</figcaption>
@@ -238,7 +238,7 @@
       </section>
     </main>
 
-    <!-- keep your script hook -->
+    
     <script type="module" src="project3.js"></script>
   </body>
 </html>
