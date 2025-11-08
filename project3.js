@@ -137,7 +137,7 @@ Promise.all([
   svg.on("mouseleave", () => d3.select("#tooltip").style("opacity",0));
 
   /* ==========================
-     Controls
+     Controls (team-style)
      ========================== */
   const categories=[...new Set(data.map(d=>d.Label))].sort();
   const skinTypes=["Combination","Dry","Normal","Oily","Sensitive"];
@@ -168,7 +168,7 @@ Promise.all([
   legendGroup.append("text").attr("x",legendWidth/2).attr("y",-10).attr("font-size","12px").attr("text-anchor","middle").text("Rating (relative)");
 
   /* ==========================
-     Annotations (show whenever Category != "All")
+     Annotations (HIDDEN if Category is “All”)
      ========================== */
   function updateAnnotations({ category, skin, maxPrice, filtered }){
     const panel = d3.select("#annotations");
@@ -177,6 +177,7 @@ Promise.all([
     const budg  = panel.select("#anno-budget");
     const comp  = panel.select("#anno-compare");
 
+    // Hide if no category or no rows
     if (category === "All" || !filtered?.length) {
       panel.attr("hidden", true);
       head.html(""); tip.html(""); budg.html(""); comp.html("");
@@ -186,12 +187,15 @@ Promise.all([
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    const skinText =
-      skin === "All" ? "All skin types" : (skin === "Combination" ? "Combination Skin" : `${skin} Skin`);
+    const skinText = (skin === "All")
+      ? "All skin types"
+      : (skin === "Combination" ? "Combination Skin" : `${skin} Skin`);
 
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
-    if (skin !== "All" && SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]); else tip.html("");
+    if (skin !== "All" && SKIN_TIPS[skin]) { tip.html(SKIN_TIPS[skin]); }
+    else { tip.html(""); }
+
     budg.html(budgetNote(band));
 
     // comparison line — includes pink reference
@@ -206,14 +210,14 @@ Promise.all([
         const left  = a.price <= b.price ? a : b;
         const right = a.price <= b.price ? b : a;
         compareLine =
-          `Both <strong>${a.brand.toUpperCase()}</strong> and <strong>${b.brand.toUpperCase()}</strong> `
-          + `are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand.toUpperCase()}</strong> `
-          + `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}). `
-          + `<em style="color:${highlight_color}">*see pink highlighted bubbles below*</em>`;
+          `Both <strong>${a.brand.toUpperCase()}</strong> and <strong>${b.brand.toUpperCase()}</strong> ` +
+          `are highly rated (${a.rank.toFixed(2)}), but <strong>${left.brand.toUpperCase()}</strong> ` +
+          `is the more budget-friendly pick (${money(left.price)} vs ${money(right.price)}). ` +
+          `<em style="color:${highlight_color}">*see pink highlighted bubbles below*</em>`;
       }
     }
 
-    // JSON line (only when a specific skin is chosen)
+    // JSON line (only if a specific skin is selected)
     let jsonLine = "";
     if (skin !== "All") {
       const bestBrand = findBestBrandForSkin({skin, category});
@@ -222,11 +226,11 @@ Promise.all([
         if (bestProd) {
           const pricePart  = Number.isFinite(bestProd.price)  ? ` for about ${money(bestProd.price)}` : "";
           const ratingPart = Number.isFinite(bestProd.rating) ? ` (⭐ ${bestProd.rating.toFixed(2)})` : "";
-          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-            + `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
+          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, ` +
+                     `<strong>${bestBrand}</strong>’s top pick is <strong>${bestProd.name}</strong>${pricePart}${ratingPart}.`;
         } else {
-          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, `
-            + `<strong>${bestBrand}</strong> frequently appears among top brands.`;
+          jsonLine = `For ${skin.toLowerCase()} skin in ${category.toLowerCase()}, ` +
+                     `<strong>${bestBrand}</strong> frequently appears among top brands.`;
         }
       }
     }
@@ -256,12 +260,12 @@ Promise.all([
       return;
     }
 
-    // determine compare pair (when a Category is picked, even if Skin = All)
+    // determine compare pair (even if skin === "All", as long as category is set)
     let pair = null;
     let highlightedBrands = new Set();
     if (category !== "All" && filtered.length >= 2) {
       const sorted = [...filtered].sort(
-         (a, b) => d3.descending(a.rank, b.rank) || d3.ascending(a.price, b.price)
+        (a, b) => d3.descending(a.rank, b.rank) || d3.ascending(a.price, b.price)
       );
       const a = sorted[0];
       const b = sorted.find(x => x !== a && Math.abs((x.rank ?? 0)-(a.rank ?? 0)) <= 0.1) || sorted[1];
@@ -347,7 +351,6 @@ Promise.all([
        BUBBLES
        ========================== */
     const node = bubbleG.selectAll("circle").data(filtered, d => d.name);
-
     const enter = node.enter().append("circle")
       .attr("r", d => size(d.price))
       .attr("fill", d => color(d.rank))
@@ -378,14 +381,14 @@ Promise.all([
         const skins = ["Combination","Dry","Normal","Oily","Sensitive"].filter(s=>d[s]===1).join(", ");
         d3.select("#tooltip")
           .style("opacity",1)
-          .html(
-            `<div style="font-weight:800;margin-bottom:.2rem">${d.name}</div>
-             <div style="font-weight:600">Brand: <span style="font-weight:700">${d.brand}</span></div>
-             <div>Category: ${d.Label}</div>
-             <div>${money(d.price)}</div>
-             <div>⭐ ${d.rank.toFixed(2)}</div>
-             <div style="margin-top:.15rem">Skin Types: ${skins || "—"}</div>`
-          )
+          .html(`
+            <div style="font-weight:800;margin-bottom:.2rem">${d.name}</div>
+            <div style="font-weight:600">Brand: <span style="font-weight:700">${d.brand}</span></div>
+            <div>Category: ${d.Label}</div>
+            <div>${money(d.price)}</div>
+            <div>⭐ ${d.rank.toFixed(2)}</div>
+            <div style="margin-top:.15rem">Skin Types: ${skins || "—"}</div>
+          `)
           .style("left",(event.pageX + 14) + "px")
           .style("top",(event.pageY - 28) + "px");
       })
@@ -430,27 +433,15 @@ Promise.all([
   d3.select("#resetBtn").on("click", ()=>{
     d3.select("#categorySelect").property("value","All");
     d3.select("#skinSelect").property("value","All");
-    d3.select("#priceSlider").property("value", d3.max(data,d=>d.price) || 0);
-    d3.select("#priceLabel").text(money(d3.max(data,d=>d.price) || 0));
+    d3.select("#priceSlider").property("value", maxPGlobal);
+    d3.select("#priceLabel").text(money(maxPGlobal));
     updateChart();
   });
   d3.selectAll("#categorySelect,#skinSelect,#priceSlider").on("change input", updateChart);
 
   // initial draw
   updateChart();
-}).catch(err => {
-  console.error("Data load error:", err);
-  // Draw a clear inline error if data fails (so the figure isn't just blank)
-  const svg = d3.select("#brand-bubble-chart");
-  svg.selectAll("*").remove();
-  svg.append("text")
-    .attr("x", 20).attr("y", 40)
-    .attr("fill", "#c00").style("font", "600 16px system-ui, sans-serif")
-    .text("Data load error. Check file paths under /data and run from a local server (not file://).");
-});
-
-
-
+}).catch(err => console.error("Data load error:", err));
 
 
 
