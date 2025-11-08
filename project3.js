@@ -186,7 +186,7 @@ Promise.all([
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    const skinText = (skin === "Combination") ? "Combination Skin" : `${skin} skin`;
+    const skinText = `${skin} Skin`;
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
     tip.html(SKIN_TIPS[skin] || "");
