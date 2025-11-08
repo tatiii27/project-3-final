@@ -5,226 +5,49 @@
     <title>Project 3 — Brand Bubble Chart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="style.css" rel="stylesheet" />
-
-    <style>
-      :root{
-        --color-neutral-95:hsl(220 10% 95%);
-        --color-neutral-90:hsl(220 10% 90%);
-        --color-neutral-80:hsl(220 10% 80%);
-        --color-neutral-70:hsl(220 10% 70%);
-        --color-neutral-60:hsl(220 10% 60%);
-        --color-neutral-50:hsl(220 10% 50%);
-        --color-neutral-40:hsl(220 10% 40%);
-        --color-neutral-30:hsl(220 10% 30%);
-        --color-neutral-20:hsl(220 10% 20%);
-        --color-neutral-10:hsl(220 10% 10%);
-      }
-      html{
-        font:100%/1.5 system-ui,sans-serif;
-        counter-reset:figure;
-        background:var(--color-neutral-95);
-        max-width:120em; /* wider so SVG can grow with the screen */
-        margin:0 auto;
-      }
-
-      h1,h2,h3,h4,h5,h6{line-height:1.1;font-weight:600;text-wrap:balance}
-      h1,h2{border-bottom:1px solid var(--color-neutral-80);padding-bottom:.2em}
-      h1{
-        margin-block:1em .5rem;
-        font-size:clamp(2.2em,150% + 2vh + 2vw,10vmin);
-        font-weight:800;
-      }
-      h1 small{
-        display:block;width:fit-content;padding:.2em .5em;margin-inline:auto;
-        color:#fff;background:var(--color-neutral-40);font-size:40%;
-        text-transform:uppercase;white-space:nowrap;
-      }
-      h2{font-size:180%;color:var(--color-neutral-30)}
-      h3{font-size:130%}
-      header{padding-block:1em;text-align:center}
-      main{
-        background:#fff;color:var(--color-neutral-20);border-radius:1rem;
-        padding:.5rem 2rem 2rem 2rem;box-shadow:0 .1em .2em var(--color-neutral-90);
-      }
-      figure{
-        margin:1rem auto;
-        padding:.5rem;
-        border:1px solid var(--color-neutral-80);
-        box-shadow:0 .1em .2em var(--color-neutral-95);
-        text-align:center;background:#fff;
-        max-width: 1200; /* increase to get larger char */
-      }
-      figure>figcaption{
-        font:500 75% system-ui,sans-serif;background:var(--color-neutral-95);
-        padding:.5rem;margin:-.5rem;margin-top:.5rem;counter-increment:figure;text-align:left;
-      }
-      figure>figcaption::before{
-        content:'Figure ' counter(figure) ': ';
-        font-weight:bold;color:var(--color-neutral-40);
-      }
-
-      /* controls row */
-      #controls{
-        display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:flex-start;
-        padding:.5rem;background:var(--color-neutral-95);border:1px solid var(--color-neutral-80);
-        border-radius:.5rem;margin:.5rem 0 .75rem 0;
-      }
-      #controls label{font-weight:600;color:var(--color-neutral-30)}
-      #controls select,#controls input[type="range"],#controls button{font:inherit}
-
-      .anno{
-        border: 1px solid var(--color-neutral-80);
-        border-radius:.6rem;
-        background:#f8fafc;
-        padding:.8rem 1rem;
-        margin-bottom:.75rem;
-        text-align:center;
-        
-      }
-      .anno-head{margin:0 0 .4rem;font-weight:700}
-      .anno-tip,.anno-budget,.anno-compare{margin:.25rem 0}
-
-      /* responsive SVG */
-      #brand-bubble-chart{
-        width:100%;
-        max-wdith:100%;
-        height:auto;
-        aspect-ratio: 1100/750;
-        display:block;
-      }
-    </style>
   </head>
 
   <body>
-    <header class="site-header">
-      <h1>
-        <small>Project 3</small>
-        Interactive Visualization — Brand Bubble Chart
-      </h1>
+    <header>
+      <h1>Interactive Visualization — Brand Bubble Chart</h1>
       <p class="byline"><strong>Team:</strong> Marianne Sawires • Vanessa Scott • Tatianna Sanchez</p>
-      <p><em>masawire@ucsd.edu • vascott@ucsd.edu • t1sanchez@ucsd.edu</em></p>
+      <p class="byline"><em>masawire@ucsd.edu • vascott@ucsd.edu • t1sanchez@ucsd.edu</em></p>
     </header>
 
     <main>
-      <section>
-        <h2>Overview</h2>
-        <p>
-          This interactive bubble chart explores skincare products by brand. Bubble size encodes price,
-          color encodes rating, and bubbles are positioned along a price axis. Use the controls to filter
-          by category, skin type, and price.
-        </p>
-      </section>
+      <figure class="figure">
+        <!-- controls -->
+        <div id="controls" class="controls"></div>
 
-      <section>
-        <h2>Compelling Question</h2>
-        <p>
-          How do skincare product <strong>price</strong>, <strong>consumer rating</strong>, and
-          <strong>skin-type suitability</strong> interact across brands and categories—and do higher prices reliably
-          correlate with better ratings?
-        </p>
-      </section>
+        <!-- COMMENTS / ANNOTATIONS -->
+        <aside id="annotations" class="anno">
+          <h3 id="anno-head" class="anno-head"></h3>
+          <p id="anno-tip" class="anno-tip"></p>
+          <p id="anno-budget" class="anno-budget"></p>
+          <p id="anno-compare" class="anno-compare"></p>
+        </aside>
 
-      <section>
-        <h2>Interactive Visualization</h2>
-        <figure>
-          <div id="controls"></div>
+        <!-- teammate-style viewport with internal canvas -->
+        <div id="vizViewport" class="viz-viewport">
+          <div id="vizCanvas" class="viz-canvas">
+            <svg
+              id="brand-bubble-chart"
+              role="img"
+              aria-label="Brand bubble chart"
+              viewBox="0 0 1100 750"
+              preserveAspectRatio="xMidYMid meet">
+            </svg>
+          </div>
+        </div>
 
-          <!-- COMMENTS / ANNOTATIONS above the chart -->
-          <aside id="annotations" class="anno">
-            <h3 id="anno-head" class="anno-head"></h3>
-            <p id="anno-tip" class="anno-tip"></p>
-            <p id="anno-budget" class="anno-budget"></p>
-            <p id="anno-compare" class="anno-compare"></p>
-          </aside>
-
-          <svg
-            id="brand-bubble-chart"
-            role="img"
-            aria-label="Brand bubble chart"
-            viewBox="0 0 1100 750"
-            preserveAspectRatio="xMidYMid meet">
-          </svg>
-
-          <figcaption>Brand-level bubble chart with interactive filters and a price-axis brush.</figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2>Design Rationale</h2>
-        <h3>Visual Encodings</h3>
-        <p>
-          We chose a clustered bubble chart because circular marks effectively convey multiple quantitative
-          attributes while supporting rapid comparison. Each bubble represents a single skincare product.
-        </p>
-        <ul>
-          <li><strong>Position (x-axis):</strong> Product price, mapped linearly left to right, emphasizes affordability versus luxury tiers.</li>
-          <li><strong>Size (radius):</strong> Encodes relative price magnitude to reinforce the cost dimension visually without requiring axis reference.</li>
-          <li><strong>Color (fill):</strong> Encodes average consumer rating using a perceptually ordered diverging red–yellow–green scale. The scale recomputes dynamically for each filter state so contrast stays meaningful.</li>
-          <li><strong>Text (label):</strong> Brand name centered in the bubble for quick identification.</li>
-          <li><strong>Tooltip:</strong> Full product name, category, exact price, rating, and supported skin types.</li>
-        </ul>
-
-        <h3>Interaction Techniques</h3>
-        <ul>
-          <li><strong>Dropdown Filters:</strong> Filter by product category and skin type.</li>
-          <li><strong>Dynamic Price Range:</strong> Slider limits visible products by max price.</li>
-          <li><strong>Animated Re-layout:</strong> Force simulation reclusters after filter updates.</li>
-          <li><strong>Tooltips & Hover:</strong> Details on demand with a clear focus highlight.</li>
-          <li><strong>Responsive Legend:</strong> Color legend updates to the subset’s rating range.</li>
-        </ul>
-
-        <h3>Data Transformations</h3>
-        <p>
-          CSV fields (<code>Label</code>, <code>brand</code>, <code>name</code>, <code>price</code>,
-          <code>rank</code>, and binary skin-type columns) are parsed numerically. Within any filter state,
-          the top 20 highest-rated products are shown to preserve readability. The color scale recalculates
-          the subset’s min/max <code>rank</code> so relative variation remains visible. Skin-type flags are also
-          mapped into a display string for the tooltip.
-        </p>
-      </section>
-
-      <section>
-        <h2>Development Process</h2>
-        <p>This project was completed collaboratively over roughly <strong>30 person-hours</strong> of development.</p>
-        <table>
-          <thead>
-            <tr><th>Phase</th><th>Tasks</th><th>Approx. Hours</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Exploratory Analysis</td><td>Inspect dataset, identify question, test static plots</td><td>5 h</td></tr>
-            <tr><td>D3 Structure Setup</td><td>Load data, scales, force simulation</td><td>7 h</td></tr>
-            <tr><td>Interaction Logic</td><td>Dropdowns, slider, legend, axis arrow</td><td>6 h</td></tr>
-            <tr><td>Visual Polish</td><td>Hover effects, layering, dynamic color tuning</td><td>7 h</td></tr>
-            <tr><td>Testing/Deployment</td><td>Debugging, browser testing, GitHub Pages</td><td>5 h</td></tr>
-          </tbody>
-        </table>
-        <p>
-          A dataset was chosen collectively; each member built checkpoint visuals. We merged the strongest ideas into
-          this bubble chart, collaborated via Git, refined encodings, and iterated on UX. One member led the write-up,
-          with edits across the team.
-        </p>
-      </section>
-
-      <section>
-        <h2>Reflection and Outcome</h2>
-        <p>
-          Our design balances exploration with clarity by limiting dimensions and using strong affordances
-          (hover focus, dynamic legend, smooth transitions). Filters and details-on-demand help surface
-          sub-patterns—like affordable, highly-rated options for specific skin types. The most time-intensive
-          work was tuning the force layout and ensuring labels/hovers layer cleanly.
-        </p>
-        <p>
-          Compared to alternatives (scatterplots, bar charts, small multiples), the bubble layout preserved brand
-          identity while enabling quantitative comparison and kept the page visually engaging.
-        </p>
-        <p>
-          Collaboration was genuinely synergistic—multiple Zoom sessions plus async commits, with everyone
-          contributing to a result we’re proud of.
-        </p>
-      </section>
+        <figcaption>
+          Brand-level bubble chart with interactive filters and a price-axis brush.
+        </figcaption>
+      </figure>
     </main>
 
     <script type="module" src="project3.js"></script>
   </body>
 </html>
+
 
