@@ -14,11 +14,11 @@ function bandFor(price){
 }
 
 const SKIN_TIPS = {
-  Dry: "Look for hyaluronic acid or glycerin — they pull water into the skin. Ceramides help seal moisture so skin doesn’t feel tight.",
-  Oily: "Salicylic acid can clear pores and reduce shine. Niacinamide helps with oil balance; lighter gel textures avoid heaviness.",
-  Combination: "Aim for light hydration (hyaluronic acid) without heavy creams. If T-zone is shiny, a touch of salicylic acid helps.",
-  Sensitive: "Keep it simple and fragrance-free. Centella, aloe, or oat can feel calming; avoid strong exfoliants unless you already tolerate them.",
-  Normal: "Pick by goal: brightening (vitamin C), smoothing (gentle acids), or hydration (HA/glycerin). Gentle formulas keep the barrier happy."
+  Dry: "Look for <strong>hyaluronic acid</strong> or <strong>glycerin</strong>, they pull water into the skin. <strong>Ceramides</strong> help seal moisture so skin doesn’t feel tight.",
+  Oily: "<strong>Salicylic acid</strong> can clear pores and reduce shine. <strong>Niacinamide</strong> helps with oil balance; lighter gel textures avoid heaviness.",
+  Combination: "Aim for light hydration (<strong>hyaluronic acid</strong>) without heavy creams. If T-zone is shiny, a touch of salicylic acid helps.",
+  Sensitive: "Keep it simple and fragrance-free. <strong>Centella</strong>,  <strong>aloe</strong>, or  <strong>oat</strong> can feel calming; avoid strong exfoliants unless you already tolerate them.",
+  Normal: "Pick by goal: brightening ( <strong>vitamin C</strong>), smoothing (<strong>cantella</strong>), or hydration ( <strong>HA/glycerin</strong>). Gentle formulas keep the barrier happy."
 };
 
 function budgetNote(band){
@@ -177,8 +177,8 @@ Promise.all([
 
     const band=bandFor(maxPrice);
     head.text(`Tips for ${skin} skin — ${category}s under ${band?money(band):"no price limit"}`);
-    tip.text(SKIN_TIPS[skin]||"");
-    budg.text(budgetNote(band));
+    tip.html(SKIN_TIPS[skin]||"");
+    budg.html(budgetNote(band));
 
     const line=comparisonLine(filtered);
     const bestBrand=findBestBrandForSkin({skin,category});
