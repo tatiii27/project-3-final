@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="style.css" rel="stylesheet" />
 
-   
     <style>
       :root{
         --color-neutral-95:hsl(220 10% 95%);
@@ -24,9 +23,13 @@
         font:100%/1.5 system-ui,sans-serif;
         counter-reset:figure;
         background:var(--color-neutral-95);
-        max-width:min(75vw,80em);
+        max-width:min(95vw,120em); /* wider so SVG can grow with the screen */
         margin:0 auto;
       }
+
+      /* use full width inside the page */
+      figure { margin-inline: 0; }
+
       h1,h2,h3,h4,h5,h6{line-height:1.1;font-weight:600;text-wrap:balance}
       h1,h2{border-bottom:1px solid var(--color-neutral-80);padding-bottom:.2em}
       h1{
@@ -47,7 +50,8 @@
         padding:.5rem 2rem 2rem 2rem;box-shadow:0 .1em .2em var(--color-neutral-90);
       }
       figure{
-        margin:1em 0;padding:.5rem;margin-inline:-.5em;
+        margin:1em 0;
+        padding:.5rem;
         border:1px solid var(--color-neutral-80);
         box-shadow:0 .1em .2em var(--color-neutral-95);
         text-align:center;background:#fff;
@@ -61,7 +65,7 @@
         font-weight:bold;color:var(--color-neutral-40);
       }
 
-   
+      /* controls row */
       #controls{
         display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:flex-start;
         padding:.5rem;background:var(--color-neutral-95);border:1px solid var(--color-neutral-80);
@@ -70,10 +74,10 @@
       #controls label{font-weight:600;color:var(--color-neutral-30)}
       #controls select,#controls input[type="range"],#controls button{font:inherit}
 
-      
+      /* responsive SVG */
       #brand-bubble-chart{
-        width:100%;           
-        height:auto;         
+        width:100%;
+        height:auto;
         display:block;
       }
     </style>
@@ -110,8 +114,6 @@
 
       <section>
         <h2>Interactive Visualization</h2>
-
-        
         <figure>
           <div id="controls"></div>
 
@@ -123,7 +125,6 @@
             <p id="anno-compare" class="anno-compare"></p>
           </aside>
 
-          
           <svg
             id="brand-bubble-chart"
             role="img"
@@ -138,7 +139,6 @@
 
       <section>
         <h2>Design Rationale</h2>
-
         <h3>Visual Encodings</h3>
         <p>
           We chose a clustered bubble chart because circular marks effectively convey multiple quantitative
@@ -211,11 +211,6 @@
         </p>
       </section>
     </main>
-
-    <script type="module" src="project3.js"></script>
-  </body>
-</html>
-
 
     <script type="module" src="project3.js"></script>
   </body>
