@@ -170,13 +170,13 @@ Promise.all([
 
     if (skin==="All" || category==="All" || !filtered?.length){
       panel.attr("hidden", true);
-      head.text(""); tip.text(""); budg.text(""); comp.html("");
+      head.html(""); tip.text(""); budg.html(""); comp.html(""); //////// check change
       return;
     }
     panel.attr("hidden", null);
 
     const band=bandFor(maxPrice);
-    head.text(`Tips for ${skin} skin: ${category}s under ${band?money(band):"no price limit"}`);
+    head.html(` for ${skin} skin: ${category}s under ${band?money(band):"no price limit"}`);
     tip.html(SKIN_TIPS[skin]||"");
     budg.html(budgetNote(band));
 
