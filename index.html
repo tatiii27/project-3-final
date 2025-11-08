@@ -23,12 +23,9 @@
         font:100%/1.5 system-ui,sans-serif;
         counter-reset:figure;
         background:var(--color-neutral-95);
-        max-width:min(95vw,120em); /* wider so SVG can grow with the screen */
+        max-width:120em; /* wider so SVG can grow with the screen */
         margin:0 auto;
       }
-
-      /* use full width inside the page */
-      figure { margin-inline: 0; }
 
       h1,h2,h3,h4,h5,h6{line-height:1.1;font-weight:600;text-wrap:balance}
       h1,h2{border-bottom:1px solid var(--color-neutral-80);padding-bottom:.2em}
@@ -50,11 +47,12 @@
         padding:.5rem 2rem 2rem 2rem;box-shadow:0 .1em .2em var(--color-neutral-90);
       }
       figure{
-        margin:1em 0;
+        margin:1rem auto;
         padding:.5rem;
         border:1px solid var(--color-neutral-80);
         box-shadow:0 .1em .2em var(--color-neutral-95);
         text-align:center;background:#fff;
+        max-width: 1200; /* increase to get larger char */
       }
       figure>figcaption{
         font:500 75% system-ui,sans-serif;background:var(--color-neutral-95);
@@ -74,10 +72,24 @@
       #controls label{font-weight:600;color:var(--color-neutral-30)}
       #controls select,#controls input[type="range"],#controls button{font:inherit}
 
+      .anno{
+        border: 1px solid var(--color-neutral-80);
+        border-radius:.6rem;
+        background:#f8fafc;
+        padding:.8rem 1rem;
+        margin-bottom:.75rem;
+        text-align:center;
+        
+      }
+      .anno-head{margin:0 0 .4rem;font-weight:700}
+      .anno-tip,.anno-budget,.anno-compare{margin:.25rem 0}
+
       /* responsive SVG */
       #brand-bubble-chart{
         width:100%;
+        max-wdith:100%;
         height:auto;
+        aspect-ratio: 1100/750;
         display:block;
       }
     </style>
