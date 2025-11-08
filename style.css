@@ -92,3 +92,13 @@ circle.highlighted {
   display: block;
 }
 
+.label-halo { stroke: #fff; stroke-width: 3px; paint-order: stroke; }
+.label-text { fill: #222; }
+
+
+#brand-bubble-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
