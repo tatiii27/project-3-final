@@ -177,7 +177,7 @@ Promise.all([
     const budg  = panel.select("#anno-budget");
     const comp  = panel.select("#anno-compare");
 
-    if (category === "All" || skin === "All" || !filtered?.length) {
+    if (category === "All" || !filtered?.length) {
       panel.attr("hidden", true);
       head.html(""); tip.html(""); budg.html(""); comp.html("");
       return;
@@ -186,10 +186,15 @@ Promise.all([
 
     const band = bandFor(maxPrice);
     const catText  = `${category}s`;
-    const skinText = `${skin} Skin`;
+    const skinText = 
+       skin == "All"
+         ? "All skin types"
+         : (skin === "Combination" ? "Combination Skin" : `${skin} Skin`);
+     
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
-
-    tip.html(SKIN_TIPS[skin] || "");
+    if (skin !== "All" && SKIN_TIPS[skin]) tip.html(SKIN_TIPS[skin]);
+    else tip.html("");
+    
     budg.html(budgetNote(band));
 
     // comparison line — includes pink reference
@@ -199,7 +204,7 @@ Promise.all([
         (a, b) => d3.descending(a.rank, b.rank) || d3.ascending(a.price, b.price)
       );
       const a = sorted[0];
-      const b = sorted.find(x => x !== a && Math.abs((x.rank||0)-(a.rank||0)) <= 0.1) || sorted[1];
+      const b = sorted.find(x => x !== a && Math.abs((x.rank ?? 0)-(a.rank ?? 0)) <= 0.1) || sorted[1];
       if (a && b) {
         const left  = a.price <= b.price ? a : b;
         const right = a.price <= b.price ? b : a;
@@ -213,7 +218,8 @@ Promise.all([
 
     // JSON line
     let jsonLine = "";
-    const bestBrand = findBestBrandForSkin({skin, category});
+    if (skin !== "All") {
+      const bestBrand = findBestBrandForSkin({skin, category});
     if (bestBrand) {
       const bestProd = findBestProductForBrand(bestBrand);
       if (bestProd) {
