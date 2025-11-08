@@ -6,114 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="style.css" rel="stylesheet" />
 
-    <!-- Page-level styles to match your teammate's framing -->
+    <!-- Page framing to match teammate -->
     <style>
-      :root {
-        --color-neutral-95: hsl(220 10% 95%);
-        --color-neutral-90: hsl(220 10% 90%);
-        --color-neutral-80: hsl(220 10% 80%);
-        --color-neutral-70: hsl(220 10% 70%);
-        --color-neutral-60: hsl(220 10% 60%);
-        --color-neutral-50: hsl(220 10% 50%);
-        --color-neutral-40: hsl(220 10% 40%);
-        --color-neutral-30: hsl(220 10% 30%);
-        --color-neutral-20: hsl(220 10% 20%);
-        --color-neutral-10: hsl(220 10% 10%);
+      :root{
+        --color-neutral-95:hsl(220 10% 95%);
+        --color-neutral-90:hsl(220 10% 90%);
+        --color-neutral-80:hsl(220 10% 80%);
+        --color-neutral-70:hsl(220 10% 70%);
+        --color-neutral-60:hsl(220 10% 60%);
+        --color-neutral-50:hsl(220 10% 50%);
+        --color-neutral-40:hsl(220 10% 40%);
+        --color-neutral-30:hsl(220 10% 30%);
+        --color-neutral-20:hsl(220 10% 20%);
+        --color-neutral-10:hsl(220 10% 10%);
+      }
+      html{
+        font:100%/1.5 system-ui,sans-serif;
+        counter-reset:figure;
+        background:var(--color-neutral-95);
+        max-width:min(75vw,80em);
+        margin:0 auto;
+      }
+      h1,h2,h3,h4,h5,h6{line-height:1.1;font-weight:600;text-wrap:balance}
+      h1,h2{border-bottom:1px solid var(--color-neutral-80);padding-bottom:.2em}
+      h1{
+        margin-block:1em .5rem;
+        font-size:clamp(2.2em,150% + 2vh + 2vw,10vmin);
+        font-weight:800;
+      }
+      h1 small{
+        display:block;width:fit-content;padding:.2em .5em;margin-inline:auto;
+        color:#fff;background:var(--color-neutral-40);font-size:40%;
+        text-transform:uppercase;white-space:nowrap;
+      }
+      h2{font-size:180%;color:var(--color-neutral-30)}
+      h3{font-size:130%}
+      header{padding-block:1em;text-align:center}
+      main{
+        background:#fff;color:var(--color-neutral-20);border-radius:1rem;
+        padding:.5rem 2rem 2rem 2rem;box-shadow:0 .1em .2em var(--color-neutral-90);
+      }
+      figure{
+        margin:1em 0;padding:.5rem;margin-inline:-.5em;
+        border:1px solid var(--color-neutral-80);
+        box-shadow:0 .1em .2em var(--color-neutral-95);
+        text-align:center;background:#fff;
+      }
+      figure>figcaption{
+        font:500 75% system-ui,sans-serif;background:var(--color-neutral-95);
+        padding:.5rem;margin:-.5rem;margin-top:.5rem;counter-increment:figure;text-align:left;
+      }
+      figure>figcaption::before{
+        content:'Figure ' counter(figure) ': ';
+        font-weight:bold;color:var(--color-neutral-40);
       }
 
-      html {
-        font: 100%/1.5 system-ui, sans-serif;
-        counter-reset: figure;
-        background: var(--color-neutral-95);
-        max-width: min(75vw, 80em);
-        margin: 0 auto;
+      /* Controls row (inside figure like teammate) */
+      #controls{
+        display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:center;justify-content:flex-start;
+        padding:.5rem;background:var(--color-neutral-95);border:1px solid var(--color-neutral-80);
+        border-radius:.5rem;margin:.5rem 0 .75rem 0;
       }
+      #controls label{font-weight:600;color:var(--color-neutral-30)}
+      #controls select,#controls input[type="range"],#controls button{font:inherit}
 
-      /* Headings */
-      h1, h2, h3, h4, h5, h6 { line-height: 1.1; font-weight: 600; text-wrap: balance; }
-      h1, h2 { border-bottom: 1px solid var(--color-neutral-80); padding-bottom: 0.2em; }
-
-      h1 {
-        margin-block: 1em 0.5rem;
-        font-size: clamp(2.2em, 150% + 2vh + 2vw, 10vmin);
-        font-weight: 800;
+      /* Make SVG fully visible without scrolling: scale to container */
+      #brand-bubble-chart{
+        width:100%;            /* scale down responsively */
+        height:auto;           /* preserve aspect ratio */
+        display:block;
       }
-      h1 small {
-        display: block;
-        width: fit-content;
-        padding: 0.2em 0.5em;
-        margin-inline: auto;
-        color: white;
-        background: var(--color-neutral-40);
-        font-size: 40%;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      h2 { font-size: 180%; color: var(--color-neutral-30); }
-      h3 { font-size: 130%; }
-
-      /* Sectioning */
-      header { padding-block: 1em; text-align: center; }
-      main {
-        background: white;
-        color: var(--color-neutral-20);
-        border-radius: 1rem;
-        padding: 0.5rem 2rem 2rem 2rem;
-        box-shadow: 0 0.1em 0.2em var(--color-neutral-90);
-      }
-
-      /* Figure framing (matches teammate) */
-      figure {
-        margin: 1em 0;
-        padding: 0.5rem;
-        margin-inline: -0.5em;
-        border: 1px solid var(--color-neutral-80);
-        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
-        text-align: center;
-        background: white;
-      }
-      figure > figcaption {
-        font: 500 75% system-ui, sans-serif;
-        background: var(--color-neutral-95);
-        padding: 0.5rem;
-        margin: -0.5rem;
-        margin-top: 0.5rem;
-        counter-increment: figure;
-        text-align: left;
-      }
-      figure > figcaption::before {
-        content: 'Figure ' counter(figure) ': ';
-        font-weight: bold;
-        color: var(--color-neutral-40);
-      }
-
-      /* Controls row (inside the figure, like teammate) */
-      #controls {
-        display: flex; flex-wrap: wrap; gap: 0.75rem 1rem;
-        align-items: center; justify-content: flex-start;
-        padding: 0.5rem; background: var(--color-neutral-95);
-        border: 1px solid var(--color-neutral-80);
-        border-radius: 0.5rem; margin: 0.5rem 0 0.75rem 0;
-      }
-      #controls label { font-weight: 600; color: var(--color-neutral-30); }
-      #controls select, #controls input[type="range"], #controls button { font: inherit; }
-
-      /* Viz container sizes (these classes are also in style.css for consistency) */
-      .viz-viewport {
-        width: 100%;
-        max-height: 90vh;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        overflow: auto;
-        background: #fff;
-      }
-      .viz-canvas {
-        width: 1100px;   /* design width */
-        height: 750px;   /* design height matches your JS */
-        position: relative;
-      }
-      .viz-canvas svg { width: 100%; height: 100%; display: block; }
     </style>
   </head>
 
@@ -127,7 +89,6 @@
       <p><em>masawire@ucsd.edu • vascott@ucsd.edu • t1sanchez@ucsd.edu</em></p>
     </header>
 
-    <!-- OPEN MAIN (you were missing this opening tag previously) -->
     <main>
       <section>
         <h2>Overview</h2>
@@ -150,28 +111,29 @@
       <section>
         <h2>Interactive Visualization</h2>
 
+        <!-- Controls first (inside figure like teammate) -->
         <figure>
-          <!-- Controls inside the figure (like teammate) -->
           <div id="controls"></div>
 
-          <!-- Scrollable viewport + fixed-size canvas (like teammate) -->
-          <div class="viz-viewport">
-            <div class="viz-canvas">
-              <svg id="brand-bubble-chart" role="img" aria-label="Brand bubble chart"></svg>
-            </div>
-          </div>
+          <!-- YOUR COMMENTS/ANNOTATIONS restored and ABOVE the chart (like pic 1) -->
+          <aside id="annotations" class="anno">
+            <h3 id="anno-head" class="anno-head"></h3>
+            <p id="anno-tip" class="anno-tip"></p>
+            <p id="anno-budget" class="anno-budget"></p>
+            <p id="anno-compare" class="anno-compare"></p>
+          </aside>
+
+          <!-- Responsive SVG (no scroll). JS still uses 1100x750 internally. -->
+          <svg
+            id="brand-bubble-chart"
+            role="img"
+            aria-label="Brand bubble chart"
+            viewBox="0 0 1100 750"
+            preserveAspectRatio="xMidYMid meet">
+          </svg>
 
           <figcaption>Brand-level bubble chart with interactive filters and a price-axis brush.</figcaption>
         </figure>
-
-        <!-- Keep your JSON-driven annotations panel (hidden until both filters chosen).
-             Leaving it outside the figure so the figure matches teammate exactly. -->
-        <aside id="annotations" class="anno" hidden>
-          <h3 id="anno-head" class="anno-head"></h3>
-          <p id="anno-tip" class="anno-tip"></p>
-          <p id="anno-budget" class="anno-budget"></p>
-          <p id="anno-compare" class="anno-compare"></p>
-        </aside>
       </section>
 
       <section>
