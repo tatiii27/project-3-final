@@ -104,8 +104,12 @@ Promise.all([
       24;
    const figTop = fig ? fig.getBoundingClientRect().top : 0;
    const available = Math.max(360, window.innerHeight - figTop - used);
+   const aspect = 750 / 1100;
+   const cw = (fig ? fig.clientWidth : window.innerWidth) - 16;
+   const hByWidth  = cw * aspect;   
+   const targetH = Math.min(availH, hByWidth);
 
-   svgEl.style.width = "auto";
+   svgEl.style.width = "100%";
    svgEl.style.maxWidth = "100%";
    svgEl.style.height = `${available}px`;
  }
@@ -194,7 +198,7 @@ Promise.all([
     const band = bandFor(maxPrice);
     const catText  = (category === "All") ? "All Categories" : `${category}s`;
     const skinText = (skin === "All") ? "All skin types"   : `${skin} skin`;
-    head.html(`for ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
+    head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
     if (skin !== "All" && SKIN_TIPS[skin]) {
       tip.html(SKIN_TIPS[skin]);
