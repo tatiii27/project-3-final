@@ -221,8 +221,8 @@ fitSVGToViewport();
     panel.attr("hidden", null);
 
     const band = bandFor(maxPrice);
-    const catText  = (category === "All") ? "All Categories" : `${category}s`;
-    const skinText = (skin === "All") ? "All skin types"   : `${skin} skin`;
+    const catText  = `${category}s`;
+    const skinText = `${skin} skin`;
     head.html(`For ${skinText}: ${catText} under ${band ? money(band) : "no price limit"}`);
 
     if (skin !== "All" && SKIN_TIPS[skin]) {
@@ -296,7 +296,6 @@ fitSVGToViewport();
       labelG.selectAll("g.brand-label").remove();
       updateAnnotations({category, skin, maxPrice, filtered});
       
-      fitSVGToViewport();
       return;
     }
 
