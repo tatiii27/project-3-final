@@ -176,7 +176,7 @@ Promise.all([
     panel.attr("hidden", null);
 
     const band=bandFor(maxPrice);
-    head.text(`Tips for ${skin} skin — ${category}s under ${band?money(band):"no price limit"}`);
+    head.text(`Tips for ${skin} skin: ${category}s under ${band?money(band):"no price limit"}`);
     tip.html(SKIN_TIPS[skin]||"");
     budg.html(budgetNote(band));
 
