@@ -120,7 +120,13 @@ Promise.all([
   const gridG   = svg.append("g").attr("class","grid-layer");   // back
   const bubbleG = svg.append("g").attr("class","bubble-layer");
   const labelG  = svg.append("g").attr("class","label-layer");
-  const axisG   = svg.append("g").attr("class","x-axis");       // front
+  const axisG   = svg.append("g").attr("class","x-axis");   // front
+  const plot = {
+     x: 60,
+     y: axisY - gridHeight,
+     w: width-120,
+     h: gridHeight
+  };
 
   // defs: legend gradient + axis arrow
   const defs = svg.append("defs");
@@ -129,6 +135,19 @@ Promise.all([
   defs.append("marker").attr("id","axis-arrow").attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
     .attr("markerWidth",6).attr("markerHeight",6).attr("orient","auto")
     .append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill","#333");
+
+   defs.append("clipPath")
+      .attr("id","plot-clip")
+      .append("rect")
+         .attr("x", plot.x)
+         .attr("y", plot.y)
+         .attr("width", plot.w)
+         .attr("height", plot.h);
+
+   gridG.attr("clip-path","url(#plot-clip)");
+   bubbleG.attr("clip-path","url(#plot-clip)");
+   labelG.attr("clip-path","url(#plot-clip)");
+   
 
   // Tooltip (singleton)
   if (d3.select("#tooltip").empty()) d3.select("body").append("div").attr("id","tooltip");
@@ -267,17 +286,26 @@ Promise.all([
     legendGroup.append("text").attr("class","legend-max").attr("x",legendWidth).attr("y",-2).attr("font-size","10px").attr("text-anchor","end").text(rMax.toFixed(1));
 
     // x scale
-    const maxR=d3.max(filtered,d=>size(d.price))||60;
-    const [minP,maxP]=d3.extent(filtered,d=>d.price);
-    const pad=(maxP-minP)*0.1 || 10;
-    const xScale=d3.scaleLinear().domain([minP-pad, maxP+pad]).range([maxR+20, width-maxR-40]);
+    const bubbleMax = d3.max(filtered, d => size(d.price)) || 60;
 
+    let [minP, maxP] = d3.extent(filtered, d => +d.price);
+    if (!isFinite(minP) || !isFinite(maxP)) { minP = 0; maxP = 1; }
+    if (minP === maxP) { const e = maxP || 1; minP = e - 1; maxP = e + 1; }
+
+    const pad = Math.max(10, (maxP - minP) * 0.10);
+    const xScale = d3.scaleLinear()
+       .domain([minP - pad, maxP + pad])
+       .range([plot.x + bubbleMax, plot.x + plot.w - bubbleMax]);
+    
+   /////////////////////////////////////////
     // GRIDLINES (behind)
     const ticks=xScale.ticks(6);
     const lines=gridG.selectAll("line.vgrid").data(ticks, d=>d);
     lines.enter().append("line").attr("class","vgrid")
-      .attr("y1", axisY - gridHeight).attr("y2", axisY).attr("stroke", "#e5e7eb").attr("stroke-width",1)
-      .merge(lines).attr("x1", d=>xScale(d)).attr("x2", d=>xScale(d));
+      .attr("y1", plot.y).attr("y2", plot.y + plot.h)
+      .attr("stroke", "#e5e7eb").attr("stroke-width", 1)
+      .merge(lines)
+      .attr("x1", d=>xScale(d)).attr("x2", d=>xScale(d));
     lines.exit().remove();
     gridG.lower(); bubbleG.raise(); labelG.raise(); axisG.raise();
 
@@ -292,15 +320,17 @@ Promise.all([
       .style("font-size","12px").style("pointer-events","none").text("Price");
 
     // Force simulation (position)
-    filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=height/2; });
+    const plotYCenter = plot.y + plot.h / 2;
+    filtered.forEach(d=>{ d.fx=xScale(d.price); if(!isFinite(d.y)) d.y=plotYCenter; });
     d3.forceSimulation(filtered)
       .alphaDecay(0.05)
       .force("collision", d3.forceCollide().radius(d=>size(d.price)+3))
       .force("x", d3.forceX(d=>xScale(d.price)).strength(0.4))
-      .force("y", d3.forceY(height/2).strength(0.12))
+      .force("y", d3.forceY(plotYCenter).strength(0.12))
       .on("tick", ()=>{
-        const [x0,x1]=xScale.range();
-        const clampX=x=>Math.max(x0,Math.min(x1,x));
+        const [rx0, rx1] = [plot.x, plot.x + plot.w];
+        const clampX=x=>Math.max(rx0,Math.min(rx1,x));
+        const clampY = y => Math.max(plot.y, Math.min(plot.y + plot.h, y));
         bubbleG.selectAll("circle").attr("cx", d=>clampX(d.fx)).attr("cy", d=>d.y);
         labelG.selectAll("g.brand-label").attr("transform", d=>`translate(${clampX(d.fx)},${d.y})`);
       });
