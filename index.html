@@ -1,52 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Project 3 — Interactive Visualization</title>
     <meta charset="UTF-8" />
-    <title>Project 3 — Brand Bubble Chart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <header>
-      <h1>Interactive Visualization — Brand Bubble Chart</h1>
-      <p class="byline"><strong>Team:</strong> Marianne Sawires • Vanessa Scott • Tatianna Sanchez</p>
-      <p class="byline"><em>masawire@ucsd.edu • vascott@ucsd.edu • t1sanchez@ucsd.edu</em></p>
+      <h1>
+        <small>Project 3</small>
+        Interactive Visualization — Brand Bubble Chart
+      </h1>
+      <p><strong>Marianne Sawires</strong> — <em>masawire@ucsd.edu</em></p>
+      <p><strong>Vanessa Scott</strong> — <em>vascott@ucsd.edu</em></p>
+      <p><strong>Tatianna Sanchez</strong> — <em>t1sanchez@ucsd.edu</em></p>
     </header>
 
     <main>
-      <figure class="figure">
-        <!-- controls -->
-        <div id="controls" class="controls"></div>
+      <section>
+        <h2>Overview</h2>
+        <p>
+          This interactive bubble chart explores skincare products by brand. Bubble size encodes price,
+          color encodes rating, and bubbles are positioned along a price axis. Use the controls to filter
+          by category, skin type, and price.
+        </p>
+      </section>
 
-        <!-- COMMENTS / ANNOTATIONS -->
-        <aside id="annotations" class="anno">
-          <h3 id="anno-head" class="anno-head"></h3>
-          <p id="anno-tip" class="anno-tip"></p>
-          <p id="anno-budget" class="anno-budget"></p>
-          <p id="anno-compare" class="anno-compare"></p>
-        </aside>
+      <section>
+        <h2>Compelling Question</h2>
+        <p>
+          How do skincare product <strong>price</strong>, <strong>consumer rating</strong>, and
+          <strong>skin-type suitability</strong> interact across brands and categories—and do higher prices reliably
+          correlate with better ratings?
+        </p>
+      </section>
 
-        <!-- teammate-style viewport with internal canvas -->
-        <div id="vizViewport" class="viz-viewport">
-          <div id="vizCanvas" class="viz-canvas">
-            <svg
-              id="brand-bubble-chart"
-              role="img"
-              aria-label="Brand bubble chart"
-              viewBox="0 0 1100 750"
-              preserveAspectRatio="xMidYMid meet">
-            </svg>
+      <section>
+        <h2>Interactive Visualization</h2>
+
+        <figure>
+          <!-- Controls (team format) -->
+          <div id="controls"></div>
+
+          <!-- Your comments/annotations (hidden when Category or Skin is “All”) -->
+          <aside id="annotations" class="anno" hidden>
+            <h3 id="anno-head" class="anno-head"></h3>
+            <p id="anno-tip" class="anno-tip"></p>
+            <p id="anno-budget" class="anno-budget"></p>
+            <p id="anno-compare" class="anno-compare"></p>
+          </aside>
+
+          <!-- Team-style viewport so the full viz is visible at 100% -->
+          <div id="vizViewport" class="viz-viewport">
+            <div id="vizCanvas" class="viz-canvas">
+              <svg
+                id="brand-bubble-chart"
+                viewBox="0 0 1100 750"
+                preserveAspectRatio="xMidYMid meet"
+                role="img"
+                aria-label="Brand bubble chart">
+              </svg>
+            </div>
           </div>
-        </div>
 
-        <figcaption>
-          Brand-level bubble chart with interactive filters and a price-axis brush.
-        </figcaption>
-      </figure>
+          <figcaption>Brand-level bubble chart with interactive filters and a price-axis brush.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Design Rationale</h2>
+
+        <h3>Visual Encodings</h3>
+        <p>
+          We chose a clustered bubble chart because circular marks effectively convey multiple quantitative
+          attributes while supporting rapid comparison. Each bubble represents a single skincare product.
+        </p>
+        <ul>
+          <li><strong>Position (x-axis):</strong> Product price, mapped linearly left to right, emphasizes affordability versus luxury tiers.</li>
+          <li><strong>Size (radius):</strong> Encodes relative price magnitude to reinforce the cost dimension visually without requiring axis reference.</li>
+          <li><strong>Color (fill):</strong> Encodes average consumer rating using a perceptually ordered diverging red–yellow–green scale; the scale re-computes per filter state to keep contrast meaningful.</li>
+          <li><strong>Text (label):</strong> Brand name centered in the bubble for quick identification.</li>
+          <li><strong>Tooltip:</strong> Full product name, category, exact price, rating, and supported skin types.</li>
+        </ul>
+
+        <h3>Interaction Techniques</h3>
+        <ul>
+          <li><strong>Dropdown Filters:</strong> Filter by product category and skin type.</li>
+          <li><strong>Dynamic Price Range:</strong> Slider limits visible products by max price.</li>
+          <li><strong>Animated Re-layout:</strong> Force simulation reclusters after filter updates.</li>
+          <li><strong>Hover Details & Highlight:</strong> Tooltip plus a clear focus outline.</li>
+          <li><strong>Responsive Legend:</strong> Legend reflects the subset’s rating range.</li>
+        </ul>
+
+        <h3>Data Transformations</h3>
+        <p>
+          CSV fields (<code>Label</code>, <code>brand</code>, <code>name</code>, <code>price</code>, <code>rank</code>,
+          and binary skin-type columns) are parsed numerically. Within any filter state, the top 20 highest-rated products are shown to preserve readability.
+          The color scale recalculates the subset’s min/max <code>rank</code> so relative variation remains visible. Skin-type flags are mapped into a display string for the tooltip.
+        </p>
+      </section>
+
+      <section>
+        <h2>Development Process</h2>
+        <p>This project was completed collaboratively over roughly <strong>30 person-hours</strong> of development.</p>
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>Tasks</th><th>Approx. Hours</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Exploratory Analysis</td><td>Inspect dataset, identify question, test static plots</td><td>5 h</td></tr>
+            <tr><td>D3 Structure Setup</td><td>Load data, scales, force simulation</td><td>7 h</td></tr>
+            <tr><td>Interaction Logic</td><td>Dropdowns, slider, legend, axis arrow</td><td>6 h</td></tr>
+            <tr><td>Visual Polish</td><td>Hover effects, layering, dynamic color tuning</td><td>7 h</td></tr>
+            <tr><td>Testing/Deployment</td><td>Debugging, browser testing, GitHub Pages</td><td>5 h</td></tr>
+          </tbody>
+        </table>
+        <p>
+          A dataset was chosen collectively; each member built checkpoint visuals. We merged the strongest ideas into
+          this bubble chart, collaborated via Git, refined encodings, and iterated on UX. One member led the write-up,
+          with edits across the team.
+        </p>
+      </section>
+
+      <section>
+        <h2>Reflection and Outcome</h2>
+        <p>
+          Our design balances exploration with clarity by limiting dimensions and using strong affordances
+          (hover focus, dynamic legend, smooth transitions). Filters and details-on-demand surface sub-patterns—like
+          affordable, highly-rated options for specific skin types. The most time-intensive work was tuning the force layout
+          and ensuring labels/hovers layer cleanly.
+        </p>
+        <p>
+          Compared to alternatives (scatterplots, bar charts, small multiples), the bubble layout preserved brand
+          identity while enabling quantitative comparison and kept the page visually engaging.
+        </p>
+        <p>
+          Collaboration was genuinely synergistic—multiple Zoom sessions plus async commits, with everyone
+          contributing to a result we’re proud of.
+        </p>
+      </section>
     </main>
 
+    <!-- Your D3 logic lives here -->
     <script type="module" src="project3.js"></script>
+  </body>
+</html>
+
   </body>
 </html>
 
